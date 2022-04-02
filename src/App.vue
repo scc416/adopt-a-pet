@@ -1,9 +1,5 @@
 <template>
-  <nav>
-    <router-link :to="{ name: 'home' }">Home</router-link> |
-    <router-link :to="{ name: 'pets' }">View Pets</router-link>
-  </nav>
-  <router-view />
+  <router-link :to="{ name: 'home' }">Home</router-link>
 </template>
 
 <script>
