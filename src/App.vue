@@ -40,4 +40,8 @@ body {
   width: 1.4em;
   margin-right: 0.25em;
 }
+
+* {
+  box-sizing: border-box;
+}
 </style>
