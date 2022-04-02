@@ -1,5 +1,3 @@
 <template>
-  <div class="about">
-    <h1>PETS VIEW</h1>
-  </div>
+  <h1>PETS VIEW</h1>
 </template>

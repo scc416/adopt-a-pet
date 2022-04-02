@@ -1,8 +1,7 @@
 <template>
   <nav>
-    {{ token }}
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'pets' }">View Pets</router-link>
   </nav>
   <router-view />
 </template>
