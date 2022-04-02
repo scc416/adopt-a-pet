@@ -1,10 +1,23 @@
 <template>
   <nav>
+    {{ token }}
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
-  <router-view/>
+  <router-view />
 </template>
+
+<script>
+import getToken from "./composables/getToken";
+
+export default {
+  setup() {
+    const { token, error } = getToken();
+    return { token, error };
+  },
+};
+</script>
+
 
 <style>
 #app {
