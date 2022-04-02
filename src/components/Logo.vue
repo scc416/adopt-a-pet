@@ -25,6 +25,8 @@ export default {};
 
 .logo img {
   width: 1.4em;
-  margin-right: 0.25em;
+  margin-right: 0.35em;
+  position: relative;
+  bottom: 0.05em;
 }
 </style>
