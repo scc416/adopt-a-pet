@@ -1,19 +1,15 @@
 <template>
   <div class="home">
     <HomeTitle />
-    <router-link :to="{ name: 'pets' }">
-      <div>
-        <span><SearchIcon />Start Looking</span>
-      </div>
-    </router-link>
+    <Button />
   </div>
 </template>
 
 <script>
-import SearchIcon from "vue-material-design-icons/Magnify.vue";
 import HomeTitle from "../components/HomeTitle/";
+import Button from "../components/HomeTitle/Button.vue";
 
-export default { components: { SearchIcon, HomeTitle } };
+export default { components: { HomeTitle, Button } };
 </script>
 
 <style>
