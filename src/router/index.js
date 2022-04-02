@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import PetsView from "../views/PetsView.vue";
+import PetDetails from "../views/PetDetailsView";
 import ErrorView from "../views/ErrorView";
 
 const routes = [
@@ -17,7 +18,7 @@ const routes = [
   {
     path: "/pets/:id",
     name: "petDetails",
-    component: PetsView,
+    component: PetDetails,
   },
   {
     path: "/:catchAll(.*)",
