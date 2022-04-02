@@ -34,13 +34,3 @@ const getToken = () => {
 };
 
 export default getToken;
-
-// axios({
-//   url: "https://api.petfinder.com/v2/animals",
-//   method: "get",
-//   headers: {
-//     Authorization: `Bearer ${response.data.access_token}`,
-//   },
-// }).then(function (response) {
-//   console.log(response.data);
-// });
