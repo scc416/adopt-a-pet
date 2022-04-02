@@ -22,18 +22,19 @@ body {
 
 .logo {
   position: absolute;
-  top: 1.3em;
-  left: 3em;
+  top: 1.4em;
+  left: 2.8em;
   color: #3aab97;
   text-decoration: none;
   font-family: "Raleway";
   display: flex;
   align-items: center;
   font-weight: 900;
+  font-size: 1.8em;
 }
 
 .logo img {
-  width: 1.7em;
+  width: 1.4em;
   margin-right: 0.25em;
 }
 </style>
