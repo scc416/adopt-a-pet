@@ -2,6 +2,7 @@
   <router-link class="logo" :to="{ name: 'home' }"
     ><img src="../public/favicon.png" />Adopt A Pet</router-link
   >
+  <router-view />
 </template>
 
 <script>
@@ -18,6 +19,8 @@ export default {
 <style>
 body {
   font-family: "Open Sans";
+  margin: 0;
+  padding: 0;
 }
 
 .logo {
