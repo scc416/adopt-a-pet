@@ -7,13 +7,17 @@
     </div>
     <div>that fits you</div>
     <router-link :to="{ name: 'pets' }">
-      <div><span>Start Matching</span></div>
+      <div>
+        <span><SearchIcon />Start Looking</span>
+      </div>
     </router-link>
   </div>
 </template>
 
 <script>
-export default {};
+import SearchIcon from "vue-material-design-icons/Magnify.vue";
+
+export default { components: { SearchIcon } };
 </script>
 
 <style>
@@ -69,9 +73,22 @@ export default {};
 .home > a > div > span {
   background: #3aab97;
   border-radius: 5em;
-  padding: 0.9em 1.2em;
+  padding: 0.4em 0.9em;
   font-size: 0.4em;
   font-weight: 600;
   color: #fff;
+  display: flex;
+  align-items: center;
+  border: #3aab97 solid 0.1em;
+}
+
+.home > a:hover > div > span {
+  background: #fff;
+  color: #3aab97;
+}
+
+.home > a > div > span > *:first-child {
+  position: relative;
+  top: 0.2em;
 }
 </style>
