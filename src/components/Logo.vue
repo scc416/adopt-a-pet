@@ -12,7 +12,7 @@
       href="https://github.com/scc416/adopt-a-pet"
       target="_blank"
     >
-      <div>Github</div>
+      <div>Github Repo</div>
     </a>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {};
   display: flex;
   margin: 1.4em 2.8em;
   justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -49,15 +50,15 @@ export default {};
 }
 
 .nav .github div {
-  background: #3aab97;
+  color: #3aab97;
   font-weight: 600;
   border-radius: 5em;
-  padding: 0.9em 1.2em;
-  font-size: 1.2em;
+  padding: 0.4em 0.6em;
+  border: #3aab97 solid 0.1em;
+  font-size: 0.9em;
 }
 
 .nav a.github {
-  color: #fff;
   text-decoration: none;
 }
 </style>
