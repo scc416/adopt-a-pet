@@ -1,11 +1,6 @@
 <template>
   <div class="home">
-    <div>
-      Find
-      <span>the perfect pet </span>
-      <div></div>
-    </div>
-    <div>that fits you</div>
+    <HomeTitle />
     <router-link :to="{ name: 'pets' }">
       <div>
         <span><SearchIcon />Start Looking</span>
@@ -16,8 +11,9 @@
 
 <script>
 import SearchIcon from "vue-material-design-icons/Magnify.vue";
+import HomeTitle from "../components/HomeTitle/";
 
-export default { components: { SearchIcon } };
+export default { components: { SearchIcon, HomeTitle } };
 </script>
 
 <style>
