@@ -21,6 +21,7 @@ body {
   font-family: "Open Sans";
   margin: 0;
   padding: 0;
+  color: #595959;
 }
 
 * {
