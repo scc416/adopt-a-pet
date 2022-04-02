@@ -4,14 +4,9 @@
 </template>
 
 <script>
-import getToken from "./composables/getToken";
 import Logo from "./components/Logo.vue";
 
 export default {
-  setup() {
-    const { token, error } = getToken();
-    return { token, error };
-  },
   components: { Logo },
 };
 </script>
