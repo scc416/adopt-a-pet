@@ -12,13 +12,15 @@
       href="https://github.com/scc416/adopt-a-pet"
       target="_blank"
     >
-      <div>Github Repo</div>
+      <div>Github Repo<GithubIcon /></div>
     </a>
   </div>
 </template>
 
 <script>
-export default {};
+import GithubIcon from "vue-material-design-icons/Github.vue";
+
+export default { components: { GithubIcon } };
 </script>
 
 <style>
@@ -53,12 +55,31 @@ export default {};
   color: #3aab97;
   font-weight: 600;
   border-radius: 5em;
-  padding: 0.4em 0.6em;
+  padding: 0.5em 0.7em;
   border: #3aab97 solid 0.1em;
   font-size: 0.9em;
+  display: flex;
+  align-items: center;
 }
 
 .nav a.github {
   text-decoration: none;
+}
+
+.nav a.github div:hover {
+  color: #fff;
+  background: #3aab97;
+  cursor: pointer;
+}
+
+.nav .material-design-icon {
+  height: 1.4em;
+  width: 1.4em;
+  margin-left: 0.2em;
+}
+
+.nav .material-design-icon > .material-design-icon__svg {
+  height: 1.4em;
+  width: 1.4em;
 }
 </style>
