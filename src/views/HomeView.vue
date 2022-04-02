@@ -18,6 +18,7 @@ export default {};
 
 <style>
 .home {
+  position: absolute;
   background-image: url("../assets/home-background.jpg");
   width: 100vw;
   height: 100vh;
@@ -29,6 +30,9 @@ export default {};
   align-items: flex-start;
   font-size: 2em;
   font-weight: 500;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .home a {
