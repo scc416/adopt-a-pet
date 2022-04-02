@@ -6,7 +6,9 @@
       <div></div>
     </div>
     <div>that fits you</div>
-    <div><span>Start Matching</span></div>
+    <router-link :to="{ name: 'pets' }">
+      <div><span>Start Matching</span></div>
+    </router-link>
   </div>
 </template>
 
@@ -29,7 +31,12 @@ export default {};
   font-weight: 500;
 }
 
-.home > div {
+.home a {
+  color: #595959;
+  text-decoration: none;
+}
+
+.home > * {
   position: relative;
   left: calc(2.8em + 8vw);
   bottom: 4vh;
@@ -45,7 +52,7 @@ export default {};
 }
 
 .home > div > div {
-  background: #3aab97;
+  background: #e5e4e2;
   width: 10em;
   height: 0.8em;
   position: absolute;
@@ -55,7 +62,7 @@ export default {};
   border-radius: 5em;
 }
 
-.home > div:nth-child(3) > span {
+.home > a > div > span {
   background: #3aab97;
   border-radius: 5em;
   padding: 0.9em 1.2em;

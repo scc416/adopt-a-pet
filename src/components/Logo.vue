@@ -1,7 +1,9 @@
 <template>
   <router-link class="logo" :to="{ name: 'home' }">
-    <img src="../../public/favicon.png" />
-    Adopt a Pet
+    <div>
+      <img src="../../public/favicon.png" />
+      Adopt a Pet
+    </div>
   </router-link>
 </template>
 
@@ -17,10 +19,13 @@ export default {};
   color: #3aab97;
   text-decoration: none;
   font-family: "Raleway";
-  display: flex;
-  align-items: center;
   font-weight: 900;
   font-size: 1.8em;
+}
+
+.logo > div {
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
