@@ -26,9 +26,9 @@ export default { components: { GithubIcon } };
 <style>
 .nav {
   display: flex;
-  margin: 1.4em 2.8em;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2em;
 }
 
 .logo {

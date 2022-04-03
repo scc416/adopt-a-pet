@@ -1,6 +1,6 @@
 import DogIcon from "vue-material-design-icons/Dog.vue";
 import CatIcon from "vue-material-design-icons/Cat.vue";
-// import RabbitIcon from "vue-material-design-icons/Rabbit.vue";
+import RabbitIcon from "vue-material-design-icons/Rabbit.vue";
 
 export const getPetIcon = (pet) => {
   switch (pet) {

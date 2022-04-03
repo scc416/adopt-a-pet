@@ -31,6 +31,10 @@ body {
   color: #595959;
 }
 
+#app {
+  margin: 2em 3.4em;
+}
+
 * {
   box-sizing: border-box;
 }
