@@ -1,5 +1,7 @@
 <template>
-  <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
+  <div class="pets-list">
+    <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
+  </div>
 </template>
 
 <script>
@@ -16,3 +18,10 @@ export default {
   components: { PetCard },
 };
 </script>
+
+<style>
+.pets-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
