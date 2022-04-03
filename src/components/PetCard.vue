@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'petDetails', params: { id } }" class="pet-card">
     <div class="content">
-      <div>{{ name }}</div>
+      <div><component :is="icon" /> {{ name }}</div>
       <div>{{ breeds.primary }}</div>
       <div>{{ gender }}</div>
       <div>{{ age }}</div>
@@ -12,11 +12,15 @@
 </template>
 
 <script>
+import DogIcon from "vue-material-design-icons/Dog.vue";
+import CatIcon from "vue-material-design-icons/Cat.vue";
+
 export default {
   props: ["pet"],
   setup(props) {
     const { pet } = props;
-    const { id, name, photos, gender, breeds, age, contact } = pet;
+    const { id, name, photos, gender, breeds, age, contact, species } = pet;
+    const icon = species === "Dog" ? DogIcon : CatIcon;
     const { address } = contact;
     const { country, city } = address;
     return {
@@ -28,6 +32,7 @@ export default {
       age,
       country,
       city,
+      icon,
     };
   },
 };
