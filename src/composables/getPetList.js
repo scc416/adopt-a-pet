@@ -26,7 +26,6 @@ const getPetList = (token) => {
         const {
           pagination: { total_pages },
         } = data;
-        console.log(petList.value.length);
         currentPage = 1;
         totalPages = total_pages;
         loading.value = false;
@@ -56,8 +55,7 @@ const getPetList = (token) => {
       petList.value = petList.value.concat(
         animals.filter((pet) => pet.photos.length)
       );
-      console.log("LOAD MORE");
-      console.log(petList.value.length);
+
       loading.value = false;
     } catch (e) {
       error.value = e.message;

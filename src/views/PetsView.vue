@@ -11,10 +11,6 @@ import PetCard from "../components/PetCard.vue";
 
 export default {
   props: ["petList", "loadMore", "isEndOfPage"],
-  // setup(props) {
-  //   const { petList, loadMore, isEndOfPage } = props;
-  //   return { petList, loadMore, isEndOfPage };
-  // },
   components: { PetCard },
 };
 </script>
