@@ -1,6 +1,10 @@
 <template>
   <Logo />
-  <router-view :petList="petList" />
+  <router-view
+    :petList="petList"
+    :loadMore="loadMore"
+    :isEndOfPage="isEndOfPage"
+  />
 </template>
 
 <script>
@@ -12,8 +16,9 @@ export default {
   components: { Logo },
   setup() {
     const { token, error } = getToken();
-    const { petList, updatePetList, loading } = getPetList(token);
-    return { petList };
+    const { petList, updatePetList, loading, loadMore, isEndOfPage } =
+      getPetList(token);
+    return { petList, updatePetList, loading, loadMore, isEndOfPage };
   },
 };
 </script>

@@ -2,6 +2,7 @@
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
+  <button v-if="!isEndOfPage" @click="loadMore">Load more</button>
 </template>
 
 <script>
@@ -10,10 +11,12 @@ import PetCard from "../components/PetCard.vue";
 export default {
   props: {
     petList: Array,
+    loadMore: Function,
+    isEndOfPage: Boolean,
   },
   setup(props) {
-    const { petList } = props;
-    return { petList };
+    const { petList, loadMore, isEndOfPage } = props;
+    return { petList, loadMore, isEndOfPage };
   },
   components: { PetCard },
 };

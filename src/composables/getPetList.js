@@ -6,13 +6,15 @@ const getPetList = (token) => {
   const error = ref("");
   const loading = ref(false);
   let receiveToken = false;
+  let currentPage = 1;
+  let totalPages = null;
+  const isEndOfPage = ref(false);
 
   const updatePetList = async () => {
     if (token.value) {
       try {
         loading.value = true;
         const url = "https://api.petfinder.com/v2/animals?limit=100";
-        // ? `https://api.petfinder.com/v2/animals?limit=100&page=${pageNum.value}`
         const { data } = await axios({
           url,
           method: "get",
@@ -21,26 +23,45 @@ const getPetList = (token) => {
           },
         });
         petList.value = data.animals.filter((pet) => pet.photos.length);
-        // const {
-        //   pagination: { total_pages: totalPages },
-        // } = data;
-        // console.log(totalPages);
-        // for (let i = 2; i <= totalPages; i++) {
-        //   const url = `https://api.petfinder.com/v2/animals?limit=100&page=${i}`;
-        //   const { data } = await axios({
-        //     url,
-        //     method: "get",
-        //     headers: {
-        //       Authorization: `Bearer ${token.value}`,
-        //     },
-        //   });
-        //   petList.value = petList.value.concat(data.animals);
-        // }
+        const {
+          pagination: { total_pages },
+        } = data;
+        console.log(petList.value.length);
+        currentPage = 1;
+        totalPages = total_pages;
         loading.value = false;
+        isEndOfPage.value = false;
       } catch (e) {
         error.value = e.message;
         console.log(e);
       }
+    }
+  };
+
+  const loadMore = async () => {
+    currentPage++;
+    if (currentPage === totalPages) isEndOfPage.value = true;
+    try {
+      loading.value = true;
+      const url = `https://api.petfinder.com/v2/animals?limit=100&page=${currentPage}`;
+      const {
+        data: { animals },
+      } = await axios({
+        url,
+        method: "get",
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+        },
+      });
+      petList.value = petList.value.concat(
+        animals.filter((pet) => pet.photos.length)
+      );
+      console.log("LOAD MORE");
+      console.log(petList.value.length);
+      loading.value = false;
+    } catch (e) {
+      error.value = e.message;
+      console.log(e);
     }
   };
 
@@ -53,7 +74,7 @@ const getPetList = (token) => {
 
   updatePetList();
 
-  return { petList, updatePetList, loading };
+  return { petList, updatePetList, loading, loadMore, isEndOfPage };
 };
 
 export default getPetList;
