@@ -1,4 +1,4 @@
-import DogIcon from "vue-material-design-icons/Dog.vue";
+import DogIcon from "vue-material-design-icons/DogSide.vue";
 import CatIcon from "vue-material-design-icons/Cat.vue";
 import RabbitIcon from "vue-material-design-icons/Rabbit.vue";
 
