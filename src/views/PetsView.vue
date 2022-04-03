@@ -1,9 +1,5 @@
 <template>
-  <div v-for="pet in petList" :key="pet.id">
-    <div>{{ pet.id }}</div>
-    <div>{{ pet.name }}</div>
-    <img :src="pet.photos[0].medium" />
-  </div>
+  <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
 </template>
 
 <script>

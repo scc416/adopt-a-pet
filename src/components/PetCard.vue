@@ -6,6 +6,9 @@
 
 <script>
 export default {
+  props: {
+    pet: Object,
+  },
   setup(props) {
     const { pet } = props;
     return { pet };
