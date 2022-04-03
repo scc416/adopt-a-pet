@@ -4,7 +4,7 @@ import { ref, watch } from "vue";
 const getPetList = (token) => {
   const petList = ref([]);
   const error = ref("");
-  const loading = ref(token.value ? true : false);
+  const loading = ref(token.value ? false : true);
   let receiveToken = false;
   let currentPage = 1;
   let totalPages = null;
