@@ -10,9 +10,7 @@
 
 <script>
 export default {
-  props: {
-    pet: Object,
-  },
+  props: ["pet"],
   setup(props) {
     const { pet } = props;
     const { id, name, photos } = pet;
@@ -46,6 +44,6 @@ export default {
   left: 0;
   padding: 2em 0.7em 0.7em;
   width: 100%;
-  background:linear-gradient(#00000000, #000000) ;
+  background: linear-gradient(#00000000, #000000);
 }
 </style>

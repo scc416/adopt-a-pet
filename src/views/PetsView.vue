@@ -6,14 +6,11 @@
 </template>
 
 <script>
+import { toRef, watch } from "@vue/runtime-core";
 import PetCard from "../components/PetCard.vue";
 
 export default {
-  props: {
-    petList: Array,
-    loadMore: Function,
-    isEndOfPage: Boolean,
-  },
+  props: ["petList", "loadMore", "isEndOfPage"],
   setup(props) {
     const { petList, loadMore, isEndOfPage } = props;
     return { petList, loadMore, isEndOfPage };
