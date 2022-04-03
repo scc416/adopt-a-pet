@@ -1,8 +1,10 @@
 <template>
   <div class="pet-card">
-    <div>{{ pet.id }}</div>
-    <div>{{ pet.name }}</div>
-    <img :src="pet.photos[0].medium" />
+    <div class="content">
+      <div>{{ pet.id }}</div>
+      <div>{{ pet.name }}</div>
+    </div>
+    <img :src="pet.photos[0].full" />
   </div>
 </template>
 
@@ -20,30 +22,40 @@ export default {
 
 <style>
 .pet-card {
-  width: 100%;
+  height: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5em;
 }
 
 .pet-card img {
-  width: 100%;
+  min-width: 100%;
+}
+
+.pet-card .content {
+  position: absolute;
 }
 
 @media (min-width: 420px) {
   .pet-card {
-    width: 50%;
+    width: calc(50% - 1em);
+    height: 50vw;
   }
 }
 
 @media (min-width: 768px) {
   .pet-card {
-    width: 33.3%;
+    width: calc(33.3% - 1em);
+    height: 33.3vw;
   }
 }
 
 @media (min-width: 1024px) {
   .pet-card {
-    width: 25%;
+    width: calc(25% - 1em);
+    height: 25vw;
   }
 }
-
-/* Another tablet breakpoint is maximum width of 1024px */
 </style>
