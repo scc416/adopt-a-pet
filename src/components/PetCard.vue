@@ -23,49 +23,29 @@ export default {
 
 <style>
 .pet-card {
-  height: 100vw;
+  height: 15em;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.5em;
   position: relative;
-  color: #595959;
+  color: #fff;
   text-decoration: none;
+  border-radius: 10px;
 }
 
 .pet-card img {
-  min-width: 100%;
-  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .pet-card .content {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 0.5em;
+  padding: 2em 0.7em 0.7em;
   width: 100%;
-  background: #ffffffcc;
-}
-
-@media (min-width: 420px) {
-  .pet-card {
-    width: calc(50% - 1em);
-    height: 50vw;
-  }
-}
-
-@media (min-width: 768px) {
-  .pet-card {
-    width: calc(33.3% - 1em);
-    height: 33.3vw;
-  }
-}
-
-@media (min-width: 1024px) {
-  .pet-card {
-    width: calc(25% - 1em);
-    height: 25vw;
-  }
+  background:linear-gradient(#00000000, #000000) ;
 }
 </style>

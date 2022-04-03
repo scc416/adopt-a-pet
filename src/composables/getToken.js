@@ -25,6 +25,7 @@ const getToken = () => {
       setUpdateTimeInterval(expires_in);
     } catch (e) {
       error.value = e.message;
+      console.log(e);
     }
   };
 

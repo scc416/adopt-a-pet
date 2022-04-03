@@ -39,6 +39,7 @@ const getPetList = (token) => {
         loading.value = false;
       } catch (e) {
         error.value = e.message;
+        console.log(e);
       }
     }
   };
