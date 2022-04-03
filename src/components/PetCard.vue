@@ -1,11 +1,12 @@
 <template>
   <router-link :to="{ name: 'petDetails', params: { id } }" class="pet-card">
     <div class="content">
-      <div><component :is="icon" /> {{ name }}</div>
-      <div>{{ breeds.primary }}</div>
-      <div>{{ gender }}</div>
-      <div>{{ age }}</div>
-      <div>{{ city }}, {{ country }}</div>
+      <div class="name"><component :is="icon" /> {{ name }}</div>
+      <div class="details">
+        <div>{{ breeds.primary }}</div>
+        <div>{{ age }} {{ gender }}</div>
+        <div><LocationIcon />{{ city }}, {{ country }}</div>
+      </div>
     </div>
     <img :src="photo" />
   </router-link>
@@ -13,6 +14,7 @@
 
 <script>
 import { getPetIcon } from "@/helpers";
+import LocationIcon from "vue-material-design-icons/MapMarker.vue";
 
 export default {
   props: ["pet"],
@@ -34,6 +36,7 @@ export default {
       icon,
     };
   },
+  components: { LocationIcon },
 };
 </script>
 
@@ -49,6 +52,38 @@ export default {
   color: #fff;
   text-decoration: none;
   border-radius: 10px;
+}
+
+.pet-card .details > div:nth-child(3) > *:first-child {
+  color: #ff506d;
+  position: relative;
+  top: 0.2em;
+  right: 0.08em;
+}
+
+.pet-card .details .material-design-icon {
+  height: 1.2em;
+  width: 1.2em;
+}
+
+.pet-card .details .material-design-icon > .material-design-icon__svg {
+  height: 1.2em;
+  width: 1.2em;
+}
+
+.pet-card .name {
+  font-weight: 700;
+}
+
+.pet-card .name > *:first-child {
+  height: 1.4em;
+  width: 1.4em;
+  position: relative;
+  top: 0.3em;
+}
+
+.pet-card .details {
+  font-size: 0.7em;
 }
 
 .pet-card img {

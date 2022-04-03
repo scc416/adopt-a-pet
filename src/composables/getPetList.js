@@ -13,6 +13,7 @@ const getPetList = (token) => {
   const updatePetList = async () => {
     if (token.value) {
       try {
+        console.log(token.value)
         loading.value = true;
         const url = "https://api.petfinder.com/v2/animals?limit=100";
         const { data } = await axios({
