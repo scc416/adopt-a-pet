@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import getPetIcon from "@/helpers";
+import { getPetIcon } from "@/helpers";
 
 export default {
   props: ["pet"],
