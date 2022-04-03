@@ -40,10 +40,10 @@ const getPetList = (token) => {
   };
 
   const loadMore = async () => {
+    loading.value = true;
     currentPage++;
     if (currentPage === totalPages) isEndOfPage.value = true;
     try {
-      loading.value = true;
       const url = `https://api.petfinder.com/v2/animals?limit=100&page=${currentPage}`;
       const {
         data: { animals },

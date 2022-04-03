@@ -1,4 +1,5 @@
 <template>
+  <Spin v-if="loading" />
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
@@ -10,10 +11,12 @@
 <script>
 import PetCard from "../components/PetCard.vue";
 import DownIcon from "vue-material-design-icons/MenuDown.vue";
+import Spin from "../components/Spin.vue";
+import { toRefs, watch } from "@vue/runtime-core";
 
 export default {
   props: ["petList", "loadMore", "isEndOfPage", "loading"],
-  components: { PetCard, DownIcon },
+  components: { PetCard, DownIcon, Spin },
 };
 </script>
 

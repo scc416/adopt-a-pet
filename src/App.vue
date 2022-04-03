@@ -1,10 +1,10 @@
 <template>
   <Logo />
-  {{ loading ? "IS LOADING" : "LOADED" }}
   <router-view
     :petList="petList"
     :loadMore="loadMore"
     :isEndOfPage="isEndOfPage"
+    :loading="loading"
   />
 </template>
 
