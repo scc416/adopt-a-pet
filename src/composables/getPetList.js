@@ -4,7 +4,7 @@ import { ref, watch } from "vue";
 const getPetList = (token) => {
   const petList = ref([]);
   const error = ref("");
-  const loading = ref(false);
+  const loading = ref(token.value ? true : false);
   let receiveToken = false;
   let currentPage = 1;
   let totalPages = null;
@@ -13,7 +13,7 @@ const getPetList = (token) => {
   const updatePetList = async () => {
     if (token.value) {
       try {
-        console.log(token.value)
+        console.log(token.value);
         loading.value = true;
         const url = "https://api.petfinder.com/v2/animals?limit=100";
         const { data } = await axios({
