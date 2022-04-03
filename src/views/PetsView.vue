@@ -9,15 +9,14 @@
 <script>
 import getToken from "../composables/getToken";
 import getPetList from "../composables/getPetList";
-import { ref } from "@vue/reactivity";
-import { watch } from "@vue/runtime-core";
+import PetCard from "../components/PetCard.vue";
 
 export default {
   setup() {
     const { token, error } = getToken();
     const { petList, updatePetList, loading } = getPetList(token);
-    const pageNum = ref(1);
-    return { token, error, petList, pageNum };
+    return { token, error, petList };
   },
+  components: { PetCard },
 };
 </script>
