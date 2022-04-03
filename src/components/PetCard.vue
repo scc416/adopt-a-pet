@@ -12,15 +12,14 @@
 </template>
 
 <script>
-import DogIcon from "vue-material-design-icons/Dog.vue";
-import CatIcon from "vue-material-design-icons/Cat.vue";
+import getPetIcon from "@/helpers";
 
 export default {
   props: ["pet"],
   setup(props) {
     const { pet } = props;
     const { id, name, photos, gender, breeds, age, contact, species } = pet;
-    const icon = species === "Dog" ? DogIcon : CatIcon;
+    const icon = getPetIcon(species);
     const { address } = contact;
     const { country, city } = address;
     return {
