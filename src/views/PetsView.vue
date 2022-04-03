@@ -5,17 +5,15 @@
 </template>
 
 <script>
-import getToken from "../composables/getToken";
-import getPetList from "../composables/getPetList";
 import PetCard from "../components/PetCard.vue";
-import { watch } from "@vue/runtime-core";
 
 export default {
-  setup() {
-    const { token, error } = getToken();
-    const { petList, updatePetList, loading } = getPetList(token);
-    watch(petList, () => console.log(petList.value));
-    return { token, error, petList };
+  props: {
+    petList: Array,
+  },
+  setup(props) {
+    const { petList } = props;
+    return { petList };
   },
   components: { PetCard },
 };

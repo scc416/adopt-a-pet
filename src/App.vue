@@ -1,13 +1,20 @@
 <template>
   <Logo />
-  <router-view />
+  <router-view :petList="petList" />
 </template>
 
 <script>
 import Logo from "./components/Logo.vue";
+import getToken from "./composables/getToken";
+import getPetList from "./composables/getPetList";
 
 export default {
   components: { Logo },
+  setup() {
+    const { token, error } = getToken();
+    const { petList, updatePetList, loading } = getPetList(token);
+    return { petList };
+  },
 };
 </script>
 
