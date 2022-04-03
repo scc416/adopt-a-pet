@@ -54,7 +54,16 @@ const getPetList = (token) => {
         },
       });
       petList.value = petList.value.concat(
-        animals.filter((pet) => pet.photos.length)
+        animals
+          .filter((pet) => pet.photos.length)
+          .filter(({ id: idToBeFound }, index, array) => {
+            const arrayBefore = array.slice(0, index);
+            const alreadyExist = arrayBefore.find(
+              ({ id }) => id === idToBeFound
+            );
+            if (alreadyExist) return false;
+            return true;
+          })
       );
 
       loading.value = false;
