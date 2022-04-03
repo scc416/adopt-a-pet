@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { toRef, watch } from "@vue/runtime-core";
 import PetCard from "../components/PetCard.vue";
 
 export default {

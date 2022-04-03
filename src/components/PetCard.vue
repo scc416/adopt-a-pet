@@ -1,8 +1,11 @@
 <template>
   <router-link :to="{ name: 'petDetails', params: { id } }" class="pet-card">
     <div class="content">
-      <div>{{ id }}</div>
       <div>{{ name }}</div>
+      <div>{{ breeds.primary }}</div>
+      <div>{{ gender }}</div>
+      <div>{{ age }}</div>
+      <div>{{ city }}, {{ country }}</div>
     </div>
     <img :src="photo" />
   </router-link>
@@ -13,8 +16,19 @@ export default {
   props: ["pet"],
   setup(props) {
     const { pet } = props;
-    const { id, name, photos } = pet;
-    return { id, name, photo: photos[0].full };
+    const { id, name, photos, gender, breeds, age, contact } = pet;
+    const { address } = contact;
+    const { country, city } = address;
+    return {
+      id,
+      name,
+      photo: photos[0].full,
+      gender,
+      breeds,
+      age,
+      country,
+      city,
+    };
   },
 };
 </script>

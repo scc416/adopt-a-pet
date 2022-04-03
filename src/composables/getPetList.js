@@ -28,6 +28,7 @@ const getPetList = (token) => {
         } = data;
         currentPage = 1;
         totalPages = total_pages;
+        console.log(petList.value[0]);
         loading.value = false;
         isEndOfPage.value = false;
       } catch (e) {
