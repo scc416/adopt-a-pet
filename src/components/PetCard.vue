@@ -3,8 +3,7 @@
     <div class="content">
       <div class="name"><component :is="icon" /> {{ name }}</div>
       <div class="details">
-        <div>{{ breeds.primary }}</div>
-        <div>{{ age }} {{ gender }}</div>
+        <div>{{ gender }} &bull; {{ age }} &bull; {{ breed }}</div>
         <div><LocationIcon />{{ city }}, {{ country }}</div>
       </div>
     </div>
@@ -13,7 +12,7 @@
 </template>
 
 <script>
-import { getPetIcon } from "@/helpers";
+import { getPetIcon, getBreed } from "@/helpers";
 import LocationIcon from "vue-material-design-icons/MapMarker.vue";
 
 export default {
@@ -24,12 +23,13 @@ export default {
     const icon = getPetIcon(species);
     const { address } = contact;
     const { country, city } = address;
+    const breed = getBreed(breeds);
     return {
       id,
       name,
       photo: photos[0].full,
       gender,
-      breeds,
+      breed,
       age,
       country,
       city,
@@ -54,7 +54,7 @@ export default {
   border-radius: 10px;
 }
 
-.pet-card .details > div:nth-child(3) > *:first-child {
+.pet-card .details > div:nth-child(2) > *:first-child {
   color: #ff506d;
   position: relative;
   top: 0.2em;

@@ -12,3 +12,8 @@ export const getPetIcon = (pet) => {
       return RabbitIcon;
   }
 };
+
+export const getBreed = ({mixed, primary, secondary}) => {
+  if (!mixed) return primary;
+  return `${primary} & ${secondary} Mix`;
+}
