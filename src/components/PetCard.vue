@@ -1,11 +1,11 @@
 <template>
-  <div class="pet-card">
+  <router-link :to="{ name: 'petDetails', params: { id } }" class="pet-card">
     <div class="content">
-      <div>{{ pet.id }}</div>
-      <div>{{ pet.name }}</div>
+      <div>{{ id }}</div>
+      <div>{{ name }}</div>
     </div>
-    <img :src="pet.photos[0].full" />
-  </div>
+    <img :src="photo" />
+  </router-link>
 </template>
 
 <script>
@@ -15,7 +15,8 @@ export default {
   },
   setup(props) {
     const { pet } = props;
-    return { pet };
+    const { id, name, photos } = pet;
+    return { id, name, photo: photos[0].full };
   },
 };
 </script>
@@ -28,14 +29,23 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 0.5em;
+  position: relative;
+  color: #595959;
+  text-decoration: none;
 }
 
 .pet-card img {
   min-width: 100%;
+  min-height: 100%;
 }
 
 .pet-card .content {
   position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.5em;
+  width: 100%;
+  background: #ffffffcc;
 }
 
 @media (min-width: 420px) {
