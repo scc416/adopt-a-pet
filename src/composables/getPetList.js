@@ -56,7 +56,6 @@ const getPetList = (token) => {
       petList.value = petList.value.concat(
         animals.filter((pet) => pet.photos.length)
       );
-      console.log("BEFORE", petList.value.length);
       petList.value = petList.value.filter(
         ({ id: idToBeFound }, index, array) => {
           const arrayBefore = array.slice(0, index);
@@ -65,7 +64,6 @@ const getPetList = (token) => {
           return true;
         }
       );
-      console.log("AFTER", petList.value.length);
       loading.value = false;
     } catch (e) {
       error.value = e.message;
