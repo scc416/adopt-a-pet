@@ -80,6 +80,7 @@ export default {
   width: 1.4em;
   position: relative;
   top: 0.3em;
+  color: #3aab97;
 }
 
 .pet-card .details {
