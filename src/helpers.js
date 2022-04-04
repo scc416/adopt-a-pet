@@ -13,7 +13,7 @@ export const getPetIcon = (pet) => {
   }
 };
 
-export const getBreed = ({mixed, primary, secondary}) => {
-  if (!mixed) return primary;
+export const getBreed = ({primary, secondary}) => {
+  if (!secondary) return primary;
   return `${primary} & ${secondary} Mix`;
 }
