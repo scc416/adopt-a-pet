@@ -3,7 +3,7 @@
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
-  <div class="load-more" v-if="!isEndOfPage" @click="loadMore">
+  <div class="load-more" v-if="!isEndOfPage && petList.length" @click="loadMore">
     Load more<DownIcon />
   </div>
 </template>
@@ -34,6 +34,7 @@ export default {
   font-size: 1.2em;
   border-radius: 15px;
   font-weight: 600;
+  margin-top: 0.8em;
 }
 
 .load-more > *:first-child {
