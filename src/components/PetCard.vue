@@ -4,7 +4,7 @@
       <div class="name"><component :is="icon" /> {{ name }}</div>
       <div class="details">
         <div>{{ gender }} &bull; {{ age }} &bull; {{ breed }}</div>
-        <div><LocationIcon />{{ city }}, {{ country }}</div>
+        <div><LocationIcon />{{ shortAddress }}</div>
       </div>
     </div>
     <img :src="photo" />
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { getPetIcon, getBreed } from "@/helpers";
+import { getPetIcon, getBreed, getShortAddress } from "@/helpers";
 import LocationIcon from "vue-material-design-icons/MapMarker.vue";
 
 export default {
@@ -22,7 +22,7 @@ export default {
     const { id, name, photos, gender, breeds, age, contact, species } = pet;
     const icon = getPetIcon(species);
     const { address } = contact;
-    const { country, city } = address;
+    const shortAddress = getShortAddress(address);
     const breed = getBreed(breeds);
     return {
       id,
@@ -31,8 +31,7 @@ export default {
       gender,
       breed,
       age,
-      country,
-      city,
+      shortAddress,
       icon,
     };
   },

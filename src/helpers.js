@@ -13,7 +13,14 @@ export const getPetIcon = (pet) => {
   }
 };
 
-export const getBreed = ({primary, secondary}) => {
+export const getBreed = ({ primary, secondary }) => {
   if (!secondary) return primary;
   return `${primary} & ${secondary} Mix`;
-}
+};
+
+export const getShortAddress = (address) => {
+  const { country, state, city } = address;
+  const countryName = country === "US" ? "United States" : "Canada";
+  if (state) return `${city}, ${state}, ${countryName}`;
+  return `${city}, ${countryName}`;
+};
