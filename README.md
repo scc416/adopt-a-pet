@@ -1,5 +1,13 @@
 # Adopt A Pet
 
+## to-do list
+
+- icon for different animal
+- details page
+- pet list - back to top button
+- filter on pet list
+- refactor, more helper functions
+
 ## Credits
 
 - [Petfinder API](https://www.petfinder.com/developers/)
