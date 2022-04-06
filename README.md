@@ -4,7 +4,6 @@
 
 - icon for different animal
 - details page
-- pet list - back to top button
 - filter on pet list
 - refactor, more helper functions
 
