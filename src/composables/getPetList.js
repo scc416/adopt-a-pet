@@ -1,9 +1,8 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 
-const getPetList = (token) => {
+const getPetList = (token, error) => {
   const petList = ref([]);
-  const error = ref("");
   const loading = ref(token.value ? false : true);
   let receiveToken = false;
   let currentPage = 1;
@@ -12,8 +11,8 @@ const getPetList = (token) => {
 
   const updatePetList = async () => {
     if (token.value) {
+      loading.value = true;
       try {
-        loading.value = true;
         const url = "https://api.petfinder.com/v2/animals?limit=100";
         const { data } = await axios({
           url,
@@ -33,7 +32,7 @@ const getPetList = (token) => {
         isEndOfPage.value = false;
       } catch (e) {
         error.value = e.message;
-        console.log(e);
+        loading.value = false;
       }
     }
   };
@@ -67,7 +66,7 @@ const getPetList = (token) => {
       loading.value = false;
     } catch (e) {
       error.value = e.message;
-      console.log(e);
+      loading.value = false;
     }
   };
 

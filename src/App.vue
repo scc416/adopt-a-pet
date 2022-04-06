@@ -18,7 +18,7 @@ export default {
   setup() {
     const { token, error } = getToken();
     const { petList, updatePetList, loading, loadMore, isEndOfPage } =
-      getPetList(token);
+      getPetList(token, error);
     return { petList, updatePetList, loading, loadMore, isEndOfPage };
   },
 };
