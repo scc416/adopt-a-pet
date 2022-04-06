@@ -21,10 +21,6 @@ export default {
     return { backToTop, show };
   },
   components: { UpIcon },
-
-  // destroyed() {
-  //   window.removeEventListener("scroll", scrollFn);
-  // },
 };
 </script>
 
