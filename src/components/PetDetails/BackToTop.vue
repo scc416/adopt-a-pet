@@ -31,6 +31,10 @@ export default {
   align-items: center;
 }
 
+.back-to-top:hover {
+  cursor: pointer;
+}
+
 .back-to-top > * {
   position: relative;
   bottom: 0.25em;
