@@ -3,9 +3,14 @@
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
-  <div class="load-more" v-if="!isEndOfPage && petList.length" @click="loadMore">
+  <div
+    class="load-more"
+    v-if="!isEndOfPage && petList.length"
+    @click="loadMore"
+  >
     Load more<DownIcon />
   </div>
+  <div @click="moveUp">TO THE TOP</div>
 </template>
 
 <script>
@@ -16,6 +21,13 @@ import Spin from "../components/Spin.vue";
 export default {
   props: ["petList", "loadMore", "isEndOfPage", "loading"],
   components: { PetCard, DownIcon, Spin },
+  setup() {
+    const moveUp = () => {
+      window.scrollTo(0, 0);
+      console.log("CLICK")
+    };
+    return { moveUp };
+  },
 };
 </script>
 
