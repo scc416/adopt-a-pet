@@ -26,10 +26,10 @@ const getToken = () => {
       setUpdateTimeInterval(expires_in);
     } catch (e) {
       error.value = e.message;
-      console.log(e);
     }
   };
 
+  // update Token when the page is loaded
   updateToken();
 
   return { token, error };
