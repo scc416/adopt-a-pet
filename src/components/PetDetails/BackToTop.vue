@@ -1,18 +1,30 @@
 <template>
-  <div @click="backToTop" class="back-to-top">
+  <div v-if="show" @click="backToTop" class="back-to-top">
     <UpIcon />
   </div>
 </template>
 
 <script>
 import UpIcon from "vue-material-design-icons/MenuUp.vue";
+import useScrollTop from "@/composables/useScrollTop";
+import { onBeforeUnmount, onMounted } from "@vue/runtime-core";
 
 export default {
   setup() {
-    const backToTop = () => window.scrollTo(0, 0);
-    return { backToTop };
+    const { show, scrollFn, backToTop } = useScrollTop();
+    onMounted(() => {
+      window.addEventListener("scroll", scrollFn);
+    });
+    onBeforeUnmount(() => {
+      window.removeEventListener("scroll", scrollFn);
+    });
+    return { backToTop, show };
   },
   components: { UpIcon },
+
+  // destroyed() {
+  //   window.removeEventListener("scroll", scrollFn);
+  // },
 };
 </script>
 
