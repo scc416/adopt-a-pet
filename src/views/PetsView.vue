@@ -3,13 +3,7 @@
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
-  <div
-    class="load-more"
-    v-if="!isEndOfPage && petList.length"
-    @click="loadMore"
-  >
-    Load more<DownIcon />
-  </div>
+  <LoadMoreButton v-if="!isEndOfPage && petList.length" :loadMore="loadMore" />
   <div @click="moveUp">TO THE TOP</div>
 </template>
 
@@ -17,14 +11,15 @@
 import PetCard from "../components/PetDetails/PetCard.vue";
 import DownIcon from "vue-material-design-icons/MenuDown.vue";
 import Spin from "../components/Spin.vue";
+import LoadMoreButton from "../components/PetDetails/LoadMore.vue";
 
 export default {
   props: ["petList", "loadMore", "isEndOfPage", "loading"],
-  components: { PetCard, DownIcon, Spin },
+  components: { PetCard, DownIcon, Spin, LoadMoreButton },
   setup() {
     const moveUp = () => {
       window.scrollTo(0, 0);
-      console.log("CLICK")
+      console.log("CLICK");
     };
     return { moveUp };
   },
@@ -36,31 +31,5 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.load-more {
-  background: #e5e4e2;
-  width: 100%;
-  text-align: center;
-  padding: 0.2em 0.5em 0.5em;
-  font-size: 1.2em;
-  border-radius: 15px;
-  font-weight: 600;
-  margin-top: 0.8em;
-}
-
-.load-more > *:first-child {
-  position: relative;
-  top: 0.4em;
-}
-
-.load-more .material-design-icon {
-  height: 1.5em;
-  width: 1.5em;
-}
-
-.load-more .material-design-icon > .material-design-icon__svg {
-  height: 1.5em;
-  width: 1.5em;
 }
 </style>
