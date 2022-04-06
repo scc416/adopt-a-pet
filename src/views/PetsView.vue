@@ -3,19 +3,18 @@
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
-  <LoadMoreButton v-if="!isEndOfPage && petList.length" :loadMore="loadMore" />
+  <ShowMoreButton v-if="!isEndOfPage && petList.length" :loadMore="loadMore" />
   <div @click="moveUp">TO THE TOP</div>
 </template>
 
 <script>
 import PetCard from "../components/PetDetails/PetCard.vue";
-import DownIcon from "vue-material-design-icons/MenuDown.vue";
 import Spin from "../components/Spin.vue";
-import LoadMoreButton from "../components/PetDetails/LoadMore.vue";
+import ShowMoreButton from "../components/PetDetails/ShowMore.vue";
 
 export default {
   props: ["petList", "loadMore", "isEndOfPage", "loading"],
-  components: { PetCard, DownIcon, Spin, LoadMoreButton },
+  components: { PetCard, Spin, ShowMoreButton },
   setup() {
     const moveUp = () => {
       window.scrollTo(0, 0);

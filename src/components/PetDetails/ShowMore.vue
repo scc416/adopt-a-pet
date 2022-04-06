@@ -1,5 +1,5 @@
 <template>
-  <div class="load-more" @click="loadMore">Load more<DownIcon /></div>
+  <div class="show-more" @click="loadMore">Show more<DownIcon /></div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style>
-.load-more {
+.show-more {
   background: #e5e4e2;
   width: 100%;
   text-align: center;
@@ -23,17 +23,17 @@ export default {
   margin-top: 0.8em;
 }
 
-.load-more > *:first-child {
+.show-more > *:first-child {
   position: relative;
   top: 0.4em;
 }
 
-.load-more .material-design-icon {
+.show-more .material-design-icon {
   height: 1.5em;
   width: 1.5em;
 }
 
-.load-more .material-design-icon > .material-design-icon__svg {
+.show-more .material-design-icon > .material-design-icon__svg {
   height: 1.5em;
   width: 1.5em;
 }
