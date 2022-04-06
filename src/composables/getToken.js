@@ -5,6 +5,7 @@ const getToken = () => {
   const token = ref("");
   const error = ref("");
 
+  // set timeout to update Token when it is expired
   const setUpdateTimeInterval = (second) => {
     const milli = second * 1000;
     setTimeout(() => updateToken(), milli);
