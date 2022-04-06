@@ -1,5 +1,9 @@
 <template>
-  <router-link :to="{ name: 'petDetails', params: { id } }" class="pet-card">
+  <router-link
+    target="_blank"
+    :to="{ name: 'petDetails', params: { id } }"
+    class="pet-card"
+  >
     <div class="content">
       <div class="name"><component :is="icon" /> {{ name }}</div>
       <div class="details">
