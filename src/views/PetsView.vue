@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import PetCard from "../components/PetCard.vue";
+import PetCard from "../components/PetDetails/PetCard.vue";
 import DownIcon from "vue-material-design-icons/MenuDown.vue";
 import Spin from "../components/Spin.vue";
 
