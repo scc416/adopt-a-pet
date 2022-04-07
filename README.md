@@ -7,6 +7,9 @@
 - error handling
 - filter on pet list
 - refactor, more helper functions
+- login/register
+- saved search
+- liked pet
 
 ## Credits
 
