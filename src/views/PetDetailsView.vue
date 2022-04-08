@@ -1,15 +1,20 @@
 <template>
-  <h1>{{ id }}</h1>
+  <h1>{{ details }}</h1>
 </template>
 
 <script>
 import { useRoute } from "vue-router";
+import { toRefs } from "@vue/reactivity";
+import getPetDetails from "@/composables/getPetDetails";
 
 export default {
-  setup() {
+  props: ["token", "error"],
+  setup(props) {
+    const { token, error } = toRefs(props);
     const { params } = useRoute();
     const { id } = params;
-    return { id };
+    const { details } = getPetDetails(id, token, error);
+    return { details };
   },
 };
 </script>
