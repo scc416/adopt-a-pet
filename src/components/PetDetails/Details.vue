@@ -1,4 +1,6 @@
-<template>DETAILS</template>
+<template>
+  <div>DETAILS</div>
+</template>
 
 <script>
 export default {};

@@ -22,6 +22,8 @@ body {
   margin: 0;
   padding: 0;
   color: #595959;
+  background: #f0f0f0;
+  z-index: -2;
 }
 
 #app {

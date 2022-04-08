@@ -1,5 +1,5 @@
 <template>
-  <div v-if="details">
+  <div v-if="details" class="details">
     <PhotoAlbum />
     <Details />
   </div>
@@ -27,5 +27,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.details {
+  display: flex;
+}
 </style>
