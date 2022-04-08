@@ -1,5 +1,8 @@
 <template>
-  <h1>{{ details }}</h1>
+  <div v-if="details">
+    <div></div>
+    <div></div>
+  </div>
   <Spin v-if="loading" />
 </template>
 

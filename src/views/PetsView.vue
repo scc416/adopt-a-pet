@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import PetCard from "../components/PetDetails/PetCard.vue";
+import PetCard from "../components/PetList/PetCard.vue";
 import Spin from "../components/Spin.vue";
-import ShowMoreButton from "../components/PetDetails/ShowMore.vue";
-import BackToTopButton from "../components/PetDetails/BackToTop.vue";
+import ShowMoreButton from "../components/PetList/ShowMore.vue";
+import BackToTopButton from "../components/PetList/BackToTop.vue";
 import getPetList from "@/composables/getPetList";
 import { toRefs } from "@vue/reactivity";
 

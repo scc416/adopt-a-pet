@@ -2,7 +2,7 @@ import axios from "axios";
 import { ref, watch } from "vue";
 
 const getPetDetails = (id, token, error) => {
-  const details = ref({});
+  const details = ref(null);
   const loading = ref(token.value ? false : true);
   let gotDetails = false;
   const url = `https://api.petfinder.com/v2/animals/${id}`;
