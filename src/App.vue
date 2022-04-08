@@ -6,7 +6,6 @@
 <script>
 import Logo from "./components/Logo.vue";
 import getToken from "./composables/getToken";
-import getPetList from "./composables/getPetList";
 
 export default {
   components: { Logo },
