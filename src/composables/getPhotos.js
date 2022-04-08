@@ -1,13 +1,13 @@
 import { ref } from "vue";
 
-const getPhotos = (photos) => {
-  const imageUrl = ref(photos.value[0].full);
+const getPhotos = () => {
+  const imageNum = ref(0);
 
   const updateImage = (num) => {
-    imageUrl.value = photos.value[num].full;
+    imageNum.value = num;
   };
 
-  return { updateImage, imageUrl };
+  return { updateImage, imageNum };
 };
 
 export default getPhotos;
