@@ -1,4 +1,6 @@
-<template>SAVED</template>
+<template>
+  <div>SAVED</div>
+</template>
 
 <script>
 export default {};
