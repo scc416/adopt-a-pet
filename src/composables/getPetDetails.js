@@ -3,13 +3,14 @@ import { ref, watch } from "vue";
 
 const getPetDetails = (id, token, error) => {
   const details = ref({});
+  const loading = ref(token.value ? false : true);
   let gotDetails = false;
   const url = `https://api.petfinder.com/v2/animals/${id}`;
 
   const updateDetails = async () => {
     if (token.value) {
+      loading.value = true;
       try {
-        console.log("LINE");
         const { data } = await axios({
           url,
           method: "get",
@@ -22,14 +23,17 @@ const getPetDetails = (id, token, error) => {
       } catch (e) {
         error.value = e.message;
       }
+      loading.value = false;
     }
   };
+
+  updateDetails();
 
   watch(token, () => {
     if (!gotDetails) updateDetails();
   });
 
-  return { details };
+  return { details, loading };
 };
 
 export default getPetDetails;
