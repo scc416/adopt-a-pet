@@ -12,10 +12,18 @@ import PetCard from "../components/PetDetails/PetCard.vue";
 import Spin from "../components/Spin.vue";
 import ShowMoreButton from "../components/PetDetails/ShowMore.vue";
 import BackToTopButton from "../components/PetDetails/BackToTop.vue";
+import getPetList from "@/composables/getPetList";
+import { toRefs } from "@vue/reactivity";
 
 export default {
-  props: ["petList", "loadMore", "isEndOfPage", "loading"],
+  props: ["token", "error"],
   components: { PetCard, Spin, ShowMoreButton, BackToTopButton },
+  setup(props) {
+    const { token, error } = toRefs(props);
+    const { petList, updatePetList, loading, loadMore, isEndOfPage } =
+      getPetList(token, error);
+    return { petList, updatePetList, loading, loadMore, isEndOfPage };
+  },
 };
 </script>
 
