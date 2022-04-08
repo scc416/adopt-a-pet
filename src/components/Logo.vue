@@ -7,20 +7,16 @@
       </div>
     </router-link>
 
-    <a
-      class="github"
-      href="https://github.com/scc416/adopt-a-pet"
-      target="_blank"
-    >
-      <div>Github Repo<GithubIcon /></div>
-    </a>
+    <router-link class="saved" :to="{ name: 'saved' }">
+      <div>Saved <HeartIcon /></div>
+    </router-link>
   </div>
 </template>
 
 <script>
-import GithubIcon from "vue-material-design-icons/Github.vue";
+import HeartIcon from "vue-material-design-icons/Heart.vue";
 
-export default { components: { GithubIcon } };
+export default { components: { HeartIcon } };
 </script>
 
 <style>
@@ -51,22 +47,22 @@ export default { components: { GithubIcon } };
   bottom: 0.05em;
 }
 
-.nav .github div {
+.nav .saved div {
   color: #3aab97;
   font-weight: 600;
   border-radius: 5em;
-  padding: 0.5em 0.7em;
+  padding: 0.5em 0.7em 0.5em 1.15em;
   border: #3aab97 solid 0.1em;
   font-size: 0.9em;
   display: flex;
   align-items: center;
 }
 
-.nav a.github {
+.nav a.saved {
   text-decoration: none;
 }
 
-.nav a.github div:hover {
+.nav a.saved div:hover {
   color: #fff;
   background: #3aab97;
   cursor: pointer;
