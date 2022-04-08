@@ -1,6 +1,6 @@
 <template>
   <div v-if="details" class="details">
-    <PhotoAlbum />
+    <PhotoAlbum :photos="details.photos" />
     <Details />
   </div>
   <Spin v-if="loading" />
@@ -12,7 +12,7 @@ import { toRefs } from "@vue/reactivity";
 import getPetDetails from "@/composables/getPetDetails";
 import Spin from "../components/Spin.vue";
 import PhotoAlbum from "@/components/PetDetails/PhotoAlbum.vue";
-import Details from "@/components/PetDetails/Details.vue";
+import Details from "@/components/PetDetails/Info.vue";
 
 export default {
   props: ["token", "error"],
@@ -30,5 +30,6 @@ export default {
 <style scoped>
 .details {
   display: flex;
+  justify-content: space-between;
 }
 </style>
