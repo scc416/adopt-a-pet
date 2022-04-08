@@ -11,6 +11,6 @@ export default {};
   background: #f9f9f9;
   padding: 1em;
   border-radius: 1em;
-  width: 50%;
+  width: 60%;
 }
 </style>

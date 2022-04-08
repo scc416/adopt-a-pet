@@ -30,7 +30,7 @@ export default {
 <style>
 .photos {
   border-radius: 1em;
-  width: 45%;
+  width: 37%;
 }
 
 .photos img {
