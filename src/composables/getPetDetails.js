@@ -11,14 +11,17 @@ const getPetDetails = (id, token, error) => {
     if (token.value) {
       loading.value = true;
       try {
-        const { data } = await axios({
+        const {
+          data: { animal },
+        } = await axios({
           url,
           method: "get",
           headers: {
             Authorization: `Bearer ${token.value}`,
           },
         });
-        details.value = data;
+        details.value = animal;
+        console.log(animal);
         gotDetails = true;
       } catch (e) {
         error.value = e.message;

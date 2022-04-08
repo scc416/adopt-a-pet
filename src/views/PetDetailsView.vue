@@ -1,20 +1,22 @@
 <template>
   <div v-if="details">
-    <div></div>
-    <div></div>
+    <PhotoAlbum />
+    <Details />
   </div>
   <Spin v-if="loading" />
 </template>
 
 <script>
-import Spin from "../components/Spin.vue";
 import { useRoute } from "vue-router";
 import { toRefs } from "@vue/reactivity";
 import getPetDetails from "@/composables/getPetDetails";
+import Spin from "../components/Spin.vue";
+import PhotoAlbum from "@/components/PetDetails/PhotoAlbum.vue";
+import Details from "@/components/PetDetails/Details.vue";
 
 export default {
   props: ["token", "error"],
-  components: { Spin },
+  components: { Spin, PhotoAlbum, Details },
   setup(props) {
     const { token, error } = toRefs(props);
     const { params } = useRoute();
