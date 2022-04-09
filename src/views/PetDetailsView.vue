@@ -31,5 +31,6 @@ export default {
 .details {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 }
 </style>
