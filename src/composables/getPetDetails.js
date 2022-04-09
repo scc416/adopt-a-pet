@@ -1,6 +1,5 @@
 import axios from "axios";
 import { ref, watch } from "vue";
-import { getPetIcon } from "@/helpers";
 
 const getPetDetails = (id, token, error) => {
   const details = ref(null);
