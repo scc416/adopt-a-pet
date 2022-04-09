@@ -23,8 +23,8 @@ export default {
   props: ["pet"],
   setup(props) {
     const { pet } = props;
-    const { id, name, photos, gender, breeds, age, contact, species } = pet;
-    const icon = getPetIcon(species);
+    const { id, name, photos, gender, breeds, age, contact, type } = pet;
+    const icon = getPetIcon(type);
     const { address } = contact;
     const shortAddress = getShortAddress(address);
     const breed = getBreed(breeds);

@@ -4,7 +4,6 @@
 
 - error page
 - details page
-- error handling
 - filter on pet list
 - refactor, more helper functions
 - saved search
