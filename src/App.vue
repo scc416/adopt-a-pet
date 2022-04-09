@@ -1,14 +1,16 @@
 <template>
   <Logo />
+  <Error :error="error" />
   <router-view :token="token" :error="error" />
 </template>
 
 <script>
 import Logo from "./components/Logo.vue";
 import getToken from "./composables/getToken";
+import Error from "./components/Error.vue";
 
 export default {
-  components: { Logo },
+  components: { Logo, Error },
   setup() {
     const { token, error } = getToken();
     return { token, error };

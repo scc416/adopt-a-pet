@@ -2,6 +2,7 @@
 
 ## to-do list
 
+- error page
 - details page
 - error handling
 - filter on pet list
