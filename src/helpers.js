@@ -1,6 +1,12 @@
 import DogIcon from "vue-material-design-icons/DogSide.vue";
 import CatIcon from "vue-material-design-icons/Cat.vue";
 import RabbitIcon from "vue-material-design-icons/Rabbit.vue";
+import MouseIcon from "vue-material-design-icons/Rodent.vue";
+import HorseIcon from "vue-material-design-icons/Horse.vue";
+import BirdIcon from "vue-material-design-icons/Bird.vue";
+import FishIcon from "vue-material-design-icons/Fishbowl.vue";
+import BarnIcon from "vue-material-design-icons/Barn.vue";
+import UnknownIcon from "vue-material-design-icons/EmoticonNeutral.vue";
 
 export const getPetIcon = (pet) => {
   switch (pet) {
@@ -8,8 +14,20 @@ export const getPetIcon = (pet) => {
       return DogIcon;
     case "Cat":
       return CatIcon;
-    default:
+    case "Small & Furry":
+      return MouseIcon;
+    case "Horse":
+      return HorseIcon;
+    case "Bird":
+      return BirdIcon;
+    case "Scales, Fins & Other":
+      return FishIcon;
+    case "Rabbit":
       return RabbitIcon;
+    case "Barnyard":
+      return BarnIcon;
+    default:
+      return UnknownIcon;
   }
 };
 
