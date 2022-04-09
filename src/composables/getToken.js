@@ -1,9 +1,8 @@
 import axios from "axios";
 import { ref } from "vue";
 
-const getToken = () => {
+const getToken = (error) => {
   const token = ref("");
-  const error = ref("");
 
   // set timeout to update Token when it is expired
   const setUpdateTimeInterval = (second) => {
@@ -32,7 +31,7 @@ const getToken = () => {
   // update Token when the page is loaded
   updateToken();
 
-  return { token, error };
+  return token;
 };
 
 export default getToken;

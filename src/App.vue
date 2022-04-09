@@ -8,11 +8,13 @@
 import Logo from "./components/Logo.vue";
 import getToken from "./composables/getToken";
 import Error from "./components/Error.vue";
+import useError from "./composables/useError";
 
 export default {
   components: { Logo, Error },
   setup() {
-    const { token, error } = getToken();
+    const error = useError();
+    const token = getToken(error);
     return { token, error };
   },
 };
