@@ -1,6 +1,6 @@
 <template>
   <div class="photos">
-    <img class="main-img" :src="photos[imageNum].full" alt="" />
+    <img class="main-img" :src="photos[imageNum].large" alt="" />
     <div class="thumbnails">
       <div v-for="(photo, i) in photos" :key="i" @click="updateImage(i)">
         <div class="image-screen" v-if="i !== imageNum"></div>
