@@ -2,13 +2,19 @@
   <div class="info">
     <h1><component :is="icon" />{{ details.name }}</h1>
     <div class="grid">
+      <div>Breed:</div>
+      <div>{{ details.name }}</div>
       <div>Gender:</div>
       <div>{{ details.gender }}</div>
       <div>Age:</div>
       <div>{{ details.age }}</div>
-      <div>Name:</div>
-      <div>{{ details.name }}</div>
+      <div>Colour:</div>
+      <div>{{ details.colors.primary }}</div>
+      <div>Size:</div>
+      <div>{{ details.size }}</div>
     </div>
+    <div>{{ details.description }}</div>
+    <a :href="details.url" target="_blank">original link</a>
   </div>
 </template>
 
