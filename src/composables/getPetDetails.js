@@ -21,8 +21,7 @@ const getPetDetails = (id, token, error) => {
             Authorization: `Bearer ${token.value}`,
           },
         });
-        const icon = getPetIcon(animal.type);
-        details.value = { ...animal, icon };
+        details.value = animal;
         console.log(animal);
         gotDetails = true;
       } catch (e) {

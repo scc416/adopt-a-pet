@@ -1,6 +1,6 @@
 <template>
   <div class="info">
-    <component :is="details.icon" />{{ details.name }}
+    <h1><component :is="icon" />{{ details.name }}</h1>
     <div class="grid">
       <div>Gender:</div>
       <div>{{ details.gender }}</div>
@@ -13,8 +13,16 @@
 </template>
 
 <script>
+import { toRefs } from "@vue/reactivity";
+import { getPetIcon } from "@/helpers";
+
 export default {
   props: ["details"],
+  setup(props) {
+    const { details } = toRefs(props);
+    const icon = getPetIcon(details.value.type);
+    return { details, icon };
+  },
 };
 </script>
 
@@ -29,5 +37,10 @@ export default {
 .grid {
   display: grid;
   grid-template-columns: auto 1fr;
+  grid-gap: 0.5em;
+}
+
+.info h1 {
+  color: #3aab97;
 }
 </style>
