@@ -2,7 +2,6 @@
 
 ## to-do list
 
-- icon for different animal
 - details page
 - error handling
 - filter on pet list
