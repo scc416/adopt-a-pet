@@ -9,10 +9,9 @@ export default { props: ["error"] };
 <style>
 .error {
   position: absolute;
-  color: #fff;
-  background: #f98381;
+  background: #ffcccc;
   right: 1em;
-  top: 1em;
+  bottom: 1em;
   padding: 0.5em;
   z-index: 2;
   border-radius: 0.3em;
