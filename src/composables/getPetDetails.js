@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ref, watch } from "vue";
+import { getPetIcon } from "@/helpers";
 
 const getPetDetails = (id, token, error) => {
   const details = ref(null);
@@ -20,7 +21,8 @@ const getPetDetails = (id, token, error) => {
             Authorization: `Bearer ${token.value}`,
           },
         });
-        details.value = animal;
+        const icon = getPetIcon(animal.type);
+        details.value = { ...animal, icon };
         console.log(animal);
         gotDetails = true;
       } catch (e) {

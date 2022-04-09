@@ -1,16 +1,20 @@
 <template>
-  <div class="info">DETAILS</div>
+  <div class="info">
+    <component :is="details.icon" />{{ details.name }}
+    <div class="grid">
+      <div>Gender:</div>
+      <div>{{ details.gender }}</div>
+      <div>Age:</div>
+      <div>{{ details.age }}</div>
+      <div>Name:</div>
+      <div>{{ details.name }}</div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { toRefs } from "@vue/reactivity";
-
 export default {
   props: ["details"],
-  setup(props) {
-    const { details } = toRefs(props);
-    return { details };
-  },
 };
 </script>
 
@@ -20,5 +24,10 @@ export default {
   padding: 3em 4em;
   border-radius: 1em;
   width: 60%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 </style>
