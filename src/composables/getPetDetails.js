@@ -36,6 +36,10 @@ const getPetDetails = (id, token, error) => {
     if (!gotDetails) updateDetails();
   });
 
+  watch(error, () => {
+    loading.value = false;
+  });
+
   return { details, loading };
 };
 

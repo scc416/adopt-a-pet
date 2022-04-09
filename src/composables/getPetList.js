@@ -77,6 +77,10 @@ const getPetList = (token, error) => {
     }
   });
 
+  watch(error, () => {
+    loading.value = false;
+  });
+
   updatePetList();
 
   return { petList, updatePetList, loading, loadMore, isEndOfPage };
