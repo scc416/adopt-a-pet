@@ -1,7 +1,7 @@
 <template>
   <div v-if="details" class="details">
     <PhotoAlbum :photos="details.photos" />
-    <Details />
+    <Details :details="details" />
   </div>
   <Spin v-if="loading" />
 </template>
