@@ -21,9 +21,9 @@
         :key="i"
         @click="updateImage(i + photos.length)"
       >
+        <div class="video-screen"><PlayIcon /></div>
         <div class="image-screen" v-if="i + photos.length !== imageNum"></div>
-        <div class="video-screen"></div>
-        <div class="video-thumbnail" v-html="video.embed"></div>
+        <div v-html="video.embed"></div>
       </div>
     </div>
   </div>
@@ -32,9 +32,11 @@
 <script>
 import { toRefs } from "@vue/reactivity";
 import getPhotoAlbum from "@/composables/getPhotoAlbum";
+import PlayIcon from "vue-material-design-icons/PlayCircle.vue";
 
 export default {
   props: ["photos", "videos"],
+  components: { PlayIcon },
   setup(props) {
     const { photos, videos } = toRefs(props);
     const { updateImage, imageNum } = getPhotoAlbum();
@@ -49,20 +51,26 @@ export default {
 }
 
 .video > iframe {
+  flex-grow: 1;
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
+  height: 100%;
 }
 
 .video {
-  display: flex;
-  justify-content: stretch;
   width: 100%;
-  height: 30em;
-  border-radius: 1em;
+  background-color: #000;
   overflow: hidden;
-}
-
-.video-thumbnail > iframe {
-  width: 100%;
+  padding-top: 100%;
+  position: relative;
 }
 
 .photos .main-img {
@@ -109,6 +117,9 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-screen:hover {
