@@ -38,9 +38,13 @@ export const getBreed = ({ primary, secondary }) => {
   return `${primary} & ${secondary} Mix`;
 };
 
+const getCountry = (code) => {
+  return code === "US" ? "United States" : "Canada";
+};
+
 export const getShortAddress = (address) => {
   const { country, state, city } = address;
-  const countryName = country === "US" ? "United States" : "Canada";
+  const countryName = getCountry(country);
   if (state) return `${city}, ${state}, ${countryName}`;
   return `${city}, ${countryName}`;
 };
@@ -83,15 +87,24 @@ const getInfo = (attributes, environment) => {
   return info;
 };
 
-const getAddress = (address) => {
-  
-  // address1: null
-  // address2: null
-  // city: "Mount Juliet"
-  // country: "US"
-  // postcode: "37122"
-  // state: "TN"
-}
+const getAddress = ({
+  address1,
+  address2,
+  city,
+  country: countryCode,
+  postcode,
+  state,
+}) => {
+  let result = [];
+  const country = getCountry(countryCode);
+
+  if (address1) result.push(address1);
+  if (address2) result.push(address2);
+  result.push(city);
+  result.push(`${state}, ${country}`);
+  result.push(postcode);
+  return result;
+};
 
 export const getFormattedInfo = (details) => {
   const { value } = details;
@@ -104,7 +117,7 @@ export const getFormattedInfo = (details) => {
     description,
     url,
     breeds,
-    contact: { address },
+    contact: { address, email, phone },
     status,
     coat,
     tags,
@@ -125,7 +138,9 @@ export const getFormattedInfo = (details) => {
     coat,
     characteristics: getCharacteristics(tags),
     info: getInfo(attributes, environment),
-    address: getAddress(address)
+    address: getAddress(address),
+    email,
+    phone,
   };
   return formattedInfo;
 };

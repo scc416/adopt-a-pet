@@ -33,12 +33,22 @@
     <hr />
     <h2><MailIcon />Contact</h2>
     <div class="grid">
-      <div>Status:</div>
-      <div>{{ status }}</div>
-      <div>Breed:</div>
-      <div>{{ breed }}</div>
-      <div>Gender:</div>
-      <div>{{ gender }}</div>
+      <div>Phone Number</div>
+      <div>
+        <a :href="`tel:${phone}`">
+          {{ phone }}
+        </a>
+      </div>
+      <div>Email</div>
+      <div>
+        <a :href="`mailto: ${email}`">{{ email }}</a>
+      </div>
+      <div>Address</div>
+      <div>
+        <div v-for="(line, i) in address" :key="i">
+          {{ line }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
