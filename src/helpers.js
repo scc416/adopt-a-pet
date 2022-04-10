@@ -63,6 +63,7 @@ export const getFormattedInfo = (details) => {
     breeds,
     contact: { address },
     status,
+    coat,
   } = value;
   const formattedInfo = {
     name,
@@ -75,6 +76,7 @@ export const getFormattedInfo = (details) => {
     breed: getBreed(breeds),
     location: getShortAddress(address),
     status,
+    coat,
   };
   return formattedInfo;
 };

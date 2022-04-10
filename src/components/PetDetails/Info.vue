@@ -10,10 +10,12 @@
       <div>{{ gender }}</div>
       <div>Age:</div>
       <div>{{ age }}</div>
-      <div>Colour:</div>
-      <div>{{ colour }}</div>
       <div>Size:</div>
       <div>{{ size }}</div>
+      <div>Colour:</div>
+      <div>{{ colour }}</div>
+      <div>Coat:</div>
+      <div>{{ coat }}</div>
       <div>Location:</div>
       <div>{{ location }}</div>
     </div>
