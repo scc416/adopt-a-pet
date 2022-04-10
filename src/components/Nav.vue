@@ -1,11 +1,14 @@
 <template>
   <div class="nav">
-    <router-link class="logo" :to="{ name: 'home' }">
-      <div>
-        <img src="../../public/favicon.png" />
-        Adopt a Pet
-      </div>
-    </router-link>
+    <div>
+      <router-link class="logo" :to="{ name: 'home' }">
+        <div>
+          <img src="../../public/favicon.png" />
+          Adopt a Pet
+        </div>
+      </router-link>
+      <router-link :to="{ name: 'pets' }"> View all pets </router-link>
+    </div>
 
     <router-link class="saved" :to="{ name: 'saved' }">
       <div>Saved <HeartIcon /></div>
@@ -25,6 +28,19 @@ export default { components: { HeartIcon } };
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2em;
+}
+
+.nav > div {
+  display: flex;
+  align-items: center;
+}
+
+.nav > div > *:nth-child(2) {
+  color: #515151;
+  text-decoration: none;
+  margin-left: 6em;
+  font-weight: 600;
+  font-size: 0.9em;
 }
 
 .logo {
