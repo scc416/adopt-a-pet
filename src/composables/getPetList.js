@@ -54,7 +54,7 @@ const getPetList = (token, error) => {
         },
       });
       petList.value = petList.value.concat(
-        animals.filter((pet) => pet.photos.length)
+        animals.filter((pet) => pet.videos.length || pet.photos.length)
       );
       petList.value = petList.value.filter(
         ({ id: idToBeFound }, index, array) => {

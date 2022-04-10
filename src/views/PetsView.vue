@@ -3,7 +3,10 @@
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
-  <ShowMoreButton v-if="!isEndOfPage && petList.length" :loadMore="loadMore" />
+  <ShowMoreButton
+    v-if="!isEndOfPage && (petList.length || !loading)"
+    :loadMore="loadMore"
+  />
   <BackToTopButton />
 </template>
 
