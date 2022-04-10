@@ -9,6 +9,9 @@
       </router-link>
       <div>
         <router-link :to="{ name: 'pets' }"> View all pets </router-link>
+        <a href="https://www.petfinder.com/pet-adoption/" target="_blank">
+          About Pet Adoption
+        </a>
         <a href="https://github.com/scc416/adopt-a-pet" target="_blank">
           GitHub Repo
         </a>
@@ -50,7 +53,7 @@ export default { components: { HeartIcon } };
 .nav > div > *:nth-child(2) > * {
   color: #515151;
   text-decoration: none;
-  margin-right: 5em;
+  margin-right: 4em;
 }
 
 .logo {
