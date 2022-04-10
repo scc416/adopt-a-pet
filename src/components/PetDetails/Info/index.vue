@@ -2,12 +2,9 @@
   <div class="info">
     <MainSection :details="formattedDetails" />
     <hr />
-    <h2><InfoIcon />Info</h2>
-    <ul>
-      <li v-for="(prop, i) in formattedDetails.info" :key="i">{{ prop }}</li>
-    </ul>
+    <InfoSection :info="formattedDetails.info" />
     <hr />
-    <h2><MailIcon />Contact</h2>
+    <h2><ContactIcon />Contact</h2>
     <div class="grid">
       <div><PhoneIcon /></div>
       <div>
@@ -32,22 +29,22 @@
 <script>
 import { toRefs } from "@vue/reactivity";
 import { getPetIcon, getFormattedInfo } from "@/helpers";
-import InfoIcon from "vue-material-design-icons/Information.vue";
-import MailIcon from "vue-material-design-icons/HelpCircleOutline.vue";
+import ContactIcon from "vue-material-design-icons/HelpCircleOutline.vue";
 import PhoneIcon from "vue-material-design-icons/Phone.vue";
 import EmailIcon from "vue-material-design-icons/Email.vue";
 import AddressIcon from "vue-material-design-icons/MapMarker.vue";
 import MainSection from "./main.vue";
+import InfoSection from "./info.vue";
 
 export default {
   props: ["details"],
   components: {
-    InfoIcon,
-    MailIcon,
+    ContactIcon,
     PhoneIcon,
     EmailIcon,
     AddressIcon,
     MainSection,
+    InfoSection,
   },
   setup(props) {
     const { details } = toRefs(props);
