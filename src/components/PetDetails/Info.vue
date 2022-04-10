@@ -83,6 +83,17 @@ export default {
   margin: 1.5em 0;
 }
 
+.info ul {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  column-gap: 2em;
+}
+
+.info li {
+  line-height: 2.5;
+}
+
 .info h1 .material-design-icon,
 .info h2 .material-design-icon {
   height: 1.2em;
