@@ -12,13 +12,13 @@
 
 <script>
 import { toRefs } from "@vue/reactivity";
-import getPhotos from "@/composables/getPhotos";
+import getPhotoAlbum from "@/composables/getPhotoAlbum";
 
 export default {
   props: ["photos"],
   setup(props) {
     const { photos } = toRefs(props);
-    const { updateImage, imageNum } = getPhotos(photos);
+    const { updateImage, imageNum } = getPhotoAlbum(photos);
     return { photos, updateImage, imageNum };
   },
 };

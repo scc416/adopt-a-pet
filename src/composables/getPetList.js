@@ -21,7 +21,9 @@ const getPetList = (token, error) => {
             Authorization: `Bearer ${token.value}`,
           },
         });
-        petList.value = data.animals.filter((pet) => pet.photos.length);
+        petList.value = data.animals.filter(
+          (pet) => pet.videos.length || pet.photos.length
+        );
         const {
           pagination: { total_pages },
         } = data;
