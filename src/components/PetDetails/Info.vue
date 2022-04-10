@@ -31,6 +31,7 @@
       <li v-for="(prop, i) in info" :key="i">{{ prop }}</li>
     </ul>
     <hr />
+    <h2><MailIcon />Contact</h2>
   </div>
 </template>
 
@@ -39,10 +40,11 @@ import { toRefs } from "@vue/reactivity";
 import { getPetIcon, getFormattedInfo } from "@/helpers";
 import LinkIcon from "vue-material-design-icons/Link.vue";
 import InfoIcon from "vue-material-design-icons/Information.vue";
+import MailIcon from "vue-material-design-icons/Email.vue";
 
 export default {
   props: ["details"],
-  components: { LinkIcon, InfoIcon },
+  components: { LinkIcon, InfoIcon, MailIcon },
   setup(props) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
@@ -89,6 +91,7 @@ export default {
   -webkit-columns: 2;
   -moz-columns: 2;
   column-gap: 2em;
+  margin-bottom: 3em;
 }
 
 .info li {
