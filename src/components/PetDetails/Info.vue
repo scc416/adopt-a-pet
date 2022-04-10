@@ -47,7 +47,7 @@ export default {
 }
 
 .info > hr {
-  background-color: #e9e9e9;
+  border: #e9e9e9 solid 1px;
 }
 
 .info h1 {
