@@ -40,6 +40,22 @@ export default {
   width: 60%;
 }
 
+.info h1 .material-design-icon {
+  height: 1.2em;
+  width: 1.2em;
+}
+
+.info h1 .material-design-icon > .material-design-icon__svg {
+  height: 1.2em;
+  width: 1.2em;
+}
+
+.info h1 > *:first-child {
+  position: relative;
+  top: 0.25em;
+  margin-right: 0.15em;
+}
+
 .grid {
   display: grid;
   grid-template-columns: auto 1fr;
