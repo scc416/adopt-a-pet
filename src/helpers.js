@@ -75,7 +75,7 @@ export const getFormattedInfo = (details) => {
     url,
     breed: getBreed(breeds),
     location: getShortAddress(address),
-    status,
+    status: status[0].toUpperCase() + status.slice(1),
     coat,
   };
   return formattedInfo;
