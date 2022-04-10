@@ -7,6 +7,7 @@ import BirdIcon from "vue-material-design-icons/Bird.vue";
 import FishIcon from "vue-material-design-icons/Fishbowl.vue";
 import BarnIcon from "vue-material-design-icons/Barn.vue";
 import UnknownIcon from "vue-material-design-icons/EmoticonNeutral.vue";
+import { attibutesValue } from "./constants";
 
 export const getPetIcon = (pet) => {
   switch (pet) {
@@ -54,6 +55,30 @@ const toSentenceCase = (str) => {
   return str[0].toUpperCase() + str.slice(1);
 };
 
+const getCharacteristics = (tags) => {
+  let result = "";
+  tags.forEach((tag, i) => {
+    if (i) result += `, ${tag}`;
+    if (!i) result += tag;
+  });
+  return result;
+};
+
+const getInfo = (attributes, environment) => {
+  const info = [];
+  for (const attribute in attributes) {
+    const value = attributes[attribute];
+    if (value) {
+      const isSpecialNeed = attribute === "special_needs";
+      const sentence = isSpecialNeed ? value : attibutesValue[attribute];
+      info.push(sentence);
+    }
+  }
+
+  console.log(info);
+  return info;
+};
+
 export const getFormattedInfo = (details) => {
   const { value } = details;
   const {
@@ -68,6 +93,9 @@ export const getFormattedInfo = (details) => {
     contact: { address },
     status,
     coat,
+    tags,
+    attributes,
+    environment,
   } = value;
   const formattedInfo = {
     name,
@@ -81,6 +109,8 @@ export const getFormattedInfo = (details) => {
     location: getShortAddress(address),
     status: toSentenceCase(status),
     coat,
+    characteristics: getCharacteristics(tags),
+    info: getInfo(attributes, environment),
   };
   return formattedInfo;
 };

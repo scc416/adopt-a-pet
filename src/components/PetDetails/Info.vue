@@ -16,6 +16,8 @@
       <div>{{ colour }}</div>
       <div>Coat:</div>
       <div>{{ coat }}</div>
+      <div>Characteristics:</div>
+      <div>{{ characteristics }}</div>
       <div>Location:</div>
       <div>{{ location }}</div>
     </div>
@@ -26,7 +28,7 @@
     <hr />
     <h2><InfoIcon />Info</h2>
     <ul>
-      <li></li>
+      <li v-for="(prop, i) in info" :key="i">{{ prop }}</li>
     </ul>
   </div>
 </template>
