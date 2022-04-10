@@ -75,6 +75,11 @@ const getInfo = (attributes, environment) => {
     }
   }
 
+  for (const item in environment) {
+    const value = environment[item];
+    if (value) info.push(`Good with ${item}`);
+  }
+
   console.log(info);
   return info;
 };
