@@ -23,7 +23,7 @@
       >
         <div class="image-screen" v-if="i + photos.length !== imageNum"></div>
         <div class="video-screen"></div>
-        <div class="video" v-html="video.embed"></div>
+        <div class="video-thumbnail" v-html="video.embed"></div>
       </div>
     </div>
   </div>
@@ -49,6 +49,19 @@ export default {
 }
 
 .video > iframe {
+  width: 100%;
+}
+
+.video {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+  height: 30em;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.video-thumbnail > iframe {
   width: 100%;
 }
 
