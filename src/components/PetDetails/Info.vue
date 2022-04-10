@@ -14,7 +14,9 @@
       <div>{{ details.size }}</div>
     </div>
     <div>{{ details.description }}</div>
-    <a :href="details.url" target="_blank">original link</a>
+    <a :href="details.url" target="_blank">
+      <div>original link</div>
+    </a>
   </div>
 </template>
 
@@ -40,6 +42,14 @@ export default {
   width: 60%;
 }
 
+.info h1 {
+  color: #3aab97;
+}
+
+.info > div {
+  margin: 0.8em 0;
+}
+
 .info h1 .material-design-icon {
   height: 1.2em;
   width: 1.2em;
@@ -59,10 +69,11 @@ export default {
 .grid {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-gap: 0.5em;
+  grid-row-gap: 0.5em;
+  grid-column-gap: 1.3em;
 }
 
-.info h1 {
-  color: #3aab97;
+.grid > div:nth-child(even) {
+  font-weight: 600;
 }
 </style>
