@@ -1,35 +1,39 @@
 <template>
   <div class="info">
-    <h1><component :is="icon" />{{ details.name }}</h1>
+    <h1><component :is="icon" />{{ name }}</h1>
     <div class="grid">
       <div>Breed:</div>
-      <div>{{ details.name }}</div>
+      <div>{{ name }}</div>
       <div>Gender:</div>
-      <div>{{ details.gender }}</div>
+      <div>{{ gender }}</div>
       <div>Age:</div>
-      <div>{{ details.age }}</div>
+      <div>{{ age }}</div>
       <div>Colour:</div>
-      <div>{{ details.colors.primary }}</div>
+      <div>{{ colour }}</div>
       <div>Size:</div>
-      <div>{{ details.size }}</div>
+      <div>{{ size }}</div>
     </div>
-    <div>{{ details.description }}</div>
-    <a :href="details.url" target="_blank">
-      <div>original link</div>
-    </a>
+    <div>{{ description }}</div>
+    <div class="external-link">
+      <a :href="url" target="_blank"> <LinkIcon />Original link </a>
+    </div>
+    <hr />
   </div>
 </template>
 
 <script>
 import { toRefs } from "@vue/reactivity";
-import { getPetIcon } from "@/helpers";
+import { getPetIcon, getFormattedInfo } from "@/helpers";
+import LinkIcon from "vue-material-design-icons/Link.vue";
 
 export default {
   props: ["details"],
+  components: { LinkIcon },
   setup(props) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
-    return { details, icon };
+    const formattedDetails = getFormattedInfo(details);
+    return { ...formattedDetails, icon };
   },
 };
 </script>
@@ -42,12 +46,20 @@ export default {
   width: 60%;
 }
 
+.info > hr {
+  background-color: #e9e9e9;
+}
+
 .info h1 {
   color: #3aab97;
 }
 
 .info > div {
-  margin: 0.8em 0;
+  margin: 1.2em 0;
+}
+
+.info > div.external-link {
+  margin: 2em 0;
 }
 
 .info h1 .material-design-icon {
@@ -75,5 +87,40 @@ export default {
 
 .grid > div:nth-child(even) {
   font-weight: 600;
+}
+
+.info > div.external-link > a {
+  background: #3aab97;
+  border-radius: 5em;
+  font-weight: 600;
+  border: #3aab97 solid 0.1em;
+  padding: 0.4em 0.9em;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.85em;
+}
+
+.info > div.external-link > a:hover {
+  background: #fff;
+  color: #3aab97;
+}
+
+.info > div.external-link > a > *:first-child {
+  position: relative;
+  top: 0.25em;
+  margin-right: 0.3em;
+}
+
+.info > div.external-link > a .material-design-icon {
+  height: 1.2em;
+  width: 1.2em;
+}
+.info
+  > div.external-link
+  > a
+  .material-design-icon
+  > .material-design-icon__svg {
+  height: 1.2em;
+  width: 1.2em;
 }
 </style>

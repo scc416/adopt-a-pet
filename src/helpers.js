@@ -42,3 +42,24 @@ export const getShortAddress = (address) => {
   if (state) return `${city}, ${state}, ${countryName}`;
   return `${city}, ${countryName}`;
 };
+
+const getColour = ({ primary, secondary, tertiary }) => {
+  if (!secondary) return primary;
+  if (!tertiary) return `${primary}, ${secondary}`;
+  return `${primary}, ${secondary}, ${tertiary}`;
+};
+
+export const getFormattedInfo = (details) => {
+  const { value } = details;
+  const { name, gender, age, colors, size, description, url } = value;
+  const formattedInfo = {
+    name,
+    gender,
+    age,
+    colour: getColour(colors),
+    size,
+    description,
+    url,
+  };
+  return formattedInfo;
+};
