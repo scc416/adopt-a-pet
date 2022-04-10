@@ -30,6 +30,7 @@
     <ul>
       <li v-for="(prop, i) in info" :key="i">{{ prop }}</li>
     </ul>
+    <hr />
   </div>
 </template>
 
