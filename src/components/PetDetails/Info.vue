@@ -13,7 +13,7 @@
       <div>Size:</div>
       <div>{{ size }}</div>
     </div>
-    <div>{{ description }}</div>
+    <div class="description">{{ description }}</div>
     <div class="external-link">
       <a :href="url" target="_blank"> <LinkIcon />Original link </a>
     </div>
@@ -44,6 +44,10 @@ export default {
   padding: 3em 4em;
   border-radius: 1em;
   width: 60%;
+}
+
+.description {
+  line-height: 2;
 }
 
 .info > hr {

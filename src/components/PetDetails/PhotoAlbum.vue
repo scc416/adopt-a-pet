@@ -22,6 +22,7 @@
         @click="updateImage(i + photos.length)"
       >
         <div class="image-screen" v-if="i + photos.length !== imageNum"></div>
+        <div class="video-screen"></div>
         <div class="video" v-html="video.embed"></div>
       </div>
     </div>
@@ -82,6 +83,14 @@ export default {
 
 .image-screen {
   background: #7d7d7daa;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-screen {
   position: absolute;
   top: 0;
   left: 0;
