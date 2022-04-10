@@ -1,6 +1,5 @@
 <template>
   <h2><ContactIcon />Contact</h2>
-  <h3 v-if="organization">{{ organization.name }}</h3>
   <div class="grid">
     <div><PhoneIcon /></div>
     <div>
@@ -14,6 +13,7 @@
     </div>
     <div><AddressIcon /></div>
     <div>
+      <div v-if="organization">{{ organization.name }}</div>
       <div v-for="(line, i) in details.address" :key="i">
         {{ line }}
       </div>
