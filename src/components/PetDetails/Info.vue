@@ -63,7 +63,7 @@ export default {
 }
 
 .info > div.external-link {
-  margin: 2em 0;
+  margin: 1.5em 0;
 }
 
 .info h1 .material-design-icon {
