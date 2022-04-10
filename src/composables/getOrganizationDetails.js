@@ -1,0 +1,3 @@
+const getOrganizationDetails = (token, id) => {
+  
+}

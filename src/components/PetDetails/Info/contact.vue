@@ -25,10 +25,14 @@ import ContactIcon from "vue-material-design-icons/HelpCircleOutline.vue";
 import PhoneIcon from "vue-material-design-icons/Phone.vue";
 import EmailIcon from "vue-material-design-icons/Email.vue";
 import AddressIcon from "vue-material-design-icons/MapMarker.vue";
+import { toRefs } from "@vue/reactivity";
 
 export default {
-  props: ["details"],
+  props: ["details", "token"],
   components: { ContactIcon, PhoneIcon, EmailIcon, AddressIcon },
+  setup(props) {
+    const { token } = toRefs(props);
+  },
 };
 </script>
 
