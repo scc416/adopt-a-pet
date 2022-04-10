@@ -9,9 +9,9 @@
       </router-link>
       <div>
         <router-link :to="{ name: 'pets' }"> View all pets </router-link>
-        <a href="https://github.com/scc416/adopt-a-pet" target="_blank"
-          >GitHub Repo</a
-        >
+        <a href="https://github.com/scc416/adopt-a-pet" target="_blank">
+          GitHub Repo
+        </a>
       </div>
     </div>
 
