@@ -3,7 +3,7 @@
     <h1><component :is="icon" />{{ name }}</h1>
     <div class="grid">
       <div>Breed:</div>
-      <div>{{ name }}</div>
+      <div>{{ breed }}</div>
       <div>Gender:</div>
       <div>{{ gender }}</div>
       <div>Age:</div>

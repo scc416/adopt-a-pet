@@ -32,6 +32,7 @@ export const getPetIcon = (pet) => {
 };
 
 export const getBreed = ({ primary, secondary }) => {
+  if (!primary) return "Unknown";
   if (!secondary) return primary;
   return `${primary} & ${secondary} Mix`;
 };
@@ -51,7 +52,7 @@ const getColour = ({ primary, secondary, tertiary }) => {
 
 export const getFormattedInfo = (details) => {
   const { value } = details;
-  const { name, gender, age, colors, size, description, url } = value;
+  const { name, gender, age, colors, size, description, url, breeds } = value;
   const formattedInfo = {
     name,
     gender,
@@ -60,6 +61,7 @@ export const getFormattedInfo = (details) => {
     size,
     description,
     url,
+    breed: getBreed(breeds),
   };
   return formattedInfo;
 };
