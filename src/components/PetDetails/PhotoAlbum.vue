@@ -51,11 +51,7 @@ export default {
 }
 
 .video > iframe {
-  flex-grow: 1;
-  border: none;
-  margin: 0;
-  padding: 0;
-  display: block;
+  flex: 1;
   position: absolute;
   top: 0;
   left: 0;
@@ -69,8 +65,10 @@ export default {
   width: 100%;
   background-color: #000;
   overflow: hidden;
-  padding-top: 100%;
+  padding-top: 56.25%;
   position: relative;
+  border-radius: 1em;
+  display: flex;
 }
 
 .photos .main-img {
