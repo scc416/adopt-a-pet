@@ -2,6 +2,8 @@
   <div class="info">
     <h1><component :is="icon" />{{ name }}</h1>
     <div class="grid">
+      <div>Status:</div>
+      <div>{{ status }}</div>
       <div>Breed:</div>
       <div>{{ breed }}</div>
       <div>Gender:</div>
