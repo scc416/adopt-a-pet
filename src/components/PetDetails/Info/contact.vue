@@ -1,5 +1,6 @@
 <template>
   <h2><ContactIcon />Contact</h2>
+  <h3 v-if="organization">{{ organization.name }}</h3>
   <div class="grid">
     <div><PhoneIcon /></div>
     <div>
@@ -18,7 +19,6 @@
       </div>
     </div>
     <div></div>
-    <div>{{ organization && organization.name }}</div>
   </div>
 </template>
 
