@@ -52,7 +52,17 @@ const getColour = ({ primary, secondary, tertiary }) => {
 
 export const getFormattedInfo = (details) => {
   const { value } = details;
-  const { name, gender, age, colors, size, description, url, breeds } = value;
+  const {
+    name,
+    gender,
+    age,
+    colors,
+    size,
+    description,
+    url,
+    breeds,
+    contact: { address },
+  } = value;
   const formattedInfo = {
     name,
     gender,
@@ -62,6 +72,7 @@ export const getFormattedInfo = (details) => {
     description,
     url,
     breed: getBreed(breeds),
+    location: getShortAddress(address),
   };
   return formattedInfo;
 };

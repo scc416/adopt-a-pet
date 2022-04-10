@@ -12,6 +12,8 @@
       <div>{{ colour }}</div>
       <div>Size:</div>
       <div>{{ size }}</div>
+      <div>Location:</div>
+      <div>{{ location }}</div>
     </div>
     <div class="description">{{ description }}</div>
     <div class="external-link">
