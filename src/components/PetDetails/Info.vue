@@ -33,17 +33,17 @@
     <hr />
     <h2><MailIcon />Contact</h2>
     <div class="grid">
-      <div>Phone Number</div>
+      <div><PhoneIcon /></div>
       <div>
         <a :href="`tel:${phone}`">
           {{ phone }}
         </a>
       </div>
-      <div>Email</div>
+      <div><EmailIcon /></div>
       <div>
         <a :href="`mailto: ${email}`">{{ email }}</a>
       </div>
-      <div>Address</div>
+      <div><AddressIcon /></div>
       <div>
         <div v-for="(line, i) in address" :key="i">
           {{ line }}
@@ -59,10 +59,20 @@ import { getPetIcon, getFormattedInfo } from "@/helpers";
 import LinkIcon from "vue-material-design-icons/Link.vue";
 import InfoIcon from "vue-material-design-icons/Information.vue";
 import MailIcon from "vue-material-design-icons/HelpCircleOutline.vue";
+import PhoneIcon from "vue-material-design-icons/Phone.vue";
+import EmailIcon from "vue-material-design-icons/Email.vue";
+import AddressIcon from "vue-material-design-icons/MapMarker.vue";
 
 export default {
   props: ["details"],
-  components: { LinkIcon, InfoIcon, MailIcon },
+  components: {
+    LinkIcon,
+    InfoIcon,
+    MailIcon,
+    PhoneIcon,
+    EmailIcon,
+    AddressIcon,
+  },
   setup(props) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
