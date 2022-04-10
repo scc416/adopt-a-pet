@@ -7,13 +7,17 @@
     </div>
     <div><PhoneIcon /></div>
     <div>
-      <a :href="`tel:${details.phone}`">
+      <a v-if="details.phone" :href="`tel:${details.phone}`">
         {{ details.phone }}
       </a>
+      <span v-else>N/A</span>
     </div>
     <div><EmailIcon /></div>
     <div>
-      <a :href="`mailto: ${details.email}`">{{ details.email }}</a>
+      <a v-if="details.email" :href="`mailto: ${details.email}`">{{
+        details.email
+      }}</a>
+      <span v-else>N/A</span>
     </div>
     <div><AddressIcon /></div>
     <div>
