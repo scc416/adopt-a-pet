@@ -50,6 +50,10 @@ const getColour = ({ primary, secondary, tertiary }) => {
   return `${primary}, ${secondary}, ${tertiary}`;
 };
 
+const toSentenceCase = (str) => {
+  return str[0].toUpperCase() + str.slice(1);
+};
+
 export const getFormattedInfo = (details) => {
   const { value } = details;
   const {
@@ -75,7 +79,7 @@ export const getFormattedInfo = (details) => {
     url,
     breed: getBreed(breeds),
     location: getShortAddress(address),
-    status: status[0].toUpperCase() + status.slice(1),
+    status: toSentenceCase(status),
     coat,
   };
   return formattedInfo;
