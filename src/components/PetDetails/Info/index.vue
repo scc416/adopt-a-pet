@@ -1,51 +1,27 @@
 <template>
   <div class="info">
-    <h1><component :is="icon" />{{ name }}</h1>
-    <div class="grid">
-      <div>Status:</div>
-      <div>{{ status }}</div>
-      <div>Breed:</div>
-      <div>{{ breed }}</div>
-      <div>Gender:</div>
-      <div>{{ gender }}</div>
-      <div>Age:</div>
-      <div>{{ age }}</div>
-      <div>Size:</div>
-      <div>{{ size }}</div>
-      <div>Colour:</div>
-      <div>{{ colour }}</div>
-      <div>Coat:</div>
-      <div>{{ coat }}</div>
-      <div>Characteristics:</div>
-      <div>{{ characteristics }}</div>
-      <div>Location:</div>
-      <div>{{ location }}</div>
-    </div>
-    <div class="description">{{ description }}</div>
-    <div class="external-link">
-      <a :href="url" target="_blank"> <LinkIcon />Profile on Petfinder</a>
-    </div>
+    <MainSection :details="formattedDetails" />
     <hr />
     <h2><InfoIcon />Info</h2>
     <ul>
-      <li v-for="(prop, i) in info" :key="i">{{ prop }}</li>
+      <li v-for="(prop, i) in formattedDetails.info" :key="i">{{ prop }}</li>
     </ul>
     <hr />
     <h2><MailIcon />Contact</h2>
     <div class="grid">
       <div><PhoneIcon /></div>
       <div>
-        <a :href="`tel:${phone}`">
-          {{ phone }}
+        <a :href="`tel:${formattedDetails.phone}`">
+          {{ formattedDetails.phone }}
         </a>
       </div>
       <div><EmailIcon /></div>
       <div>
-        <a :href="`mailto: ${email}`">{{ email }}</a>
+        <a :href="`mailto: ${details.email}`">{{ formattedDetails.email }}</a>
       </div>
       <div><AddressIcon /></div>
       <div>
-        <div v-for="(line, i) in address" :key="i">
+        <div v-for="(line, i) in formattedDetails.address" :key="i">
           {{ line }}
         </div>
       </div>
@@ -56,28 +32,28 @@
 <script>
 import { toRefs } from "@vue/reactivity";
 import { getPetIcon, getFormattedInfo } from "@/helpers";
-import LinkIcon from "vue-material-design-icons/Link.vue";
 import InfoIcon from "vue-material-design-icons/Information.vue";
 import MailIcon from "vue-material-design-icons/HelpCircleOutline.vue";
 import PhoneIcon from "vue-material-design-icons/Phone.vue";
 import EmailIcon from "vue-material-design-icons/Email.vue";
 import AddressIcon from "vue-material-design-icons/MapMarker.vue";
+import MainSection from "./main.vue";
 
 export default {
   props: ["details"],
   components: {
-    LinkIcon,
     InfoIcon,
     MailIcon,
     PhoneIcon,
     EmailIcon,
     AddressIcon,
+    MainSection,
   },
   setup(props) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
     const formattedDetails = getFormattedInfo(details);
-    return { ...formattedDetails, icon };
+    return { formattedDetails, icon };
   },
 };
 </script>

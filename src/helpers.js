@@ -100,8 +100,8 @@ const getAddress = ({
 
   if (address1) result.push(address1);
   if (address2) result.push(address2);
-  result.push(city);
-  result.push(`${state}, ${country}`);
+  result.push(`${city}, ${state}`);
+  result.push(country);
   result.push(postcode);
   return result;
 };
@@ -123,6 +123,7 @@ export const getFormattedInfo = (details) => {
     tags,
     attributes,
     environment,
+    type,
   } = value;
   const formattedInfo = {
     name,
@@ -141,6 +142,7 @@ export const getFormattedInfo = (details) => {
     address: getAddress(address),
     email,
     phone,
+    type,
   };
   return formattedInfo;
 };
