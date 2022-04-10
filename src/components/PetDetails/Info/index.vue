@@ -4,45 +4,21 @@
     <hr />
     <InfoSection :info="formattedDetails.info" />
     <hr />
-    <h2><ContactIcon />Contact</h2>
-    <div class="grid">
-      <div><PhoneIcon /></div>
-      <div>
-        <a :href="`tel:${formattedDetails.phone}`">
-          {{ formattedDetails.phone }}
-        </a>
-      </div>
-      <div><EmailIcon /></div>
-      <div>
-        <a :href="`mailto: ${details.email}`">{{ formattedDetails.email }}</a>
-      </div>
-      <div><AddressIcon /></div>
-      <div>
-        <div v-for="(line, i) in formattedDetails.address" :key="i">
-          {{ line }}
-        </div>
-      </div>
-    </div>
+    <ContactSection :details="formattedDetails" />
   </div>
 </template>
 
 <script>
 import { toRefs } from "@vue/reactivity";
 import { getPetIcon, getFormattedInfo } from "@/helpers";
-import ContactIcon from "vue-material-design-icons/HelpCircleOutline.vue";
-import PhoneIcon from "vue-material-design-icons/Phone.vue";
-import EmailIcon from "vue-material-design-icons/Email.vue";
-import AddressIcon from "vue-material-design-icons/MapMarker.vue";
 import MainSection from "./main.vue";
 import InfoSection from "./info.vue";
+import ContactSection from "./contact.vue";
 
 export default {
   props: ["details"],
   components: {
-    ContactIcon,
-    PhoneIcon,
-    EmailIcon,
-    AddressIcon,
+    ContactSection,
     MainSection,
     InfoSection,
   },
