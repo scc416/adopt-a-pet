@@ -1,10 +1,28 @@
 <template>
   <div class="photos">
-    <img class="main-img" :src="photos[imageNum].large" alt="" />
+    <img
+      v-if="imageNum < photos.length"
+      class="main-img"
+      :src="photos[imageNum].large"
+      alt=""
+    />
+    <div
+      class="video"
+      v-else
+      v-html="videos[imageNum - photos.length].embed"
+    ></div>
     <div class="thumbnails">
       <div v-for="(photo, i) in photos" :key="i" @click="updateImage(i)">
         <div class="image-screen" v-if="i !== imageNum"></div>
         <img :src="photo.small" alt="" />
+      </div>
+      <div
+        v-for="(video, i) in videos"
+        :key="i"
+        @click="updateImage(i + photos.length)"
+      >
+        <div class="image-screen" v-if="i + photos.length !== imageNum"></div>
+        <div class="video" v-html="video.embed"></div>
       </div>
     </div>
   </div>
@@ -15,11 +33,11 @@ import { toRefs } from "@vue/reactivity";
 import getPhotoAlbum from "@/composables/getPhotoAlbum";
 
 export default {
-  props: ["photos"],
+  props: ["photos", "videos"],
   setup(props) {
-    const { photos } = toRefs(props);
-    const { updateImage, imageNum } = getPhotoAlbum(photos);
-    return { photos, updateImage, imageNum };
+    const { photos, videos } = toRefs(props);
+    const { updateImage, imageNum } = getPhotoAlbum();
+    return { photos, updateImage, imageNum, videos };
   },
 };
 </script>
@@ -27,6 +45,10 @@ export default {
 <style>
 .photos {
   width: 37%;
+}
+
+.video > iframe {
+  width: 100%;
 }
 
 .photos .main-img {

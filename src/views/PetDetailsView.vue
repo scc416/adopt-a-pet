@@ -1,6 +1,6 @@
 <template>
   <div v-if="details" class="details">
-    <PhotoAlbum :photos="details.photos" />
+    <PhotoAlbum :photos="details.photos" :videos="details.videos"/>
     <Details :details="details" />
   </div>
   <Spin v-if="loading" />
