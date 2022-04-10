@@ -24,6 +24,10 @@
       <a :href="url" target="_blank"> <LinkIcon />Original link </a>
     </div>
     <hr />
+    <h2><InfoIcon />Info</h2>
+    <ul>
+      <li></li>
+    </ul>
   </div>
 </template>
 
@@ -31,10 +35,11 @@
 import { toRefs } from "@vue/reactivity";
 import { getPetIcon, getFormattedInfo } from "@/helpers";
 import LinkIcon from "vue-material-design-icons/Link.vue";
+import InfoIcon from "vue-material-design-icons/Information.vue";
 
 export default {
   props: ["details"],
-  components: { LinkIcon },
+  components: { LinkIcon, InfoIcon },
   setup(props) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
@@ -64,6 +69,10 @@ export default {
   color: #3aab97;
 }
 
+.info h2 > *:first-child {
+  color: #3aab97;
+}
+
 .info > div {
   margin: 1.2em 0;
 }
@@ -72,17 +81,20 @@ export default {
   margin: 1.5em 0;
 }
 
-.info h1 .material-design-icon {
+.info h1 .material-design-icon,
+.info h2 .material-design-icon {
   height: 1.2em;
   width: 1.2em;
 }
 
-.info h1 .material-design-icon > .material-design-icon__svg {
+.info h1 .material-design-icon > .material-design-icon__svg,
+.info h2 .material-design-icon > .material-design-icon__svg {
   height: 1.2em;
   width: 1.2em;
 }
 
-.info h1 > *:first-child {
+.info h1 > *:first-child,
+.info h2 > *:first-child {
   position: relative;
   top: 0.25em;
   margin-right: 0.15em;
