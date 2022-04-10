@@ -7,7 +7,12 @@
           Adopt a Pet
         </div>
       </router-link>
-      <router-link :to="{ name: 'pets' }"> View all pets </router-link>
+      <div>
+        <router-link :to="{ name: 'pets' }"> View all pets </router-link>
+        <a href="https://github.com/scc416/adopt-a-pet" target="_blank"
+          >GitHub Repo</a
+        >
+      </div>
     </div>
 
     <router-link class="saved" :to="{ name: 'saved' }">
@@ -36,11 +41,16 @@ export default { components: { HeartIcon } };
 }
 
 .nav > div > *:nth-child(2) {
-  color: #515151;
-  text-decoration: none;
-  margin-left: 6em;
+  margin-left: 10em;
   font-weight: 600;
   font-size: 0.9em;
+  display: flex;
+}
+
+.nav > div > *:nth-child(2) > * {
+  color: #515151;
+  text-decoration: none;
+  margin-right: 5em;
 }
 
 .logo {
