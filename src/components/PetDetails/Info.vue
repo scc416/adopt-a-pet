@@ -23,7 +23,7 @@
     </div>
     <div class="description">{{ description }}</div>
     <div class="external-link">
-      <a :href="url" target="_blank"> <LinkIcon />Original link </a>
+      <a :href="url" target="_blank"> <LinkIcon />Profile on Petfinder</a>
     </div>
     <hr />
     <h2><InfoIcon />Info</h2>
@@ -32,6 +32,14 @@
     </ul>
     <hr />
     <h2><MailIcon />Contact</h2>
+    <div class="grid">
+      <div>Status:</div>
+      <div>{{ status }}</div>
+      <div>Breed:</div>
+      <div>{{ breed }}</div>
+      <div>Gender:</div>
+      <div>{{ gender }}</div>
+    </div>
   </div>
 </template>
 
@@ -40,7 +48,7 @@ import { toRefs } from "@vue/reactivity";
 import { getPetIcon, getFormattedInfo } from "@/helpers";
 import LinkIcon from "vue-material-design-icons/Link.vue";
 import InfoIcon from "vue-material-design-icons/Information.vue";
-import MailIcon from "vue-material-design-icons/Email.vue";
+import MailIcon from "vue-material-design-icons/HelpCircleOutline.vue";
 
 export default {
   props: ["details"],
@@ -110,11 +118,16 @@ export default {
   width: 1.2em;
 }
 
-.info h1 > *:first-child,
-.info h2 > *:first-child {
+.info h1 > *:first-child {
   position: relative;
   top: 0.25em;
   margin-right: 0.15em;
+}
+
+.info h2 > *:first-child {
+  position: relative;
+  top: 0.25em;
+  margin-right: 0.25em;
 }
 
 .grid {

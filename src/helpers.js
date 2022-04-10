@@ -80,9 +80,18 @@ const getInfo = (attributes, environment) => {
     if (value) info.push(`Good with ${item}`);
   }
 
-  console.log(info);
   return info;
 };
+
+const getAddress = (address) => {
+  
+  // address1: null
+  // address2: null
+  // city: "Mount Juliet"
+  // country: "US"
+  // postcode: "37122"
+  // state: "TN"
+}
 
 export const getFormattedInfo = (details) => {
   const { value } = details;
@@ -116,6 +125,7 @@ export const getFormattedInfo = (details) => {
     coat,
     characteristics: getCharacteristics(tags),
     info: getInfo(attributes, environment),
+    address: getAddress(address)
   };
   return formattedInfo;
 };
