@@ -124,6 +124,7 @@ export const getFormattedInfo = (details) => {
     attributes,
     environment,
     type,
+    organization_id,
   } = value;
   const formattedInfo = {
     name,
@@ -143,6 +144,7 @@ export const getFormattedInfo = (details) => {
     email,
     phone,
     type,
+    organizationId: organization_id,
   };
   return formattedInfo;
 };

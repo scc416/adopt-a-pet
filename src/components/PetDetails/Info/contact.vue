@@ -17,6 +17,8 @@
         {{ line }}
       </div>
     </div>
+    <div></div>
+    <div>{{ organization && organization.name }}</div>
   </div>
 </template>
 
@@ -26,12 +28,19 @@ import PhoneIcon from "vue-material-design-icons/Phone.vue";
 import EmailIcon from "vue-material-design-icons/Email.vue";
 import AddressIcon from "vue-material-design-icons/MapMarker.vue";
 import { toRefs } from "@vue/reactivity";
+import getOrganizationDetails from "@/composables/getOrganizationDetails";
 
 export default {
-  props: ["details", "token"],
+  props: ["details", "token", "error"],
   components: { ContactIcon, PhoneIcon, EmailIcon, AddressIcon },
   setup(props) {
-    const { token } = toRefs(props);
+    const { token, error, details } = toRefs(props);
+    const organization = getOrganizationDetails(
+      token,
+      details.value.organizationId,
+      error
+    );
+    return { organization };
   },
 };
 </script>
