@@ -10,16 +10,17 @@
           :multiSelect="false"
         />
       </div>
-      <div v-if="filter.type">
-        <div v-for="(option, i) in details[filter.type.name]" :key="i">
-          <Select
-            :options="option"
-            :title="i[0].toUpperCase() + i.slice(1)"
-            @updateFilter="updateFilter"
-            :keyName="i"
-            :multiSelect="true"
-          />
-        </div>
+      <div
+        v-for="(option, i) in filter.type ? details[filter.type.name] : []"
+        :key="i"
+      >
+        <Select
+          :options="option"
+          :title="i[0].toUpperCase() + i.slice(1)"
+          @updateFilter="updateFilter"
+          :keyName="i"
+          :multiSelect="true"
+        />
       </div>
     </div>
     <button @click="submitFilter()">Filter</button>
@@ -58,10 +59,9 @@ export default {
 
 .filter > div {
   width: 100%;
-}
-
-.filter > div > div > div {
-  margin-top: 1em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .filter > button {
