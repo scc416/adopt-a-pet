@@ -17,21 +17,13 @@
         :src="videos[mediaNum - photoNum].vid"
       ></iframe>
     </div>
-    <div class="thumbnails">
-      <div v-for="(photo, i) in photos" :key="i" @click="updateMedia(i)">
-        <div class="image-screen" v-if="i !== mediaNum"></div>
-        <img :src="photo.small" alt="" />
-      </div>
-      <div
-        v-for="(video, i) in videos"
-        :key="i"
-        @click="updateMedia(i + photoNum)"
-      >
-        <div class="video-screen"><PlayIcon /></div>
-        <div class="image-screen" v-if="i + photos.length !== mediaNum"></div>
-        <img :src="video.img" />
-      </div>
-    </div>
+    <Thumbnail
+      :photos="photos"
+      :videos="videos"
+      :updateMedia="updateMedia"
+      :photoNum="photoNum"
+      :mediaNum="mediaNum"
+    />
   </div>
 </template>
 
@@ -40,10 +32,11 @@ import { toRefs } from "@vue/reactivity";
 import useMediaAlbum from "@/composables/useMediaAlbum";
 import PlayIcon from "vue-material-design-icons/PlayCircle.vue";
 import { getVideoURL } from "@/helpers";
+import Thumbnail from "./thumbnail.vue";
 
 export default {
   props: ["photos", "videos"],
-  components: { PlayIcon },
+  components: { PlayIcon, Thumbnail },
   setup(props) {
     const { photos, videos } = toRefs(props);
     const { updateMedia, mediaNum } = useMediaAlbum();
