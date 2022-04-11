@@ -2,9 +2,16 @@
   <div class="info">
     <MainSection :details="formattedDetails" />
     <hr />
-    <InfoSection :info="formattedDetails.info" />
+    <InfoSection
+      :info="formattedDetails.info"
+      :characteristics="formattedDetails.characteristics"
+    />
     <hr />
-    <ContactSection :details="formattedDetails" :token="token" @setError="setError" />
+    <ContactSection
+      :details="formattedDetails"
+      :token="token"
+      @setError="setError"
+    />
   </div>
 </template>
 

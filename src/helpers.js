@@ -59,15 +59,6 @@ const toSentenceCase = (str) => {
   return str[0].toUpperCase() + str.slice(1);
 };
 
-const getCharacteristics = (tags) => {
-  let result = "";
-  tags.forEach((tag, i) => {
-    if (i) result += `, ${tag}`;
-    if (!i) result += tag;
-  });
-  return result;
-};
-
 const getInfo = (attributes, environment) => {
   const info = [];
   for (const attribute in attributes) {
@@ -138,7 +129,7 @@ export const getFormattedInfo = (details) => {
     location: getShortAddress(address),
     status: toSentenceCase(status),
     coat,
-    characteristics: getCharacteristics(tags),
+    characteristics: tags,
     info: getInfo(attributes, environment),
     address: getAddress(address),
     email,

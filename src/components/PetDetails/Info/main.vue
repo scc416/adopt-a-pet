@@ -1,24 +1,22 @@
 <template>
   <h1><component :is="icon" />{{ details.name }}</h1>
   <div class="grid">
-    <div>Status:</div>
-    <div>{{ details.status }}</div>
-    <div>Breed:</div>
-    <div>{{ details.breed }}</div>
-    <div>Gender:</div>
-    <div>{{ details.gender }}</div>
-    <div>Age:</div>
-    <div>{{ details.age }}</div>
-    <div>Size:</div>
-    <div>{{ details.size }}</div>
-    <div>Colour:</div>
-    <div>{{ details.colour }}</div>
-    <div>Coat:</div>
-    <div>{{ details.coat }}</div>
-    <div>Characteristics:</div>
-    <div>{{ details.characteristics }}</div>
-    <div>Location:</div>
-    <div>{{ details.location }}</div>
+    <div v-if="details.status">Status:</div>
+    <div v-if="details.status">{{ details.status }}</div>
+    <div v-if="details.breed">Breed:</div>
+    <div v-if="details.breed">{{ details.breed }}</div>
+    <div v-if="details.gender">Gender:</div>
+    <div v-if="details.gender">{{ details.gender }}</div>
+    <div v-if="details.age">Age:</div>
+    <div v-if="details.age">{{ details.age }}</div>
+    <div v-if="details.size">Size:</div>
+    <div v-if="details.size">{{ details.size }}</div>
+    <div v-if="details.colour">Colour:</div>
+    <div v-if="details.colour">{{ details.colour }}</div>
+    <div v-if="details.coat">Coat:</div>
+    <div v-if="details.coat">{{ details.coat }}</div>
+    <div v-if="details.location">Location:</div>
+    <div v-if="details.location">{{ details.location }}</div>
   </div>
   <div class="description">{{ details.description }}</div>
   <div class="external-link">
