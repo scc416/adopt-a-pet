@@ -6,11 +6,7 @@
       :src="photos[imageNum].large"
       alt=""
     />
-    <div
-      class="video"
-      v-else
-      v-html="videos[imageNum - photos.length].embed"
-    ></div>
+    <div v-else v-html="videos[imageNum - photos.length].embed"></div>
     <div class="thumbnails">
       <div v-for="(photo, i) in photos" :key="i" @click="updateImage(i)">
         <div class="image-screen" v-if="i !== imageNum"></div>
@@ -33,6 +29,7 @@
 import { toRefs } from "@vue/reactivity";
 import getPhotoAlbum from "@/composables/getPhotoAlbum";
 import PlayIcon from "vue-material-design-icons/PlayCircle.vue";
+import { getVideoURL } from "@/helpers";
 
 export default {
   props: ["photos", "videos"],
@@ -40,6 +37,7 @@ export default {
   setup(props) {
     const { photos, videos } = toRefs(props);
     const { updateImage, imageNum } = getPhotoAlbum();
+    const newVideo = getVideoURL(videos);
     return { photos, updateImage, imageNum, videos };
   },
 };
@@ -48,27 +46,6 @@ export default {
 <style>
 .photos {
   width: 37%;
-}
-
-.video > iframe {
-  flex: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.video {
-  width: 100%;
-  background-color: #000;
-  overflow: hidden;
-  padding-top: 56.25%;
-  position: relative;
-  border-radius: 1em;
-  display: flex;
 }
 
 .photos .main-img {

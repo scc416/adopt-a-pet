@@ -5,7 +5,6 @@ const getOrganizationDetails = (token, id, error) => {
   const details = ref(null);
   let gotDetails = false;
   const url = `https://api.petfinder.com/v2/organizations/${id}`;
-  console.log("id", id);
 
   const updateDetails = async () => {
     if (token.value) {
@@ -21,7 +20,6 @@ const getOrganizationDetails = (token, id, error) => {
         });
         details.value = organization;
         gotDetails = true;
-        console.log(organization);
       } catch (e) {
         error.value = e.message;
       }

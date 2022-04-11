@@ -22,7 +22,6 @@ const getPetDetails = (id, token, error) => {
         });
         details.value = animal;
         gotDetails = true;
-        console.log(animal);
       } catch (e) {
         error.value = e.message;
       }

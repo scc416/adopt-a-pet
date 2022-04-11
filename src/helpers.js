@@ -148,3 +148,28 @@ export const getFormattedInfo = (details) => {
   };
   return formattedInfo;
 };
+
+const getSrc = (embed) => {
+  const iOf1 = embed.indexOf('src="');
+  const slice1 = embed.slice(iOf1 + 5);
+  const iOf2 = slice1.indexOf('"');
+
+  const vid = slice1.slice(0, iOf2);
+
+  const slice2 = slice1.slice(iOf2);
+  const iOf3 = slice2.indexOf('src="');
+  const slice4 = slice2.slice(iOf3 + 5);
+  const iOf4 = slice4.indexOf('"');
+  const img = slice4.slice(0, iOf4);
+
+  return { vid, img };
+};
+
+export const getVideoURL = (videos) => {
+  const result = [];
+  for (const { embed } of videos.value) {
+    const info = getSrc(embed);
+    result.push(info);
+  }
+  return result;
+};
