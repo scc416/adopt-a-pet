@@ -33,8 +33,9 @@ const getPetList = (token, emit) => {
         } = data;
         currentPage = 1;
         totalPages = total_pages;
+        console.log("total_pages", total_pages)
         loading.value = false;
-        isEndOfPage.value = false;
+        isEndOfPage.value = currentPage === total_pages;
       } catch (e) {
         emit("setError", e.message);
         loading.value = false;
@@ -69,6 +70,7 @@ const getPetList = (token, emit) => {
           return true;
         }
       );
+      isEndOfPage.value = currentPage === totalPages;
       loading.value = false;
     } catch (e) {
       emit("setError", e.message);
