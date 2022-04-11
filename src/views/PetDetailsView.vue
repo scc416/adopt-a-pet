@@ -1,7 +1,7 @@
 <template>
   <div v-if="details" class="details">
     <PhotoAlbum :photos="details.photos" :videos="details.videos" />
-    <Info :details="details" :token="token" :error="error" />
+    <Info :details="details" :token="token" @setError="setError" />
   </div>
   <Spin v-if="loading" />
 </template>
@@ -15,14 +15,16 @@ import PhotoAlbum from "@/components/PetDetails/MediaAlbum/";
 import Info from "@/components/PetDetails/Info/";
 
 export default {
-  props: ["token", "error"],
+  emits: ["setError"],
+  props: ["token"],
   components: { Spin, PhotoAlbum, Info },
-  setup(props) {
+  setup(props, { emit }) {
     const { token, error } = toRefs(props);
     const { params } = useRoute();
     const { id } = params;
     const { details, loading } = getPetDetails(id, token, error);
-    return { details, loading };
+    const setError = (e) => emit("setError", e);
+    return { details, loading, setError };
   },
 };
 </script>

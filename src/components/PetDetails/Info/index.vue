@@ -23,17 +23,19 @@ import InfoSection from "./info.vue";
 import ContactSection from "./contact.vue";
 
 export default {
-  props: ["details", "token", "setError"],
+  emits: ["setError"],
+  props: ["details", "token"],
   components: {
     ContactSection,
     MainSection,
     InfoSection,
   },
-  setup(props) {
+  setup(props, { emit }) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
     const formattedDetails = getFormattedInfo(details);
-    return { formattedDetails, icon };
+    const setError = (e) => emit("setError", e);
+    return { formattedDetails, icon, setError };
   },
 };
 </script>
