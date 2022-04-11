@@ -221,3 +221,11 @@ export const getQuery = (filter) => {
   console.log(result);
   return result;
 };
+
+export const formatBreeds = (breeds) => {
+  const result = [];
+  for (const { name } of breeds) {
+    result.push({ name });
+  }
+  return result;
+};

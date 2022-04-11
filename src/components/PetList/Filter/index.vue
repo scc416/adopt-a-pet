@@ -10,6 +10,15 @@
           :multiSelect="false"
         />
       </div>
+      <div v-if="breeds">
+        <Select
+          :options="breeds"
+          :title="'Breeds'"
+          @updateFilter="updateFilter"
+          :keyName="'breed'"
+          :multiSelect="true"
+        />
+      </div>
       <div
         v-for="(option, i) in filter.type ? details[filter.type.name] : []"
         :key="i"
@@ -32,6 +41,7 @@ import Select from "./Select.vue";
 import getAnimalTypes from "@/composables/getAnimalTypes";
 import { toRefs } from "@vue/reactivity";
 import useFilter from "@/composables/useFilter";
+import getAnimalBreeds from "@/composables/getAnimalBreeds";
 
 export default {
   emit: ["submitFilter", "setError"],
@@ -41,10 +51,11 @@ export default {
     const { token } = toRefs(props);
     const details = getAnimalTypes(token, emit);
     const { filter, updateFilter } = useFilter();
+    const breeds = getAnimalBreeds(token, filter, emit);
 
     const submitFilter = () => emit("submitFilter", filter);
 
-    return { submitFilter, updateFilter, details, filter };
+    return { submitFilter, updateFilter, details, filter, breeds };
   },
 };
 </script>
