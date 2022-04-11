@@ -1,7 +1,7 @@
 <template>
   <Nav />
   <Error :error="error" />
-  <router-view :token="token" :setError="setError" />
+  <router-view :token="token" @setError="setError" />
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 
-const getOrganizationDetails = (token, id, setError) => {
+const getOrganizationDetails = (token, id, emit) => {
   const details = ref(null);
   let gotDetails = false;
   const url = `https://api.petfinder.com/v2/organizations/${id}`;
@@ -21,7 +21,7 @@ const getOrganizationDetails = (token, id, setError) => {
         details.value = organization;
         gotDetails = true;
       } catch (e) {
-        setError(e.message);
+        emit(setError, e.message);
       }
     }
   };

@@ -175,10 +175,25 @@ export const getVideoURL = (videos) => {
 };
 
 export const formatAnimalTypes = (data) => {
-  const names = [];
+  const type = [];
   for (const { name } of data) {
-    names.push({ name });
+    type.push({ name });
   }
-  console.log(names);
-  return { names };
+  return { type };
+};
+
+export const getQuery = (filter) => {
+  if (!filter) return "";
+  let result = "";
+  for (const type in filter.value) {
+    result += `&${type}=`;
+    const values = filter.value[type];
+    for (const value of values) {
+      console.log(value);
+      // result += `${value.name},`;
+    }
+    result = result.slice(0, result.length - 1);
+  }
+  console.log(result);
+  return result;
 };

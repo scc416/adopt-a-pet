@@ -4,7 +4,7 @@
     <hr />
     <InfoSection :info="formattedDetails.info" />
     <hr />
-    <ContactSection :details="formattedDetails" :token="token" :setError="setError" />
+    <ContactSection :details="formattedDetails" :token="token" @setError="setError" />
   </div>
 </template>
 

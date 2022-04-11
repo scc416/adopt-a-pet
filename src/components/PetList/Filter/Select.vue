@@ -3,7 +3,6 @@
   <VueMultiselect
     v-model="multiValue"
     :options="options"
-    :multiple="true"
     :close-on-select="true"
     placeholder="Pick some"
     label="name"
@@ -18,13 +17,13 @@ import { watch } from "@vue/runtime-core";
 
 export default {
   emits: ["updateFilter"],
-  props: ["options", "title"],
+  props: ["options", "title", "keyName"],
   components: { VueMultiselect },
   setup(props, { emit }) {
-    const { title } = toRefs(props);
-    const multiValue = ref(null);
+    const { keyName } = toRefs(props);
+    const multiValue = ref([]);
     watch(multiValue, () => {
-      emit("updateFilter", title, multiValue.value);
+      emit("updateFilter", keyName.value, multiValue.value);
     });
     return { multiValue };
   },

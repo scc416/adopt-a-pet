@@ -2,8 +2,8 @@
   <Spin v-if="loading" />
   <Filter
     :token="token"
-    :setError="setError"
     :updatePetList="updatePetList"
+    @setError="setError"
     @submitFilter="updatePetList"
   />
   <div class="pets-list">
@@ -26,12 +26,13 @@ import Filter from "@/components/PetList/Filter/";
 import { toRefs } from "@vue/reactivity";
 
 export default {
-  props: ["token", "setError"],
+  emits: ["setError"],
+  props: ["token"],
   components: { PetCard, Spin, ShowMoreButton, BackToTopButton, Filter },
-  setup(props) {
+  setup(props, { emit }) {
     const { token, setError } = toRefs(props);
     const { petList, updatePetList, loading, loadMore, isEndOfPage } =
-      getPetList(token, setError);
+      getPetList(token, emit);
     return { petList, updatePetList, loading, loadMore, isEndOfPage };
   },
 };

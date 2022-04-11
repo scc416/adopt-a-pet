@@ -1,11 +1,12 @@
 <template>
   <div v-if="details" class="filter">
     <Select
-      :options="details.names"
+      :options="details.type"
       :title="'Animal Types'"
       @updateFilter="updateFilter"
+      :keyName="'type'"
     />
-    <button @click="$emit('submitFilter', filter)">Filter</button>
+    <button @click="submitFilter()">Filter</button>
   </div>
 </template>
 
@@ -16,15 +17,17 @@ import { toRefs } from "@vue/reactivity";
 import useFilter from "@/composables/useFilter";
 
 export default {
-  emit: ["submitFilter"],
-  props: ["token", "setError"],
+  emit: ["submitFilter", "setError"],
+  props: ["token"],
   components: { Select },
-  setup(props) {
-    const { token, setError } = toRefs(props);
-    const details = getAnimalTypes(token, setError);
+  setup(props, { emit }) {
+    const { token } = toRefs(props);
+    const details = getAnimalTypes(token, emit);
     const { filter, updateFilter } = useFilter();
 
-    return { updateFilter, details, filter };
+    const submitFilter = () => emit("submitFilter", filter);
+
+    return { submitFilter, updateFilter, details, filter };
   },
 };
 </script>

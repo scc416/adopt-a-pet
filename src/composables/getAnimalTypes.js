@@ -2,7 +2,7 @@ import axios from "axios";
 import { ref, watch } from "vue";
 import { formatAnimalTypes } from "@/helpers";
 
-const getAnimalTypes = (token, setError) => {
+const getAnimalTypes = (token, emit) => {
   const details = ref(null);
   let gotDetails = false;
   const url = `https://api.petfinder.com/v2/types`;
@@ -22,7 +22,7 @@ const getAnimalTypes = (token, setError) => {
         details.value = formatAnimalTypes(types);
         gotDetails = true;
       } catch (e) {
-        setError(e.message);
+        emit("setError", e.message);
       }
     }
   };

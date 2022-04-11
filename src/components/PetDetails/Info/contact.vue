@@ -39,13 +39,14 @@ import getOrganizationDetails from "@/composables/getOrganizationDetails";
 
 export default {
   props: ["details", "token", "setError"],
+  emits: ["setError"],
   components: { ContactIcon, PhoneIcon, EmailIcon, AddressIcon, LabelIcon },
-  setup(props) {
-    const { token, setError, details } = toRefs(props);
+  setup(props, { emit }) {
+    const { token, details } = toRefs(props);
     const organization = getOrganizationDetails(
       token,
       details.value.organizationId,
-      setError
+      emit
     );
     return { organization };
   },

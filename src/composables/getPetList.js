@@ -1,7 +1,8 @@
 import axios from "axios";
 import { ref, watch } from "vue";
+import { getQuery } from "@/helpers";
 
-const getPetList = (token, setError) => {
+const getPetList = (token, emit) => {
   const petList = ref([]);
   const loading = ref(token.value ? false : true);
   let receiveToken = false;
@@ -9,11 +10,12 @@ const getPetList = (token, setError) => {
   let totalPages = null;
   const isEndOfPage = ref(false);
 
-  const updatePetList = async () => {
+  const updatePetList = async (filter) => {
     if (token.value) {
       loading.value = true;
       try {
-        const url = "https://api.petfinder.com/v2/animals?limit=100";
+        const query = getQuery(filter);
+        const url = "https://api.petfinder.com/v2/animals?limit=100"; // + query;
         const { data } = await axios({
           url,
           method: "get",
@@ -32,7 +34,7 @@ const getPetList = (token, setError) => {
         loading.value = false;
         isEndOfPage.value = false;
       } catch (e) {
-        setError(e.message);
+        emit("setError", e.message);
         loading.value = false;
       }
     }
@@ -66,7 +68,7 @@ const getPetList = (token, setError) => {
       );
       loading.value = false;
     } catch (e) {
-      setError(e.message);
+      emit("setError", e.message);
       loading.value = false;
     }
   };
