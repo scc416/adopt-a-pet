@@ -7,7 +7,7 @@ import BirdIcon from "vue-material-design-icons/Bird.vue";
 import FishIcon from "vue-material-design-icons/Fishbowl.vue";
 import BarnIcon from "vue-material-design-icons/Barn.vue";
 import UnknownIcon from "vue-material-design-icons/EmoticonNeutral.vue";
-import { attibutesValue } from "./constants";
+import { attibutesValue, replaceQuery } from "./constants";
 
 export const getPetIcon = (pet) => {
   switch (pet) {
@@ -192,16 +192,32 @@ export const formatAnimalTypes = (data) => {
   return { ...result, type };
 };
 
+const replaceQueryArr = Object.keys(replaceQuery);
+
+const arrayToQuery = (arr, type) => {
+  let result = "";
+  if (!arr.length) return result;
+  const newType = replaceQueryArr.includes(type) ? replaceQuery[type] : type;
+  result += `&${newType}=`;
+  for (const item of arr) {
+    result += `${encodeURIComponent(item.name)},`;
+  }
+  result = result.slice(0, result.length - 1);
+  return result;
+};
+
 export const getQuery = (filter) => {
   if (!filter) return "";
   let result = "";
   for (const type in filter.value) {
     const value = filter.value[type];
-    if (value) {
-      result += `&${type}=`;
-      result += `${encodeURIComponent(value.name)},`;
-      result = result.slice(0, result.length - 1);
-    }
+    const query = Array.isArray(value)
+      ? arrayToQuery(value, type)
+      : value
+      ? `&${type}=${encodeURIComponent(value.name)}`
+      : "";
+    result += query;
   }
+  console.log(result);
   return result;
 };

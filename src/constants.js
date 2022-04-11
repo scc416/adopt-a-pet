@@ -5,3 +5,7 @@ export const attibutesValue = {
   spayed_neutered: "Spayed",
   special_needs: "special_needs",
 };
+
+export const replaceQuery = {
+  colors: "color",
+};
