@@ -4,7 +4,7 @@
       <div>
         <Select
           :options="details.type"
-          :title="'Types'"
+          :title="'Type of pet'"
           @updateFilter="updateFilter"
           :keyName="'type'"
           :multiSelect="false"

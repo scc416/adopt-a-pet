@@ -33,7 +33,6 @@ const getPetList = (token, emit) => {
         } = data;
         currentPage = 1;
         totalPages = total_pages;
-        console.log("total_pages", total_pages)
         loading.value = false;
         isEndOfPage.value = currentPage === total_pages;
       } catch (e) {
