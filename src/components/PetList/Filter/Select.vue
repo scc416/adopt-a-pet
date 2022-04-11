@@ -17,13 +17,13 @@ import VueMultiselect from "vue-multiselect";
 import { watch } from "@vue/runtime-core";
 
 export default {
-  emits: ["update"],
+  emits: ["updateFilter"],
   props: ["options", "title"],
   components: { VueMultiselect },
   setup(props, { emit }) {
     const multiValue = ref(null);
     watch(multiValue, () => {
-      emit("update", multiValue.value);
+      emit("updateFilter", multiValue.value);
     });
     return { multiValue };
   },

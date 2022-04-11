@@ -3,7 +3,7 @@
     <Select
       :options="details.names"
       :title="'Animal Types'"
-      @update="setValue"
+      @updateFilter="setValue"
     />
     <button @click="getOptions()">Filter</button>
   </div>
