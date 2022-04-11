@@ -10,15 +10,6 @@
           :multiSelect="false"
         />
       </div>
-      <div v-if="breeds">
-        <Select
-          :options="breeds"
-          :title="'Breeds'"
-          @updateFilter="updateFilter"
-          :keyName="'breed'"
-          :multiSelect="true"
-        />
-      </div>
       <div
         v-for="(option, i) in filter.type ? details[filter.type.name] : []"
         :key="i"
@@ -28,6 +19,15 @@
           :title="i[0].toUpperCase() + i.slice(1)"
           @updateFilter="updateFilter"
           :keyName="i"
+          :multiSelect="true"
+        />
+      </div>
+      <div v-if="breeds">
+        <Select
+          :options="breeds"
+          :title="'Breeds'"
+          @updateFilter="updateFilter"
+          :keyName="'breed'"
           :multiSelect="true"
         />
       </div>
