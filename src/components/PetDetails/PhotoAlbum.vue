@@ -6,8 +6,16 @@
       :src="photos[imageNum].large"
       alt=""
     />
-    <div v-else>
-      <iframe :src="videos[imageNum - photos.length].vid"></iframe>
+    <div v-else class="video">
+      <iframe
+        width="448"
+        height="252"
+        frameborder="0"
+        webkitAllowFullScreen
+        mozallowfullscreen
+        allowFullScreen
+        :src="videos[imageNum - photos.length].vid"
+      ></iframe>
     </div>
     <div class="thumbnails">
       <div v-for="(photo, i) in photos" :key="i" @click="updateImage(i)">
@@ -48,6 +56,22 @@ export default {
 <style>
 .photos {
   width: 37%;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.video iframe,
+.video video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .photos .main-img {
