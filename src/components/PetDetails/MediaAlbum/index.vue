@@ -1,9 +1,9 @@
 <template>
   <div class="photos">
     <img
-      v-if="imageNum < photos.length"
+      v-if="mediaNum < photoNum"
       class="main-img"
-      :src="photos[imageNum].large"
+      :src="photos[mediaNum].large"
       alt=""
     />
     <div v-else class="video">
@@ -14,21 +14,21 @@
         webkitAllowFullScreen
         mozallowfullscreen
         allowFullScreen
-        :src="videos[imageNum - photos.length].vid"
+        :src="videos[mediaNum - photoNum].vid"
       ></iframe>
     </div>
     <div class="thumbnails">
-      <div v-for="(photo, i) in photos" :key="i" @click="updateImage(i)">
-        <div class="image-screen" v-if="i !== imageNum"></div>
+      <div v-for="(photo, i) in photos" :key="i" @click="updateMedia(i)">
+        <div class="image-screen" v-if="i !== mediaNum"></div>
         <img :src="photo.small" alt="" />
       </div>
       <div
         v-for="(video, i) in videos"
         :key="i"
-        @click="updateImage(i + photos.length)"
+        @click="updateMedia(i + photoNum)"
       >
         <div class="video-screen"><PlayIcon /></div>
-        <div class="image-screen" v-if="i + photos.length !== imageNum"></div>
+        <div class="image-screen" v-if="i + photos.length !== mediaNum"></div>
         <img :src="video.img" />
       </div>
     </div>
@@ -37,7 +37,7 @@
 
 <script>
 import { toRefs } from "@vue/reactivity";
-import getPhotoAlbum from "@/composables/getPhotoAlbum";
+import useMediaAlbum from "@/composables/useMediaAlbum";
 import PlayIcon from "vue-material-design-icons/PlayCircle.vue";
 import { getVideoURL } from "@/helpers";
 
@@ -46,9 +46,10 @@ export default {
   components: { PlayIcon },
   setup(props) {
     const { photos, videos } = toRefs(props);
-    const { updateImage, imageNum } = getPhotoAlbum();
+    const { updateMedia, mediaNum } = useMediaAlbum();
     const newVideo = getVideoURL(videos);
-    return { photos, updateImage, imageNum, videos: newVideo };
+    const photoNum = photos.value.length;
+    return { photos, updateMedia, photoNum, videos: newVideo, mediaNum };
   },
 };
 </script>
