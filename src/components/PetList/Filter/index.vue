@@ -3,7 +3,7 @@
     <Select
       :options="details.names"
       :title="'Animal Types'"
-      :value="names"
+      @update="setValue"
     />
     <button @click="getOptions()">Filter</button>
   </div>
@@ -12,7 +12,7 @@
 <script>
 import Select from "./Select.vue";
 import getAnimalTypes from "@/composables/getAnimalTypes";
-import { ref, toRefs } from "@vue/reactivity";
+import { toRefs } from "@vue/reactivity";
 
 export default {
   props: ["token", "setError"],
@@ -20,10 +20,14 @@ export default {
   setup(props) {
     const { token, setError } = toRefs(props);
     const details = getAnimalTypes(token, setError);
-    const names = ref(null);
-    const getOptions = () => console.log(names.value);
+    const getOptions = () => {
+      console.log("CLICK");
+    };
+    const setValue = (str) => {
+      console.log(str);
+    };
 
-    return { details, getOptions, names };
+    return { setValue, details, getOptions };
   },
 };
 </script>
