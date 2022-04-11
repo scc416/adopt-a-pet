@@ -188,7 +188,7 @@ export const formatAnimalTypes = (data) => {
       }
     }
   }
-
+  console.log(result);
   return { ...result, type };
 };
 
@@ -203,6 +203,5 @@ export const getQuery = (filter) => {
       result = result.slice(0, result.length - 1);
     }
   }
-  console.log(result);
   return result;
 };
