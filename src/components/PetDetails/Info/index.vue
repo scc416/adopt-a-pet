@@ -68,7 +68,7 @@ export default {
   -webkit-columns: 2;
   -moz-columns: 2;
   column-gap: 2em;
-  margin-bottom: 3em;
+  margin-bottom: 1.5em;
 }
 
 .info li {
