@@ -7,9 +7,7 @@ const getAnimalBreeds = (token, filter, emit) => {
   let gotDetails = false;
 
   const updateDetails = async () => {
-    console.log("UPDATING");
     if (token.value && filter.value && filter.value.type) {
-      console.log("YES");
       const url = `https://api.petfinder.com/v2/types/${filter.value.type.name}/breeds`;
       try {
         const {
@@ -27,8 +25,6 @@ const getAnimalBreeds = (token, filter, emit) => {
         emit("setError", e.message);
       }
     } else {
-      console.log("NO");
-
       details.value = null;
     }
   };
@@ -39,10 +35,7 @@ const getAnimalBreeds = (token, filter, emit) => {
     if (!gotDetails) updateDetails();
   });
 
-  watch(filter.value, () => {
-    updateDetails();
-    console.log("FILTER updated")
-  });
+  watch(filter.value, updateDetails);
 
   return details;
 };
