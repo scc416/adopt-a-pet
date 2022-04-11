@@ -1,12 +1,25 @@
 <template>
   <div v-if="details" class="filter">
-    <Select
-      :options="details.type"
-      :title="'Animal Types'"
-      @updateFilter="updateFilter"
-      :keyName="'type'"
-      :multiSelect="false"
-    />
+    <div>
+      <div>
+        <Select
+          :options="details.type"
+          :title="'Types'"
+          @updateFilter="updateFilter"
+          :keyName="'type'"
+          :multiSelect="false"
+        />
+      </div>
+      <div>
+        <Select
+          :options="details.type"
+          :title="'Types'"
+          @updateFilter="updateFilter"
+          :keyName="'type'"
+          :multiSelect="false"
+        />
+      </div>
+    </div>
     <button @click="submitFilter()">Filter</button>
   </div>
 </template>
@@ -34,4 +47,36 @@ export default {
 </script>
 
 <style>
+.filter {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1em;
+}
+
+.filter > div {
+  width: 100%;
+}
+
+.filter > div > div {
+  margin-top: 1em;
+}
+
+.filter > button {
+  margin-left: 1em;
+  width: auto;
+  background: #3aab97;
+  border-radius: 0.5em;
+  font-weight: 600;
+  border: #3aab97 solid 0.1em;
+  padding: 0.4em 0.9em;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.05em;
+}
+
+.filter > button:hover {
+  background: #fff;
+  color: #3aab97;
+}
 </style>
