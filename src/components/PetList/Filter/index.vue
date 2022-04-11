@@ -15,10 +15,10 @@
           <Select
             v-if="option.length"
             :options="option"
-            :title="'Types'"
+            :title="i[0].toUpperCase() + i.slice(1)"
             @updateFilter="updateFilter"
-            :keyName="'type'"
-            :multiSelect="false"
+            :keyName="i"
+            :multiSelect="true"
           />
         </div>
       </div>

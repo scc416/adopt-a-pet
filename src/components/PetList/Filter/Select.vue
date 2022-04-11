@@ -5,7 +5,7 @@
     :options="options"
     :close-on-select="true"
     :multiSelect="multiSelect"
-    placeholder="Pick one"
+    :placeholder="multiSelect ? 'Pick one or more' : 'Pick one'"
     label="name"
     track-by="name"
   />
@@ -22,7 +22,7 @@ export default {
   components: { VueMultiselect },
   setup(props, { emit }) {
     const { keyName } = toRefs(props);
-    const value = ref(null);
+    const value = ref([]);
     watch(value, () => {
       emit("updateFilter", keyName.value, value.value);
     });
