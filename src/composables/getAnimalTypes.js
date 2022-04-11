@@ -20,6 +20,7 @@ const getAnimalTypes = (token, emit) => {
           },
         });
         details.value = formatAnimalTypes(types);
+        console.log(details.value)
         gotDetails = true;
       } catch (e) {
         emit("setError", e.message);

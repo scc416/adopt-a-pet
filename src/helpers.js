@@ -167,10 +167,15 @@ export const getVideoURL = (videos) => {
 
 export const formatAnimalTypes = (data) => {
   const type = [];
-  for (const { name } of data) {
+  const result = {};
+  for (const key in data) {
+    const value = data[key];
+    const { name } = value;
     type.push({ name });
+    result[name] = value;
   }
-  return { type };
+
+  return { ...result, type };
 };
 
 export const getQuery = (filter) => {

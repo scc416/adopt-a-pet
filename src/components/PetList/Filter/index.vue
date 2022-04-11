@@ -10,14 +10,19 @@
           :multiSelect="false"
         />
       </div>
-      <div>
-        <Select
-          :options="details.type"
+      <div v-if="filter.type">
+        <div v-for="(option, i) in details[filter.type.name]" :key="i">
+          {{ option }}, {{ i }}
+        </div>
+        <!-- <Select
+          v-for="(option, i) in details.options[filter.type]"
+          :key="i"
+          :options="option"
           :title="'Types'"
           @updateFilter="updateFilter"
           :keyName="'type'"
           :multiSelect="false"
-        />
+        /> -->
       </div>
     </div>
     <button @click="submitFilter()">Filter</button>
