@@ -6,7 +6,9 @@
       :src="photos[imageNum].large"
       alt=""
     />
-    <div v-else v-html="videos[imageNum - photos.length].embed"></div>
+    <div v-else>
+      <iframe :src="videos[imageNum - photos.length].vid"></iframe>
+    </div>
     <div class="thumbnails">
       <div v-for="(photo, i) in photos" :key="i" @click="updateImage(i)">
         <div class="image-screen" v-if="i !== imageNum"></div>
@@ -19,7 +21,7 @@
       >
         <div class="video-screen"><PlayIcon /></div>
         <div class="image-screen" v-if="i + photos.length !== imageNum"></div>
-        <div v-html="video.embed"></div>
+        <img :src="video.img" />
       </div>
     </div>
   </div>
@@ -38,7 +40,7 @@ export default {
     const { photos, videos } = toRefs(props);
     const { updateImage, imageNum } = getPhotoAlbum();
     const newVideo = getVideoURL(videos);
-    return { photos, updateImage, imageNum, videos };
+    return { photos, updateImage, imageNum, videos: newVideo };
   },
 };
 </script>
