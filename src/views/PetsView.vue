@@ -30,10 +30,13 @@ export default {
   props: ["token"],
   components: { PetCard, Spin, ShowMoreButton, BackToTopButton, Filter },
   setup(props, { emit }) {
-    const { token, setError } = toRefs(props);
+    const { token } = toRefs(props);
     const { petList, updatePetList, loading, loadMore, isEndOfPage } =
       getPetList(token, emit);
-    return { petList, updatePetList, loading, loadMore, isEndOfPage };
+    const setError = (e) => {
+      emit("setError", e);
+    };
+    return { petList, updatePetList, loading, loadMore, isEndOfPage, setError };
   },
 };
 </script>

@@ -188,10 +188,7 @@ export const getQuery = (filter) => {
   for (const type in filter.value) {
     result += `&${type}=`;
     const values = filter.value[type];
-    for (const value of values) {
-      console.log(value);
-      // result += `${value.name},`;
-    }
+    result += `${values.name},`;
     result = result.slice(0, result.length - 1);
   }
   console.log(result);
