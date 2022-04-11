@@ -40,25 +40,4 @@ export default {
 .photos {
   width: 37%;
 }
-
-.video {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  border-radius: 1em;
-  overflow: hidden;
-}
-
-.video iframe,
-.video video {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.photos .main-img {
-  width: 100%;
-  border-radius: 1em;
-}
 </style>
