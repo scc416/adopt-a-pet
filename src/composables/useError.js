@@ -11,13 +11,18 @@ const useError = () => {
   };
 
   watch(error, () => {
+    console.log(error.value);
     if (error.value) {
       errors.push(error.value);
       setTimeout(removeError, 5000);
     }
   });
 
-  return error;
+  const setError = (e) => {
+    error.value = e;
+  };
+
+  return { error, setError };
 };
 
 export default useError;

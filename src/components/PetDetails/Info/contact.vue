@@ -38,14 +38,14 @@ import { toRefs } from "@vue/reactivity";
 import getOrganizationDetails from "@/composables/getOrganizationDetails";
 
 export default {
-  props: ["details", "token", "error"],
+  props: ["details", "token", "setError"],
   components: { ContactIcon, PhoneIcon, EmailIcon, AddressIcon, LabelIcon },
   setup(props) {
-    const { token, error, details } = toRefs(props);
+    const { token, setError, details } = toRefs(props);
     const organization = getOrganizationDetails(
       token,
       details.value.organizationId,
-      error
+      setError
     );
     return { organization };
   },

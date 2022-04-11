@@ -4,7 +4,7 @@
     <hr />
     <InfoSection :info="formattedDetails.info" />
     <hr />
-    <ContactSection :details="formattedDetails" :token="token" :error="error" />
+    <ContactSection :details="formattedDetails" :token="token" :setError="setError" />
   </div>
 </template>
 
@@ -16,7 +16,7 @@ import InfoSection from "./info.vue";
 import ContactSection from "./contact.vue";
 
 export default {
-  props: ["details", "token", "error"],
+  props: ["details", "token", "setError"],
   components: {
     ContactSection,
     MainSection,

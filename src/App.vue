@@ -1,7 +1,7 @@
 <template>
   <Nav />
   <Error :error="error" />
-  <router-view :token="token" :error="error" />
+  <router-view :token="token" :setError="setError" />
 </template>
 
 <script>
@@ -13,9 +13,9 @@ import useError from "./composables/useError";
 export default {
   components: { Nav, Error },
   setup() {
-    const error = useError();
-    const token = getToken(error);
-    return { token, error };
+    const { error, setError } = useError();
+    const token = getToken(setError);
+    return { token, setError, error };
   },
 };
 </script>

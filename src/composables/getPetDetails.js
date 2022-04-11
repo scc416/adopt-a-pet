@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 
-const getPetDetails = (id, token, error) => {
+const getPetDetails = (id, token, setError) => {
   const details = ref(null);
   const loading = ref(token.value ? false : true);
   let gotDetails = false;
@@ -23,7 +23,7 @@ const getPetDetails = (id, token, error) => {
         details.value = animal;
         gotDetails = true;
       } catch (e) {
-        error.value = e.message;
+        setError(e.message);
       }
       loading.value = false;
     }
@@ -35,9 +35,9 @@ const getPetDetails = (id, token, error) => {
     if (!gotDetails) updateDetails();
   });
 
-  watch(error, () => {
-    loading.value = false;
-  });
+  // watch(error, () => {
+  //   loading.value = false;
+  // });
 
   return { details, loading };
 };

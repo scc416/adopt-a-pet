@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 
-const getPetList = (token, error) => {
+const getPetList = (token, setError) => {
   const petList = ref([]);
   const loading = ref(token.value ? false : true);
   let receiveToken = false;
@@ -32,7 +32,7 @@ const getPetList = (token, error) => {
         loading.value = false;
         isEndOfPage.value = false;
       } catch (e) {
-        error.value = e.message;
+        setError(e.message);
         loading.value = false;
       }
     }
@@ -66,7 +66,7 @@ const getPetList = (token, error) => {
       );
       loading.value = false;
     } catch (e) {
-      error.value = e.message;
+      setError(e.message);
       loading.value = false;
     }
   };
@@ -78,9 +78,9 @@ const getPetList = (token, error) => {
     }
   });
 
-  watch(error, () => {
-    loading.value = false;
-  });
+  // watch(error, () => {
+  //   loading.value = false;
+  // });
 
   updatePetList();
 

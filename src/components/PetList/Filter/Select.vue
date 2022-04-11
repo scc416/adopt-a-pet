@@ -1,4 +1,5 @@
 <template>
+  <label class="typo__label">{{ title }}</label>
   <VueMultiselect
     v-model="multiValue"
     :options="options"
@@ -11,17 +12,17 @@
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { toRefs } from "@vue/reactivity";
 import VueMultiselect from "vue-multiselect";
 import { watch } from "@vue/runtime-core";
 
 export default {
-  props: ["options"],
+  props: ["options", "title", "value"],
   components: { VueMultiselect },
-  setup() {
-    const multiValue = ref(null);
-    watch(multiValue, () => console.log(multiValue.value));
-    return { multiValue };
+  setup(props) {
+    const { value, title, options } = toRefs(props);
+    watch(value, () => console.log(value.value));
+    return { multiValue: value, title, options };
   },
 };
 </script>
