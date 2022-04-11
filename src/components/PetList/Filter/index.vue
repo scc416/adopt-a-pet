@@ -60,7 +60,8 @@ export default {
 .filter > div {
   width: 100%;
   display: grid;
-  grid-gap: 1em;
+  grid-row-gap: 0.7em;
+  grid-column-gap: 1em;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
