@@ -3,9 +3,10 @@
 ## to-do list
 
 - error page
-- details page
 - filter on pet list
-- refactor, more helper functions
+  - show/hide filter
+  - search by name
+- sort
 - saved search
 - liked pet
 
