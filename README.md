@@ -6,7 +6,15 @@
 - filter on pet list
   - show/hide filter
   - search by name
-- sort
+  - filter by breed, size, age, status
+  - good_with_children
+  - good_with_dogs
+  - good_with_cats
+  - house_trained
+  - declawed
+  - special_needs
+  - location, distance
+- sorting pet list
 - saved search
 - liked pet
 
