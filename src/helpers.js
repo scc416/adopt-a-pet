@@ -173,3 +173,12 @@ export const getVideoURL = (videos) => {
   }
   return result;
 };
+
+export const formatAnimalTypes = (data) => {
+  const names = [];
+  for (const { name } of data) {
+    names.push({ name });
+  }
+  console.log(names);
+  return { names };
+};

@@ -16,18 +16,12 @@ import VueMultiselect from "vue-multiselect";
 import { watch } from "@vue/runtime-core";
 
 export default {
+  props: ["options"],
   components: { VueMultiselect },
   setup() {
     const multiValue = ref(null);
-    const options = ref([
-      { name: "list" },
-      { name: "of" },
-      { name: "options" },
-    ]);
-
     watch(multiValue, () => console.log(multiValue.value));
-
-    return { multiValue, options };
+    return { multiValue };
   },
 };
 </script>

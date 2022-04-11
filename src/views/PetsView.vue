@@ -1,6 +1,6 @@
 <template>
   <Spin v-if="loading" />
-  <Filter />
+  <Filter :token="token" :error="error" />
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
