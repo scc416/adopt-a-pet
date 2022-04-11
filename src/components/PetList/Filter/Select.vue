@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { ref, toRefs } from "@vue/reactivity";
 import VueMultiselect from "vue-multiselect";
 import { watch } from "@vue/runtime-core";
 
@@ -21,9 +21,10 @@ export default {
   props: ["options", "title"],
   components: { VueMultiselect },
   setup(props, { emit }) {
+    const { title } = toRefs(props);
     const multiValue = ref(null);
     watch(multiValue, () => {
-      emit("updateFilter", multiValue.value);
+      emit("updateFilter", title, multiValue.value);
     });
     return { multiValue };
   },
