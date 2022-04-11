@@ -165,6 +165,14 @@ export const getVideoURL = (videos) => {
   return result;
 };
 
+const makeOptionForSelect = (arr) => {
+  const result = [];
+  for (const value of arr) {
+    result.push({ name: value });
+  }
+  return result;
+};
+
 export const formatAnimalTypes = (data) => {
   const type = [];
   const result = {};
@@ -172,7 +180,13 @@ export const formatAnimalTypes = (data) => {
     const value = data[key];
     const { name } = value;
     type.push({ name });
-    result[name] = value;
+    result[name] = {};
+    for (const key2 in value) {
+      const val = value[key2];
+      if (Array.isArray(val) && val.length) {
+        result[name][key2] = makeOptionForSelect(val);
+      }
+    }
   }
 
   return { ...result, type };
