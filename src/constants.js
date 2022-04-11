@@ -8,4 +8,6 @@ export const attibutesValue = {
 
 export const replaceQuery = {
   colors: "color",
+  coats: "coat",
+  genders: "gender",
 };
