@@ -186,10 +186,12 @@ export const getQuery = (filter) => {
   if (!filter) return "";
   let result = "";
   for (const type in filter.value) {
-    result += `&${type}=`;
-    const values = filter.value[type];
-    result += `${encodeURIComponent(values.name)},`;
-    result = result.slice(0, result.length - 1);
+    const value = filter.value[type];
+    if (value) {
+      result += `&${type}=`;
+      result += `${encodeURIComponent(value.name)},`;
+      result = result.slice(0, result.length - 1);
+    }
   }
   console.log(result);
   return result;
