@@ -1,5 +1,6 @@
 <template>
   <Spin v-if="loading" />
+  <Filter />
   <div class="pets-list">
     <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
   </div>
@@ -16,11 +17,12 @@ import Spin from "../components/Spin.vue";
 import ShowMoreButton from "../components/PetList/ShowMore.vue";
 import BackToTopButton from "../components/PetList/BackToTop.vue";
 import getPetList from "@/composables/getPetList";
+import Filter from "@/components/PetList/Filter/";
 import { toRefs } from "@vue/reactivity";
 
 export default {
   props: ["token", "error"],
-  components: { PetCard, Spin, ShowMoreButton, BackToTopButton },
+  components: { PetCard, Spin, ShowMoreButton, BackToTopButton, Filter },
   setup(props) {
     const { token, error } = toRefs(props);
     const { petList, updatePetList, loading, loadMore, isEndOfPage } =

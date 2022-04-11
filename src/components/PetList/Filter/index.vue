@@ -1,13 +1,10 @@
-<template>
-  
-</template>
+<template><Select /></template>
 
 <script>
-export default {
+import Select from "./Select.vue";
 
-}
+export default { components: { Select } };
 </script>
 
 <style>
-
 </style>
