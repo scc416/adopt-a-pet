@@ -13,7 +13,6 @@
       <div v-if="filter.type">
         <div v-for="(option, i) in details[filter.type.name]" :key="i">
           <Select
-            v-if="option.length"
             :options="option"
             :title="i[0].toUpperCase() + i.slice(1)"
             @updateFilter="updateFilter"
