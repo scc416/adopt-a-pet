@@ -1,7 +1,7 @@
 <template>
   <VueMultiselect
     v-model="multiValue"
-    :options="source"
+    :options="options"
     :multiple="true"
     :close-on-select="true"
     placeholder="Pick some"
@@ -18,16 +18,19 @@ import { watch } from "@vue/runtime-core";
 export default {
   components: { VueMultiselect },
   setup() {
-    const selected = ref(null);
+    const multiValue = ref(null);
+    const options = ref([
+      { name: "list" },
+      { name: "of" },
+      { name: "options" },
+    ]);
 
-    watch(selected, console.log(selected.value));
-    return {
-      selected: null,
-      options: ["list", "of", "options"],
-    };
+    watch(multiValue, () => console.log(multiValue.value));
+
+    return { multiValue, options };
   },
 };
 </script>
 
-<style>
+<style src="vue-multiselect/dist/vue-multiselect.css">
 </style>
