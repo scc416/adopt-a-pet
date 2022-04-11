@@ -2,7 +2,6 @@
 
 ## to-do list
 
-- error page
 - filter on pet list
   - show/hide filter
   - search by name
