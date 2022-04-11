@@ -11,7 +11,7 @@ import { useRoute } from "vue-router";
 import { toRefs } from "@vue/reactivity";
 import getPetDetails from "@/composables/getPetDetails";
 import Spin from "../components/Spin.vue";
-import PhotoAlbum from "@/components/PetDetails/PhotoAlbum.vue";
+import PhotoAlbum from "@/components/PetDetails/PhotoAlbum/";
 import Info from "@/components/PetDetails/Info/";
 
 export default {
