@@ -5,6 +5,7 @@
       :title="'Animal Types'"
       @updateFilter="updateFilter"
       :keyName="'type'"
+      :multiSelect="false"
     />
     <button @click="submitFilter()">Filter</button>
   </div>
