@@ -13,6 +13,7 @@
     v-if="!isEndOfPage && (petList.length || !loading)"
     :loadMore="loadMore"
   />
+  <h4 v-else-if="isEndOfPage">You have reached the end of the list</h4>
   <BackToTopButton />
 </template>
 
