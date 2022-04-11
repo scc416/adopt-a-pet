@@ -1,22 +1,11 @@
 <template>
   <div class="photos">
-    <img
-      v-if="mediaNum < photoNum"
-      class="main-img"
-      :src="photos[mediaNum].large"
-      alt=""
+    <ShowMedia
+      :photos="photos"
+      :videos="videos"
+      :photoNum="photoNum"
+      :mediaNum="mediaNum"
     />
-    <div v-else class="video">
-      <iframe
-        width="448"
-        height="252"
-        frameborder="0"
-        webkitAllowFullScreen
-        mozallowfullscreen
-        allowFullScreen
-        :src="videos[mediaNum - photoNum].vid"
-      ></iframe>
-    </div>
     <Thumbnail
       :photos="photos"
       :videos="videos"
@@ -29,14 +18,14 @@
 
 <script>
 import { toRefs } from "@vue/reactivity";
-import useMediaAlbum from "@/composables/useMediaAlbum";
-import PlayIcon from "vue-material-design-icons/PlayCircle.vue";
 import { getVideoURL } from "@/helpers";
+import useMediaAlbum from "@/composables/useMediaAlbum";
 import Thumbnail from "./thumbnail.vue";
+import ShowMedia from "./ShowMedia.vue";
 
 export default {
   props: ["photos", "videos"],
-  components: { PlayIcon, Thumbnail },
+  components: { Thumbnail, ShowMedia },
   setup(props) {
     const { photos, videos } = toRefs(props);
     const { updateMedia, mediaNum } = useMediaAlbum();
