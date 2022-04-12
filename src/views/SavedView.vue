@@ -9,6 +9,7 @@ import getLikedPets from "@/composables/getLikedPets";
 
 export default {
   emits: ["setError"],
+  props: ["token"],
   setup(props, { emit }) {
     const petList = getLikedPets(emit);
     return { petList };
