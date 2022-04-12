@@ -14,7 +14,7 @@ const getPetList = (token, emit) => {
   const sort = ref("");
 
   const updatePetList = async (data, text, sorting) => {
-    if (!sort) {
+    if (!sorting) {
       filter.value = data;
       name.value = text;
     }

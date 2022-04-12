@@ -237,21 +237,28 @@ export const formatQueryValue = ({ name }) => {
   return encodeURIComponent(value);
 };
 
-export const getQuery = (filter, name) => {
-  if (!filter && !name) return "";
+export const getQuery = (filter, name, sort) => {
+  if (!filter && !name && !sort) return "";
+  console.log("HELLO");
   let result = "";
-  for (const type in filter.value) {
-    const value = filter.value[type];
-    const newType = replaceQueryArr.includes(type) ? replaceQuery[type] : type;
-    const query = Array.isArray(value)
-      ? arrayToQuery(value, newType)
-      : value
-      ? `&${newType.toLowerCase()}=${formatQueryValue(value)}`
-      : "";
-    result += query;
+
+  if (filter) {
+    for (const type in filter.value) {
+      const value = filter.value[type];
+      const newType = replaceQueryArr.includes(type)
+        ? replaceQuery[type]
+        : type;
+      const query = Array.isArray(value)
+        ? arrayToQuery(value, newType)
+        : value
+        ? `&${newType.toLowerCase()}=${formatQueryValue(value)}`
+        : "";
+      result += query;
+    }
   }
 
   if (name && name.value) result += `&name=${encodeURIComponent(name.value)}`;
+  if (sort) result += `&sort=${sort}`;
 
   console.log(result);
   return result;

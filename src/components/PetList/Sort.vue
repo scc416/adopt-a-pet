@@ -1,15 +1,17 @@
 <template>
   <div class="button-group">
-    <button>Recent (Ascending)</button>
-    <button>Recent (Descending)</button>
-    <button>Recent (Descending)</button>
+    <button @click="submitSort('recent')">Recent (Ascending)</button>
+    <button @click="submitSort('-recent')">Recent (Descending)</button>
   </div>
 </template>
 
 <script>
 export default {
   emits: ["submitSort"],
-  setup() {},
+  setup(props, { emit }) {
+    const submitSort = (sort) => emit("submitSort", null, null, sort);
+    return { submitSort };
+  },
 };
 </script>
 

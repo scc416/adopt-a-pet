@@ -77,7 +77,7 @@ export default {
     const { filter, updateFilter, name } = useFilter();
     const breeds = getAnimalBreeds(token, filter, emit);
 
-    const submitFilter = () => emit("submitFilter", filter, name, location);
+    const submitFilter = () => emit("submitFilter", filter, name);
     return {
       submitFilter,
       updateFilter,
