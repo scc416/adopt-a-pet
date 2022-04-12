@@ -21,11 +21,12 @@ export default {
   props: ["options", "title", "keyName", "multiSelect"],
   components: { VueMultiselect },
   setup(props, { emit }) {
-    const { keyName } = toRefs(props);
+    const { keyName, options } = toRefs(props);
     const value = ref([]);
     watch(value, () => {
       emit("updateFilter", keyName.value, value.value);
     });
+    watch(options, () => (value.value = []));
     return { value };
   },
 };
