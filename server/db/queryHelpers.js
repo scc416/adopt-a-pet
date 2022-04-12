@@ -77,9 +77,7 @@ const queryGenerator = (db) => {
     }
   };
 
-  const deleteLikes = async (visitorId, likeId) => {};
-
-  return { getLike, getLikes, postLikes, deleteLikes };
+  return { getLike, getLikes, postLikes };
 };
 
 module.exports = queryGenerator;
