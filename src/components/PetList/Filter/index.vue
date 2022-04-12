@@ -2,6 +2,10 @@
   <div v-if="details" class="filter">
     <div>
       <div>
+        <label class="typo__label">Name</label>
+        <div><input type="text" class="text" /></div>
+      </div>
+      <div>
         <Select
           :options="details.type"
           :title="'Type of pet'"
@@ -78,6 +82,17 @@ export default {
 </script>
 
 <style>
+.filter input.text {
+  color: #39495c;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  padding: 8px 8px 8px 13px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  min-height: 40px;
+}
+
 .filter {
   width: 100%;
   display: flex;
