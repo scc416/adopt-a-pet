@@ -3,9 +3,8 @@
 ## to-do list
 
 - filter on pet list
-  - show/hide filter
   - search by name
-  - filter by breed, size, age, status
+  - filter by size, age, status
   - good_with_children
   - good_with_dogs
   - good_with_cats
