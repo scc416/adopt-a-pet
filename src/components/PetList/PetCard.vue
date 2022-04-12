@@ -25,7 +25,7 @@ import HeartIcon from "vue-material-design-icons/Heart.vue";
 
 export default {
   props: ["pet", "liked"],
-  components: { HeartIcon },
+  components: { HeartIcon, LocationIcon },
   setup(props) {
     const { pet } = props;
     const { id, name, photos, gender, breeds, age, contact, type } = pet;
@@ -44,7 +44,6 @@ export default {
       icon,
     };
   },
-  components: { LocationIcon },
 };
 </script>
 
@@ -107,5 +106,27 @@ export default {
   padding: 2em 0.7em 0.7em;
   width: 100%;
   background: linear-gradient(#00000000, #000000);
+}
+
+.pet-card .like-icon {
+  position: absolute;
+  right: 0.4em;
+  top: 0.4em;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pet-card .like-icon > * {
+  position: relative;
+  top: 0.1em;
+}
+
+.pet-card .liked,
+.pet-card .not-like:hover {
+  color: #fd827b;
 }
 </style>
