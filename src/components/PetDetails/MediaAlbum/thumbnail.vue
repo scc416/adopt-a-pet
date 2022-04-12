@@ -11,7 +11,7 @@
     >
       <div class="video-screen"><PlayIcon /></div>
       <div class="image-screen" v-if="i + photos.length !== mediaNum"></div>
-      <img :src="video.img" />
+      <img v-if="video.img" :src="video.img" />
     </div>
   </div>
 </template>

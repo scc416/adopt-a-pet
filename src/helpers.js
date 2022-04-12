@@ -142,18 +142,31 @@ export const getFormattedInfo = (details) => {
   return formattedInfo;
 };
 
+const validURL = (str) => {
+  const pattern = new RegExp(
+    "^(https?:\\/\\/)?" + // protocol
+      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
+      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+      "(\\#[-a-z\\d_]*)?$",
+    "i"
+  ); // fragment locator
+  return !!pattern.test(str) && str;
+};
+
 const getSrc = (embed) => {
   const iOf1 = embed.indexOf('src="');
   const slice1 = embed.slice(iOf1 + 5);
   const iOf2 = slice1.indexOf('"');
 
-  const vid = slice1.slice(0, iOf2);
+  const vid = validURL(slice1.slice(0, iOf2));
 
   const slice2 = slice1.slice(iOf2);
   const iOf3 = slice2.indexOf('src="');
   const slice4 = slice2.slice(iOf3 + 5);
   const iOf4 = slice4.indexOf('"');
-  const img = slice4.slice(0, iOf4);
+  const img = validURL(slice4.slice(0, iOf4));
 
   return { vid, img };
 };
