@@ -56,9 +56,11 @@ const queryGenerator = (db) => {
 
       const result = await db.query(existQueryString, values);
       console.log(result, result.data);
-      result
+      const data = result
         ? await db.query(deleteQueryString, values)
         : await db.query(postQueryString, values);
+        console.log(data, getData(data));
+      return getData(data);
     } catch (error) {
       console.log(error);
     }
