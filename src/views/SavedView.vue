@@ -1,10 +1,10 @@
 <template>
-  <div>{{ petList }}</div>
+  <div v-if="petList.length">{{ petList }}</div>
+  <div v-else>You haven't liked any pet.</div>
 </template>
 
 <script>
 import getLikedPets from "@/composables/getLikedPets";
-import { watch } from "@vue/runtime-core";
 
 export default {
   setup(props, { emit }) {
