@@ -18,6 +18,11 @@ export const replaceQuery = {
   "Special needs": "special_needs",
 };
 
+export const replaceQueryValue = {
+  Yes: 1,
+  No: 0,
+};
+
 export const pxFromTop = 300;
 
 export const filterOptions = {

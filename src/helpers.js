@@ -7,7 +7,7 @@ import BirdIcon from "vue-material-design-icons/Bird.vue";
 import FishIcon from "vue-material-design-icons/Fishbowl.vue";
 import BarnIcon from "vue-material-design-icons/Barn.vue";
 import UnknownIcon from "vue-material-design-icons/EmoticonNeutral.vue";
-import { attibutesValue, replaceQuery } from "./constants";
+import { attibutesValue, replaceQuery, replaceQueryValue } from "./constants";
 
 export const getPetIcon = (pet) => {
   switch (pet) {
@@ -219,8 +219,11 @@ const arrayToQuery = (arr, type) => {
   return result;
 };
 
+const replaceQueryValueArr = Object.keys(replaceQueryValue);
+
 export const formatQueryValue = ({ name }) => {
-  const value = name === "Yes" ? 1 : name === "No" ? 0 : name;
+  const needToBeReplaced = replaceQueryValueArr.includes(name);
+  const value = needToBeReplaced ? replaceQueryValue[name] : name;
   return encodeURIComponent(value);
 };
 
