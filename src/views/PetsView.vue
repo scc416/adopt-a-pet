@@ -44,7 +44,7 @@ import getPetList from "@/composables/getPetList";
 import Filter from "@/components/PetList/Filter/";
 import { toRefs } from "@vue/reactivity";
 import getLikedPets from "@/composables/getLikedPets";
-import useShow from "@/composables/useShow";
+import useControl from "@/composables/useControl";
 
 export default {
   emits: ["setError"],
@@ -56,8 +56,7 @@ export default {
       getPetList(token, emit);
     const setError = (e) => emit("setError", e);
     const likedPetList = getLikedPets();
-    const { show: showFilter, toggleShow: toggleFilter } = useShow();
-    const { show: showSort, toggleShow: toggleSort } = useShow();
+    const { showFilter, showSort, toggleFilter, toggleSort } = useControl();
     return {
       petList,
       updatePetList,
