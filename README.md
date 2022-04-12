@@ -13,8 +13,7 @@
   - declawed
   - special_needs
   - location, distance
-- sorting pet list
-- saved search
+- sort pet list
 - liked pet
 
 ## Credits
