@@ -26,10 +26,7 @@ export default {
     watch(value, () => {
       emit("updateFilter", keyName.value, value.value);
     });
-    watch(options, () => {
-      value.value = [];
-      console.log(keyName.value);
-    });
+    watch(options, () => (value.value = []));
     return { value };
   },
 };

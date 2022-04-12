@@ -40,7 +40,7 @@ const getAnimalBreeds = (token, filter, emit) => {
   watch(filter.value, () => {
     if (!filter.value.type) {
       type = null;
-      details.value = [];
+      details.value =  [];
     }
     if (filter.value.type) {
       if (type !== filter.value.type.name) {

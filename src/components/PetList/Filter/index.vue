@@ -24,7 +24,6 @@
       </div>
       <div v-if="breeds">
         <Select
-          v-if="breeds.length"
           :options="breeds"
           :title="'Breeds'"
           @updateFilter="updateFilter"
