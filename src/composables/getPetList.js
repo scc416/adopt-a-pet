@@ -17,7 +17,7 @@ const getPetList = (token, emit) => {
       loading.value = true;
       try {
         const query = getQuery(filter.value);
-        const url = `https://api.petfinder.com/v2/animals?limit=100&status=found${query}`;
+        const url = `https://api.petfinder.com/v2/animals?limit=100${query}`;
         const { data } = await axios({
           url,
           method: "get",
