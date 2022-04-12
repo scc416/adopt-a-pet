@@ -1,6 +1,6 @@
 <template>
   <Spin v-if="loading" />
-  <h1>Liked Pets</h1>
+  <h3><HeartIcon />Liked Pets</h3>
   <div v-if="petList.length">
     <div class="pets-list">
       <PetCard
@@ -22,11 +22,12 @@ import getPetDetailsWithIds from "@/composables/getPetDetailsWithIds";
 import { toRefs } from "@vue/reactivity";
 import PetCard from "@/components/PetList/PetCard.vue";
 import Spin from "@/components/Spin.vue";
+import HeartIcon from "vue-material-design-icons/Heart.vue";
 
 export default {
   emits: ["setError"],
   props: ["token"],
-  components: { PetCard, Spin },
+  components: { PetCard, Spin, HeartIcon },
   setup(props, { emit }) {
     const { token } = toRefs(props);
     const petList = getLikedPets(emit);
@@ -38,4 +39,13 @@ export default {
 </script>
 
 <style>
+h3 {
+  color: #3aab97;
+}
+
+h3 > *:first-child {
+  position: relative;
+  top: 0.25em;
+  right: 0.2em;
+}
 </style>
