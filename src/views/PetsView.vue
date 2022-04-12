@@ -13,6 +13,7 @@
     @setError="setError"
     @submitFilter="updatePetList"
   />
+  <Sort v-if="showSort" />
   <div class="pets-list">
     <PetCard
       v-for="pet in petList"
@@ -44,6 +45,7 @@ import { toRefs } from "@vue/reactivity";
 import getLikedPets from "@/composables/getLikedPets";
 import useControl from "@/composables/useControl";
 import Control from "@/components/PetList/Control.vue";
+import Sort from "@/components/PetList/Sort.vue";
 
 export default {
   emits: ["setError"],
@@ -55,6 +57,7 @@ export default {
     BackToTopButton,
     Filter,
     Control,
+    Sort,
   },
   setup(props, { emit }) {
     const { token } = toRefs(props);
