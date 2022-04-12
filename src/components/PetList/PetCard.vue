@@ -4,6 +4,9 @@
     :to="{ name: 'petDetails', params: { id } }"
     class="pet-card"
   >
+    <div class="like-icon" :class="liked ? 'liked' : 'not-like'">
+      <HeartIcon />
+    </div>
     <div class="content">
       <div class="name"><component :is="icon" /> {{ name }}</div>
       <div class="details">
@@ -18,9 +21,11 @@
 <script>
 import { getPetIcon, getBreed, getShortAddress } from "@/helpers";
 import LocationIcon from "vue-material-design-icons/MapMarker.vue";
+import HeartIcon from "vue-material-design-icons/Heart.vue";
 
 export default {
-  props: ["pet"],
+  props: ["pet", "liked"],
+  components: { HeartIcon },
   setup(props) {
     const { pet } = props;
     const { id, name, photos, gender, breeds, age, contact, type } = pet;

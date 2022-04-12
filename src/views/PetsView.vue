@@ -7,7 +7,12 @@
     @submitFilter="updatePetList"
   />
   <div class="pets-list">
-    <PetCard v-for="pet in petList" :key="pet.id" :pet="pet" />
+    <PetCard
+      v-for="pet in petList"
+      :key="pet.id"
+      :pet="pet"
+      :liked="likedPetList.includes(pet.id)"
+    />
   </div>
   <ShowMoreButton
     v-if="!isEndOfPage && (petList.length || !loading)"
@@ -25,6 +30,7 @@ import BackToTopButton from "../components/PetList/BackToTop.vue";
 import getPetList from "@/composables/getPetList";
 import Filter from "@/components/PetList/Filter/";
 import { toRefs } from "@vue/reactivity";
+import getLikedPets from "@/composables/getLikedPets";
 
 export default {
   emits: ["setError"],
@@ -37,7 +43,16 @@ export default {
     const setError = (e) => {
       emit("setError", e);
     };
-    return { petList, updatePetList, loading, loadMore, isEndOfPage, setError };
+    const likedPetList = getLikedPets();
+    return {
+      petList,
+      updatePetList,
+      loading,
+      loadMore,
+      isEndOfPage,
+      setError,
+      likedPetList,
+    };
   },
 };
 </script>

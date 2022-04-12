@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style>
-.like-icon {
+.info .like-icon {
   position: absolute;
   right: 1em;
   top: 1em;
@@ -64,18 +64,18 @@ export default {
   justify-content: center;
 }
 
-.like-icon > * {
+.info .like-icon > * {
   position: relative;
   top: 0.1em;
 }
 
-.not-like {
+.info .not-like {
   color: #fd827b;
   background: #fff;
 }
 
-.liked,
-.not-like:hover {
+.info .liked,
+.info .not-like:hover {
   color: #fff;
   background: #fd827b;
 }
