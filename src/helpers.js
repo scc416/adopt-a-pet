@@ -64,8 +64,7 @@ const getInfo = (attributes, environment) => {
   for (const attribute in attributes) {
     const value = attributes[attribute];
     if (value) {
-      const isSpecialNeed = attribute === "special_needs";
-      const sentence = isSpecialNeed ? value : attibutesValue[attribute];
+      const sentence = attibutesValue[attribute];
       info.push(sentence);
     }
   }
@@ -131,7 +130,7 @@ export const getFormattedInfo = (details) => {
     location: getShortAddress(address),
     status: toSentenceCase(status),
     coat,
-    characteristics: tags,
+    characteristics: tags.filter((characteristic) => characteristic),
     info: getInfo(attributes, environment),
     address: getAddress(address),
     email,
@@ -139,6 +138,7 @@ export const getFormattedInfo = (details) => {
     type,
     organizationId: organization_id,
   };
+  console.log(formattedInfo);
   return formattedInfo;
 };
 

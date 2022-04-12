@@ -3,7 +3,7 @@ export const attibutesValue = {
   house_trained: "House trained",
   shots_current: "Vaccinations up to date",
   spayed_neutered: "Spayed",
-  special_needs: "special_needs",
+  special_needs: "Has special needs",
 };
 
 export const replaceQuery = {
