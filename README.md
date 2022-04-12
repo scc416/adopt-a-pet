@@ -14,7 +14,6 @@
   - special_needs
   - location, distance
 - sort pet list
-- liked pet
 
 ## Credits
 
