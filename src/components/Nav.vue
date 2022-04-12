@@ -19,7 +19,7 @@
     </div>
 
     <router-link class="saved" :to="{ name: 'saved' }">
-      <div>Saved <HeartIcon /></div>
+      <div><HeartIcon /></div>
     </router-link>
   </div>
 </template>
@@ -80,7 +80,7 @@ export default { components: { HeartIcon } };
   color: #3aab97;
   font-weight: 600;
   border-radius: 5em;
-  padding: 0.5em 0.7em 0.5em 1.15em;
+  padding: 0.5em;
   border: #3aab97 solid 0.1em;
   font-size: 0.9em;
   display: flex;
@@ -100,7 +100,6 @@ export default { components: { HeartIcon } };
 .nav .material-design-icon {
   height: 1.4em;
   width: 1.4em;
-  margin-left: 0.2em;
 }
 
 .nav .material-design-icon > .material-design-icon__svg {
