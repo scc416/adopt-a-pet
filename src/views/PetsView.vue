@@ -1,13 +1,11 @@
 <template>
   <Spin v-if="loading" />
-  <div class="control">
-    <span @click="toggleFilter()" :class="{ show: showFilter }"
-      >{{ showFilter ? "Hide" : "Show" }} Filter</span
-    >
-    <span @click="toggleSort()" :class="{ show: showSort }"
-      >{{ showSort ? "Hide" : "Show" }} Sorting</span
-    >
-  </div>
+  <Control
+    :showFilter="showFilter"
+    :showSort="showSort"
+    :toggleFilter="toggleFilter"
+    :toggleSort="toggleSort"
+  />
   <Filter
     v-if="showFilter"
     :token="token"
@@ -45,11 +43,19 @@ import Filter from "@/components/PetList/Filter/";
 import { toRefs } from "@vue/reactivity";
 import getLikedPets from "@/composables/getLikedPets";
 import useControl from "@/composables/useControl";
+import Control from "@/components/PetList/Control.vue";
 
 export default {
   emits: ["setError"],
   props: ["token"],
-  components: { PetCard, Spin, ShowMoreButton, BackToTopButton, Filter },
+  components: {
+    PetCard,
+    Spin,
+    ShowMoreButton,
+    BackToTopButton,
+    Filter,
+    Control,
+  },
   setup(props, { emit }) {
     const { token } = toRefs(props);
     const { petList, updatePetList, loading, loadMore, isEndOfPage } =
@@ -75,36 +81,6 @@ export default {
 </script>
 
 <style>
-.control {
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-  margin-bottom: 0.4em;
-}
-
-.control span {
-  margin-left: 1em;
-  padding: 0.5em 0.8em;
-  border-radius: 0.2em;
-  font-weight: 700;
-  font-size: 0.8em;
-  border: #3aab97 solid 0.1em;
-}
-
-.control span:hover {
-  cursor: pointer;
-}
-
-.control span {
-  color: #fff;
-  background: #3aab97;
-}
-
-.control span.show {
-  background: #ffffff00;
-  color: #3aab97;
-}
-
 .pets-list {
   display: flex;
   flex-wrap: wrap;
