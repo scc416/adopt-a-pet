@@ -35,10 +35,6 @@ const getPetDetails = (id, token, setError) => {
     if (!gotDetails) updateDetails();
   });
 
-  // watch(error, () => {
-  //   loading.value = false;
-  // });
-
   return { details, loading };
 };
 

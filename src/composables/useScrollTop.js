@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import { pxFromTop } from "@/constants";
 
 const useScrollTop = () => {
   const show = ref(false);
@@ -7,7 +8,7 @@ const useScrollTop = () => {
 
   const scrollFn = () => {
     const y = document.documentElement.scrollTop;
-    show.value = y > 300;
+    show.value = y > pxFromTop;
   };
   return { show, scrollFn, backToTop };
 };

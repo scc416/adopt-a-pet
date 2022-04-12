@@ -11,3 +11,5 @@ export const replaceQuery = {
   coats: "coat",
   genders: "gender",
 };
+
+export const pxFromTop = 300;
