@@ -19,6 +19,9 @@
     v-if="!isEndOfPage && (petList.length || !loading)"
     :loadMore="loadMore"
   />
+  <h4 v-else-if="!petList.length && !loading">
+    No results found. Try different keywords or remove search filters.
+  </h4>
   <h4 v-else-if="isEndOfPage">You have reached the end of the list</h4>
   <BackToTopButton />
 </template>
