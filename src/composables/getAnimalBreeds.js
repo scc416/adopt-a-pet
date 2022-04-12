@@ -19,6 +19,7 @@ const getAnimalBreeds = (token, filter, emit) => {
             Authorization: `Bearer ${token.value}`,
           },
         });
+        console.log("UPDATING");
         details.value = formatBreeds(breeds);
         gotDetails = true;
       } catch (e) {
@@ -35,7 +36,20 @@ const getAnimalBreeds = (token, filter, emit) => {
     if (!gotDetails) updateDetails();
   });
 
-  watch(filter.value, updateDetails);
+  let type = null;
+  watch(filter.value, () => {
+    if (!filter.value.type) {
+      type = null;
+      details.value = [];
+    }
+    if (filter.value.type) {
+      if (type !== filter.value.type.name) {
+        details.value = [];
+        type = filter.value.type.name;
+        updateDetails();
+      }
+    }
+  });
 
   return details;
 };
