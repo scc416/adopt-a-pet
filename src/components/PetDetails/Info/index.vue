@@ -42,6 +42,7 @@ export default {
 
 <style>
 .info {
+  position: relative;
   background: #f9f9f9;
   padding: 3em 4em;
   border-radius: 1em;

@@ -1,4 +1,7 @@
 <template>
+  <div class="like-icon">
+    <HeartIcon />
+  </div>
   <h1><component :is="icon" />{{ details.name }}</h1>
   <div class="grid">
     <div v-if="details.status">Status:</div>
@@ -26,12 +29,13 @@
 
 <script>
 import LinkIcon from "vue-material-design-icons/Link.vue";
+import HeartIcon from "vue-material-design-icons/Heart.vue";
 import { getPetIcon } from "@/helpers";
 import { toRefs } from "@vue/reactivity";
 
 export default {
   props: ["details"],
-  components: { LinkIcon },
+  components: { LinkIcon, HeartIcon },
   setup(props) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
@@ -41,4 +45,32 @@ export default {
 </script>
 
 <style>
+.like-icon {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  border: #fd827b solid 0.1em;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.like-icon > * {
+  position: relative;
+  top: 0.1em;
+}
+
+.not-like {
+  color: #fd827b;
+  background: #fff;
+}
+
+.liked,
+.not-like:hover {
+  color: #fff;
+  background: #fd827b;
+}
 </style>
