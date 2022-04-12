@@ -5,7 +5,6 @@ const useFilter = () => {
 
   const updateFilter = (type, data) => {
     filter.value[type] = data;
-    // console.log(filter.value)
   };
 
   return { filter, updateFilter };

@@ -190,7 +190,6 @@ export const formatAnimalTypes = (data) => {
       }
     }
   }
-  console.log(result);
   return { ...result, type };
 };
 
@@ -220,7 +219,6 @@ export const getQuery = (filter) => {
       : "";
     result += query;
   }
-  console.log(result);
   return result;
 };
 

@@ -6,11 +6,11 @@ module.exports = (db) => {
   const { getLikes, postLikes, deleteLikes, getLike } = queryGenerator(db);
 
   router.get("/likes", async (req, res) => {
-    const { visitorId } = req.session;
-    if (visitorId) return res.json({});
+    const { visitor_id } = req.session;
+    if (visitor_id) return res.json({});
 
     try {
-      const likes = await getLikes(visitorId);
+      const likes = await getLikes(visitor_id);
       res.json(likes);
     } catch (err) {
       console.log(err.message);
@@ -18,11 +18,12 @@ module.exports = (db) => {
   });
 
   router.get("/likes/:petId", async (req, res) => {
-    const { visitorId } = req.session;
-    if (visitorId) return res.json({});
+    const { visitor_id } = req.session;
+    if (!visitor_id) return res.json({});
     const { petId } = req.params;
     try {
-      const likes = await getLike(visitorId, petId);
+      const likes = await getLike(visitor_id, petId);
+      console.log(likes)
       res.json(likes);
     } catch (err) {
       console.log(err.message);
@@ -30,11 +31,13 @@ module.exports = (db) => {
   });
 
   router.post("/likes/:petId", async (req, res) => {
-    const { visitorId } = req.session;
+    const { visitor_id } = req.session;
     const { petId } = req.params;
     try {
-      const result = postLikes(visitorId, petId);
-      if (!visitorId) req.session.visitor_id = result.visitor_id;
+      const result = await postLikes(visitor_id, petId);
+      if (!visitor_id) {
+        req.session.visitor_id = result;
+      }
       res.json(result);
     } catch (err) {
       console.log(err.message);
@@ -42,7 +45,7 @@ module.exports = (db) => {
   });
 
   router.delete("/likes", (req, res) => {
-    const { visitorId } = req.session;
+    const { visitor_id } = req.session;
     res.json({ test: "hello world" });
   });
 

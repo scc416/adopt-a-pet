@@ -50,13 +50,11 @@ const queryGenerator = (db) => {
 
   const postLikes = async (id, petId) => {
     try {
-      const visitorId = id || (await newVisitor());
+      const visitorId = id || (await newVisitor()).id;
       const values = [visitorId, petId];
-
       const existQueryString = `
       SELECT id FROM likes
-      WHERE visitor_id = $1 AND pet_id = $2
-      RETURNING *;
+      WHERE visitor_id = $1 AND pet_id = $2;
       `;
 
       const postQueryString = `
@@ -66,16 +64,14 @@ const queryGenerator = (db) => {
       `;
 
       const deleteQueryString = `
-      DELETE from likes WHERE visitor_id = $1 and pet_id = $2;
+      DELETE from likes WHERE visitor_id = $1 AND pet_id = $2;
       `;
 
       const result = await db.query(existQueryString, values);
-      console.log(result, result.data);
-      const data = result
+      getData(result).length
         ? await db.query(deleteQueryString, values)
         : await db.query(postQueryString, values);
-      console.log(data, getData(data));
-      return getData(data);
+      return visitorId;
     } catch (error) {
       console.log(error);
     }

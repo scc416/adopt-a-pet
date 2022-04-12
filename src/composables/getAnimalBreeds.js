@@ -19,7 +19,6 @@ const getAnimalBreeds = (token, filter, emit) => {
             Authorization: `Bearer ${token.value}`,
           },
         });
-        console.log("UPDATING");
         details.value = formatBreeds(breeds);
         gotDetails = true;
       } catch (e) {
