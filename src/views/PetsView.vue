@@ -1,7 +1,15 @@
 <template>
   <Spin v-if="loading" />
-  <div class="control"><span>Show Filter</span><span>Show Sorting</span></div>
+  <div class="control">
+    <span @click="toggleFilter()" :class="{ show: showFilter }"
+      >{{ showFilter ? "Hide" : "Show" }} Filter</span
+    >
+    <span @click="toggleSort()" :class="{ show: showSort }"
+      >{{ showSort ? "Hide" : "Show" }} Sorting</span
+    >
+  </div>
   <Filter
+    v-if="showFilter"
     :token="token"
     :updatePetList="updatePetList"
     @setError="setError"
@@ -36,6 +44,7 @@ import getPetList from "@/composables/getPetList";
 import Filter from "@/components/PetList/Filter/";
 import { toRefs } from "@vue/reactivity";
 import getLikedPets from "@/composables/getLikedPets";
+import useShow from "@/composables/useShow";
 
 export default {
   emits: ["setError"],
@@ -47,6 +56,8 @@ export default {
       getPetList(token, emit);
     const setError = (e) => emit("setError", e);
     const likedPetList = getLikedPets();
+    const { show: showFilter, toggleShow: toggleFilter } = useShow();
+    const { show: showSort, toggleShow: toggleSort } = useShow();
     return {
       petList,
       updatePetList,
@@ -54,6 +65,10 @@ export default {
       loadMore,
       isEndOfPage,
       setError,
+      showFilter,
+      toggleFilter,
+      showSort,
+      toggleSort,
       likedPetList,
     };
   },
@@ -65,23 +80,30 @@ export default {
   display: flex;
   width: 100%;
   justify-content: flex-end;
+  margin-bottom: 0.4em;
 }
 
 .control span {
-  background: #3aab97;
   margin-left: 1em;
-  padding: 0.8em;
-  border-radius: 50px;
+  padding: 0.5em 0.8em;
+  border-radius: 0.2em;
   font-weight: 700;
   font-size: 0.8em;
-  color: #fff;
   border: #3aab97 solid 0.1em;
 }
 
 .control span:hover {
+  cursor: pointer;
+}
+
+.control span {
+  color: #fff;
+  background: #3aab97;
+}
+
+.control span.show {
   background: #ffffff00;
   color: #3aab97;
-  cursor: pointer;
 }
 
 .pets-list {
