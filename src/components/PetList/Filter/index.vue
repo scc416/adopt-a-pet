@@ -61,7 +61,7 @@
 <script>
 import Select from "./Select.vue";
 import getAnimalTypes from "@/composables/getAnimalTypes";
-import { ref, toRefs } from "@vue/reactivity";
+import { toRefs } from "@vue/reactivity";
 import useFilter from "@/composables/useFilter";
 import getAnimalBreeds from "@/composables/getAnimalBreeds";
 import { filterOptions, filterOptionsMulti } from "@/constants";

@@ -9,11 +9,10 @@
   <Filter
     v-if="showFilter"
     :token="token"
-    :updatePetList="updatePetList"
     @setError="setError"
     @submitFilter="updatePetList"
   />
-  <Sort v-if="showSort" />
+  <Sort v-if="showSort" @submitSort="updatePetList" />
   <div class="pets-list">
     <PetCard
       v-for="pet in petList"
