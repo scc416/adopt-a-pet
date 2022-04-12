@@ -1,5 +1,9 @@
 <template>
-  <div class="like-icon">
+  <div
+    class="like-icon"
+    :class="like ? 'liked' : 'not-like'"
+    @click="toggleLike"
+  >
     <HeartIcon />
   </div>
   <h1><component :is="icon" />{{ details.name }}</h1>
@@ -32,14 +36,16 @@ import LinkIcon from "vue-material-design-icons/Link.vue";
 import HeartIcon from "vue-material-design-icons/Heart.vue";
 import { getPetIcon } from "@/helpers";
 import { toRefs } from "@vue/reactivity";
+import getLike from "@/composables/getLike";
 
 export default {
   props: ["details"],
   components: { LinkIcon, HeartIcon },
-  setup(props) {
+  setup(props, { emit }) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
-    return { icon };
+    const { like, toggleLike } = getLike(details.value.id, emit);
+    return { icon, like, toggleLike };
   },
 };
 </script>

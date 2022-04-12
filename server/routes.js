@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
   const queryGenerator = require("./db/queryHelpers");
-  const { getLikes, postLikes, deleteLikes } = queryGenerator(db);
+  const { getLikes, postLikes, deleteLikes, getLike } = queryGenerator(db);
 
   router.get("/likes", async (req, res) => {
     const { visitorId } = req.session;
@@ -11,6 +11,18 @@ module.exports = (db) => {
 
     try {
       const likes = await getLikes(visitorId);
+      res.json(likes);
+    } catch (err) {
+      console.log(err.message);
+    }
+  });
+
+  router.get("/likes/:petId", async (req, res) => {
+    const { visitorId } = req.session;
+    if (visitorId) return res.json({});
+    const { petId } = req.params;
+    try {
+      const likes = await getLike(visitorId, petId);
       res.json(likes);
     } catch (err) {
       console.log(err.message);

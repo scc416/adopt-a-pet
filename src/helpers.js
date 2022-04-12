@@ -116,8 +116,10 @@ export const getFormattedInfo = (details) => {
     environment,
     type,
     organization_id,
+    id,
   } = value;
   const formattedInfo = {
+    id,
     name,
     gender,
     age,
