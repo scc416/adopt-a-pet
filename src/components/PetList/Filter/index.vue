@@ -5,7 +5,7 @@
         <label class="typo__label">Name</label>
         <div><input type="text" class="text" v-model="name" /></div>
       </div>
-            <div>
+      <div>
         <label class="typo__label">Location</label>
         <div><input type="text" class="text" v-model="location" /></div>
       </div>
