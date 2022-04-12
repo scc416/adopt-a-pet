@@ -71,7 +71,7 @@ export default {
 
 .info .not-like {
   color: #fd827b;
-  background: #fff;
+  background: #ffffff00;
 }
 
 .info .liked,

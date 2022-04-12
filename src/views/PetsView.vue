@@ -1,5 +1,6 @@
 <template>
   <Spin v-if="loading" />
+  <div class="control"><span>Show Filter</span><span>Show Sorting</span></div>
   <Filter
     :token="token"
     :updatePetList="updatePetList"
@@ -60,6 +61,29 @@ export default {
 </script>
 
 <style>
+.control {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.control span {
+  background: #3aab97;
+  margin-left: 1em;
+  padding: 0.8em;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.8em;
+  color: #fff;
+  border: #3aab97 solid 0.1em;
+}
+
+.control span:hover {
+  background: #ffffff00;
+  color: #3aab97;
+  cursor: pointer;
+}
+
 .pets-list {
   display: flex;
   flex-wrap: wrap;

@@ -75,7 +75,7 @@ export default { components: { HomeTitle, Button } };
 }
 
 .home > a:hover > div > span {
-  background: #fff;
+  background: #ffffff00;
   color: #3aab97;
 }
 

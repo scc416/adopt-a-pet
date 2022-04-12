@@ -132,7 +132,7 @@ export default {
 }
 
 .info > div.external-link > a:hover {
-  background: #fff;
+  background: #ffffff00;
   color: #3aab97;
 }
 

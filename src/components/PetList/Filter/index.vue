@@ -133,7 +133,7 @@ export default {
 }
 
 .filter > button:hover {
-  background: #fff;
+  background: #ffffff00;
   color: #3aab97;
 }
 </style>
