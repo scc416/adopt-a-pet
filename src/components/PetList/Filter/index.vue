@@ -6,10 +6,6 @@
         <div><input type="text" class="text" v-model="name" /></div>
       </div>
       <div>
-        <label class="typo__label">Location</label>
-        <div><input type="text" class="text" v-model="location" /></div>
-      </div>
-      <div>
         <Select
           :options="details.type"
           :title="'Type of pet'"
@@ -78,7 +74,7 @@ export default {
   setup(props, { emit }) {
     const { token } = toRefs(props);
     const details = getAnimalTypes(token, emit);
-    const { filter, updateFilter, name, location } = useFilter();
+    const { filter, updateFilter, name } = useFilter();
     const breeds = getAnimalBreeds(token, filter, emit);
 
     const submitFilter = () => emit("submitFilter", filter, name, location);
@@ -90,7 +86,6 @@ export default {
       breeds,
       filterOptions: makeValidOptions(filterOptions),
       name,
-      location,
       filterOptionsMulti: makeValidOptions(filterOptionsMulti),
     };
   },

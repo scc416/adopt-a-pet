@@ -13,7 +13,7 @@ export default { props: ["error"], components: { ErrorIcon } };
 
 <style>
 .error {
-  position: absolute;
+  position: fixed;
   background: #ffcccc;
   right: 1em;
   bottom: 1em;
