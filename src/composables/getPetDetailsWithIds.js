@@ -3,6 +3,7 @@ import { ref, watch } from "vue";
 
 const getPetDetailsWithIds = (ids, token, emit) => {
   const details = ref([]);
+  const loading = ref(true);
 
   const addPetDetails = async (id) => {
     const url = `https://api.petfinder.com/v2/animals/${id}`;
@@ -18,6 +19,7 @@ const getPetDetailsWithIds = (ids, token, emit) => {
           },
         });
         details.value.push(animal);
+        loading.value = false;
       } catch (e) {
         setError(e.message);
       }
@@ -30,7 +32,7 @@ const getPetDetailsWithIds = (ids, token, emit) => {
 
   watch([token, ids], updateDetails);
 
-  return details;
+  return { details, loading };
 };
 
 export default getPetDetailsWithIds;
