@@ -39,11 +39,11 @@ const getAnimalBreeds = (token, filter, emit) => {
   watch(filter.value, () => {
     if (!filter.value.type) {
       type = null;
-      details.value =  [];
+      details.value = null;
     }
     if (filter.value.type) {
       if (type !== filter.value.type.name) {
-        details.value = [];
+        details.value = null;
         type = filter.value.type.name;
         updateDetails();
       }

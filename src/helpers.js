@@ -198,8 +198,7 @@ const replaceQueryArr = Object.keys(replaceQuery);
 const arrayToQuery = (arr, type) => {
   let result = "";
   if (!arr.length) return result;
-  const newType = replaceQueryArr.includes(type) ? replaceQuery[type] : type;
-  result += `&${newType}=`;
+  result += `&${type}=`;
   for (const item of arr) {
     result += `${encodeURIComponent(item.name)},`;
   }
@@ -217,13 +216,15 @@ export const getQuery = (filter) => {
   let result = "";
   for (const type in filter.value) {
     const value = filter.value[type];
+    const newType = replaceQueryArr.includes(type) ? replaceQuery[type] : type;
     const query = Array.isArray(value)
-      ? arrayToQuery(value, type)
+      ? arrayToQuery(value, newType)
       : value
-      ? `&${type}=${formatQueryValue(value)}`
+      ? `&${newType}=${formatQueryValue(value)}`
       : "";
     result += query;
   }
+  console.log(result);
   return result;
 };
 
