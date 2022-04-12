@@ -38,7 +38,7 @@ export default {
     const { address } = contact;
     const shortAddress = getShortAddress(address);
     const breed = getBreed(breeds);
-    const { like, toggleLike } = getLike(false, liked.value, id, emit);
+    const { like, toggleLike } = getLike(false, liked, id, emit);
     return {
       id,
       name,
