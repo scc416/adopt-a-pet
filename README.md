@@ -3,7 +3,6 @@
 ## to-do list
 
 - filter on pet list
-  - filter by size, age
   - location, distance
 - sort pet list
 

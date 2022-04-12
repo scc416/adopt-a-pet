@@ -21,15 +21,21 @@ export const replaceQuery = {
 export const replaceQueryValue = {
   Yes: 1,
   No: 0,
+  "Extra Large": "xlarge",
 };
 
 export const pxFromTop = 300;
 
 export const filterOptions = {
-  "Good with children": [{ name: "Yes" }, { name: "No" }],
-  "Good with dogs": [{ name: "Yes" }, { name: "No" }],
-  "Good with cats": [{ name: "Yes" }, { name: "No" }],
-  "House trained": [{ name: "Yes" }],
-  Declawed: [{ name: "Yes" }],
-  "Special needs": [{ name: "Yes" }],
+  "Good with children": ["Yes", "No"],
+  "Good with dogs": ["Yes", "No"],
+  "Good with cats": ["Yes", "No"],
+  "House trained": ["Yes"],
+  Declawed: ["Yes"],
+  "Special needs": ["Yes"],
+};
+
+export const filterOptionsMulti = {
+  Age: ["Baby", "Young", "Adult", "Senior"],
+  Size: ["Small", "Medium", "Large", "Extra Large"],
 };

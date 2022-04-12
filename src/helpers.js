@@ -188,6 +188,16 @@ const makeOptionForSelect = (arr) => {
   return result;
 };
 
+export const makeValidOptions = (obj) => {
+  const result = {};
+  for (const key in obj) {
+    const arr = obj[key];
+    const newArr = makeOptionForSelect(arr);
+    result[key] = newArr;
+  }
+  return result;
+};
+
 export const formatAnimalTypes = (data) => {
   const type = [];
   const result = {};
@@ -211,9 +221,9 @@ const replaceQueryArr = Object.keys(replaceQuery);
 const arrayToQuery = (arr, type) => {
   let result = "";
   if (!arr.length) return result;
-  result += `&${type}=`;
+  result += `&${type.toLowerCase()}=`;
   for (const item of arr) {
-    result += `${encodeURIComponent(item.name)},`;
+    result += `${encodeURIComponent(item.name.toLowerCase())},`;
   }
   result = result.slice(0, result.length - 1);
   return result;
@@ -223,7 +233,7 @@ const replaceQueryValueArr = Object.keys(replaceQueryValue);
 
 export const formatQueryValue = ({ name }) => {
   const needToBeReplaced = replaceQueryValueArr.includes(name);
-  const value = needToBeReplaced ? replaceQueryValue[name] : name;
+  const value = needToBeReplaced ? replaceQueryValue[name] : name.toLowerCase();
   return encodeURIComponent(value);
 };
 
@@ -236,7 +246,7 @@ export const getQuery = (filter, name) => {
     const query = Array.isArray(value)
       ? arrayToQuery(value, newType)
       : value
-      ? `&${newType}=${formatQueryValue(value)}`
+      ? `&${newType.toLowerCase()}=${formatQueryValue(value)}`
       : "";
     result += query;
   }

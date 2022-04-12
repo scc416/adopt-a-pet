@@ -14,6 +14,15 @@
           :multiSelect="false"
         />
       </div>
+      <div v-for="(option, i) in filterOptionsMulti" :key="i">
+        <Select
+          :options="option"
+          :title="i"
+          @updateFilter="updateFilter"
+          :keyName="i"
+          :multiSelect="true"
+        />
+      </div>
       <div v-for="(option, i) in filterOptions" :key="i">
         <Select
           :options="option"
@@ -55,7 +64,8 @@ import getAnimalTypes from "@/composables/getAnimalTypes";
 import { ref, toRefs } from "@vue/reactivity";
 import useFilter from "@/composables/useFilter";
 import getAnimalBreeds from "@/composables/getAnimalBreeds";
-import { filterOptions } from "@/constants";
+import { filterOptions, filterOptionsMulti } from "@/constants";
+import { makeValidOptions } from "@/helpers";
 
 export default {
   emit: ["submitFilter", "setError"],
@@ -75,8 +85,9 @@ export default {
       details,
       filter,
       breeds,
-      filterOptions,
+      filterOptions: makeValidOptions(filterOptions),
       name,
+      filterOptionsMulti: makeValidOptions(filterOptionsMulti),
     };
   },
 };
