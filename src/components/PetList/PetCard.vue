@@ -30,6 +30,7 @@ import getLike from "@/composables/getLike";
 
 export default {
   props: ["pet", "liked"],
+  emits: ["setError"],
   components: { HeartIcon, LocationIcon },
   setup(props, { emit }) {
     const { pet, liked } = props;

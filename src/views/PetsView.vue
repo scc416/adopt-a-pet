@@ -12,6 +12,7 @@
       :key="pet.id"
       :pet="pet"
       :liked="likedPetList.includes(pet.id)"
+      @setError="setError"
     />
   </div>
   <ShowMoreButton
