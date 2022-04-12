@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS visitors CASCADE; 
+
+CREATE TABLE visitors (
+  id SERIAL PRIMARY KEY
+);

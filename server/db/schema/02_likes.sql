@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS likes CASCADE;
+
+CREATE TABLE likes
+(
+  id SERIAL PRIMARY KEY,
+  visitor_id int NOT NULL REFERENCES visitors(id) ON DELETE CASCADE,
+  pet_id INTEGER NOT NULL
+);
