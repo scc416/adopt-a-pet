@@ -9,6 +9,7 @@
         :pet="pet"
         :liked="true"
         @setError="setError"
+        :showStatus="true"
       />
     </div>
   </div>

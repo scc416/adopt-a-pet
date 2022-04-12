@@ -19,6 +19,9 @@
       </div>
     </div>
     <img :src="photo" />
+    <div v-if="showStatus && status !== 'adoptable'" class="status">
+      <div>{{ status }}</div>
+    </div>
   </router-link>
 </template>
 
@@ -29,12 +32,13 @@ import HeartIcon from "vue-material-design-icons/Heart.vue";
 import getLike from "@/composables/getLike";
 
 export default {
-  props: ["pet", "liked"],
+  props: ["pet", "liked", "showStatus"],
   emits: ["setError"],
   components: { HeartIcon, LocationIcon },
   setup(props, { emit }) {
     const { pet, liked } = props;
-    const { id, name, photos, gender, breeds, age, contact, type } = pet;
+    const { id, name, photos, gender, breeds, age, contact, type, status } =
+      pet;
     const icon = getPetIcon(type);
     const { address } = contact;
     const shortAddress = getShortAddress(address);
@@ -51,12 +55,20 @@ export default {
       icon,
       like,
       toggleLike,
+      status,
     };
   },
 };
 </script>
 
 <style>
+.pet-card .status {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
 .pet-card {
   height: 15em;
   overflow: hidden;
@@ -121,6 +133,7 @@ export default {
   position: absolute;
   right: 0.4em;
   top: 0.4em;
+  z-index: 3;
 }
 
 .pet-card .like-icon > * {

@@ -17,7 +17,7 @@ const getPetList = (token, emit) => {
       loading.value = true;
       try {
         const query = getQuery(filter.value);
-        const url = `https://api.petfinder.com/v2/animals?limit=100${query}`;
+        const url = `https://api.petfinder.com/v2/animals?limit=100&status=found${query}`;
         const { data } = await axios({
           url,
           method: "get",
@@ -26,7 +26,7 @@ const getPetList = (token, emit) => {
           },
         });
         petList.value = data.animals.filter(
-          (pet) => pet.videos.length || pet.photos.length
+          ({ videos, photos }) => videos.length || photos.length
         );
         const {
           pagination: { total_pages },
@@ -48,7 +48,7 @@ const getPetList = (token, emit) => {
     if (currentPage === totalPages) isEndOfPage.value = true;
     try {
       const query = getQuery(filter.value);
-      const url = `https://api.petfinder.com/v2/animals?limit=100&page=${currentPage}${query}`;
+      const url = `https://api.petfinder.com/v2/animals?limit=100&page=${currentPage}&status=adopted,found${query}`;
       const {
         data: { animals },
       } = await axios({
@@ -59,7 +59,7 @@ const getPetList = (token, emit) => {
         },
       });
       petList.value = petList.value.concat(
-        animals.filter((pet) => pet.videos.length || pet.photos.length)
+        animals.filter(({ videos, photos }) => videos.length || photos.length)
       );
       petList.value = petList.value.filter(
         ({ id: idToBeFound }, index, array) => {
