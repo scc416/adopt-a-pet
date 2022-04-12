@@ -4,7 +4,11 @@
     :to="{ name: 'petDetails', params: { id } }"
     class="pet-card"
   >
-    <div class="like-icon" :class="liked ? 'liked' : 'not-like'">
+    <div
+      @click.prevent="toggleLike()"
+      class="like-icon"
+      :class="like ? 'liked' : 'not-like'"
+    >
       <HeartIcon />
     </div>
     <div class="content">
@@ -22,17 +26,19 @@
 import { getPetIcon, getBreed, getShortAddress } from "@/helpers";
 import LocationIcon from "vue-material-design-icons/MapMarker.vue";
 import HeartIcon from "vue-material-design-icons/Heart.vue";
+import getLike from "@/composables/getLike";
 
 export default {
   props: ["pet", "liked"],
   components: { HeartIcon, LocationIcon },
-  setup(props) {
-    const { pet } = props;
+  setup(props, { emit }) {
+    const { pet, liked } = props;
     const { id, name, photos, gender, breeds, age, contact, type } = pet;
     const icon = getPetIcon(type);
     const { address } = contact;
     const shortAddress = getShortAddress(address);
     const breed = getBreed(breeds);
+    const { like, toggleLike } = getLike(false, liked.value, id, emit);
     return {
       id,
       name,
@@ -42,6 +48,8 @@ export default {
       age,
       shortAddress,
       icon,
+      like,
+      toggleLike,
     };
   },
 };

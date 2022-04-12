@@ -1,8 +1,8 @@
 import axios from "axios";
 import { ref } from "vue";
 
-const getLike = (petId, emit) => {
-  const like = ref(false);
+const getLike = (hasToGetLike, isLike, petId, emit) => {
+  const like = ref(hasToGetLike ? false : isLike);
   const url = `/api/likes/${petId}`;
 
   const toggleLike = async () => {
@@ -23,7 +23,7 @@ const getLike = (petId, emit) => {
     }
   };
 
-  get();
+  if (hasToGetLike) get();
 
   return { like, toggleLike };
 };

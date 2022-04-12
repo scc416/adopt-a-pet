@@ -44,7 +44,7 @@ export default {
   setup(props, { emit }) {
     const { details } = toRefs(props);
     const icon = getPetIcon(details.value.type);
-    const { like, toggleLike } = getLike(details.value.id, emit);
+    const { like, toggleLike } = getLike(true, null, details.value.id, emit);
     return { icon, like, toggleLike };
   },
 };
