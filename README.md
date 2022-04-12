@@ -4,13 +4,7 @@
 
 - filter on pet list
   - search by name
-  - filter by size, age, status
-  - good_with_children
-  - good_with_dogs
-  - good_with_cats
-  - house_trained
-  - declawed
-  - special_needs
+  - filter by size, age
   - location, distance
 - sort pet list
 
