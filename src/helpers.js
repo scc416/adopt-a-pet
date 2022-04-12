@@ -229,3 +229,11 @@ export const formatBreeds = (breeds) => {
   }
   return result;
 };
+
+export const getPetsId = (data) => {
+  const result = [];
+  for (const { id } of data) {
+    result.push(id);
+  }
+  return result;
+};
