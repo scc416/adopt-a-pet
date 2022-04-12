@@ -112,12 +112,6 @@ export default {
   position: absolute;
   right: 0.4em;
   top: 0.4em;
-  width: 2.5em;
-  height: 2.5em;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .pet-card .like-icon > * {
