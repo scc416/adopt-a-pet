@@ -207,6 +207,11 @@ const arrayToQuery = (arr, type) => {
   return result;
 };
 
+export const formatQueryValue = ({ name }) => {
+  const value = name === "Yes" ? 1 : name === "No" ? 0 : name;
+  return encodeURIComponent(value);
+};
+
 export const getQuery = (filter) => {
   if (!filter) return "";
   let result = "";
@@ -215,7 +220,7 @@ export const getQuery = (filter) => {
     const query = Array.isArray(value)
       ? arrayToQuery(value, type)
       : value
-      ? `&${type}=${encodeURIComponent(value.name)}`
+      ? `&${type}=${formatQueryValue(value)}`
       : "";
     result += query;
   }
