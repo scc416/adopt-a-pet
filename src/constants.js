@@ -1,5 +1,4 @@
 export const attibutesValue = {
-  declawed: "Declawed",
   house_trained: "House trained",
   shots_current: "Vaccinations up to date",
   spayed_neutered: "Spayed",
@@ -14,7 +13,6 @@ export const replaceQuery = {
   "Good with dogs": "good_with_dogs",
   "Good with cats": "good_with_cats",
   "House trained": "house_trained",
-  Declawed: "declawed",
   "Special needs": "special_needs",
 };
 
@@ -25,6 +23,5 @@ export const filterOptions = {
   "Good with dogs": [{ name: "Yes" }, { name: "No" }],
   "Good with cats": [{ name: "Yes" }, { name: "No" }],
   "House trained": [{ name: "Yes" }],
-  Declawed: [{ name: "Yes" }],
   "Special needs": [{ name: "Yes" }],
 };
