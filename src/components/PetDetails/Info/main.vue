@@ -66,7 +66,12 @@ export default {
 
 .info .like-icon > * {
   position: relative;
-  top: 0.1em;
+  top: 0.19em;
+  left: 0.01em;
+}
+
+.info .like-icon:hover {
+  cursor: pointer;
 }
 
 .info .not-like {
