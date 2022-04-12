@@ -224,8 +224,8 @@ export const formatQueryValue = ({ name }) => {
   return encodeURIComponent(value);
 };
 
-export const getQuery = (filter) => {
-  if (!filter) return "";
+export const getQuery = (filter, name) => {
+  if (!filter && !name) return "";
   let result = "";
   for (const type in filter.value) {
     const value = filter.value[type];
@@ -237,6 +237,9 @@ export const getQuery = (filter) => {
       : "";
     result += query;
   }
+
+  if (name && name.value) result += `&name=${encodeURIComponent(name.value)}`;
+
   console.log(result);
   return result;
 };

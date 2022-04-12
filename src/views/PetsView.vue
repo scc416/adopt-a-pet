@@ -44,9 +44,7 @@ export default {
     const { token } = toRefs(props);
     const { petList, updatePetList, loading, loadMore, isEndOfPage } =
       getPetList(token, emit);
-    const setError = (e) => {
-      emit("setError", e);
-    };
+    const setError = (e) => emit("setError", e);
     const likedPetList = getLikedPets();
     return {
       petList,

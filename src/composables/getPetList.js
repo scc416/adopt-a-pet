@@ -10,13 +10,15 @@ const getPetList = (token, emit) => {
   let totalPages = null;
   const isEndOfPage = ref(false);
   const filter = ref(null);
+  const name = ref("");
 
-  const updatePetList = async (data) => {
+  const updatePetList = async (data, text) => {
     filter.value = data;
+    name.value = text;
     if (token.value) {
       loading.value = true;
       try {
-        const query = getQuery(filter.value);
+        const query = getQuery(filter.value, name.value);
         const url = `https://api.petfinder.com/v2/animals?limit=100${query}`;
         const { data } = await axios({
           url,
@@ -47,7 +49,7 @@ const getPetList = (token, emit) => {
     currentPage++;
     if (currentPage === totalPages) isEndOfPage.value = true;
     try {
-      const query = getQuery(filter.value);
+      const query = getQuery(filter.value, name.value);
       const url = `https://api.petfinder.com/v2/animals?limit=100&page=${currentPage}&status=adopted,found${query}`;
       const {
         data: { animals },

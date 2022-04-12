@@ -3,7 +3,7 @@
     <div>
       <div>
         <label class="typo__label">Name</label>
-        <div><input type="text" class="text" /></div>
+        <div><input type="text" class="text" v-model="name" /></div>
       </div>
       <div>
         <Select
@@ -52,7 +52,7 @@
 <script>
 import Select from "./Select.vue";
 import getAnimalTypes from "@/composables/getAnimalTypes";
-import { toRefs } from "@vue/reactivity";
+import { ref, toRefs } from "@vue/reactivity";
 import useFilter from "@/composables/useFilter";
 import getAnimalBreeds from "@/composables/getAnimalBreeds";
 import { filterOptions } from "@/constants";
@@ -67,8 +67,8 @@ export default {
     const { filter, updateFilter } = useFilter();
     const breeds = getAnimalBreeds(token, filter, emit);
 
-    const submitFilter = () => emit("submitFilter", filter);
-
+    const name = ref("");
+    const submitFilter = () => emit("submitFilter", filter, name);
     return {
       submitFilter,
       updateFilter,
@@ -76,6 +76,7 @@ export default {
       filter,
       breeds,
       filterOptions,
+      name,
     };
   },
 };
