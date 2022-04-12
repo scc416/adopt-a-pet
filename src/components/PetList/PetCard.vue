@@ -20,7 +20,7 @@
     </div>
     <img :src="photo" />
     <div v-if="showStatus && status !== 'adoptable'" class="status">
-      <div>{{ status }}</div>
+      <div>{{ status }}<span>🎉</span></div>
     </div>
   </router-link>
 </template>
@@ -68,7 +68,27 @@ export default {
   top: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.pet-card .status div {
+  background: #ffffffcc;
+  padding: 0.5em 0.6em;
+  color: #000000cc;
+  text-transform: uppercase;
+  border-radius: 0.4em;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+}
+
+.pet-card .status span {
+  font-size: 1.2em;
+  margin-left: 0.3em;
+}
+
 .pet-card {
   height: 15em;
   overflow: hidden;
