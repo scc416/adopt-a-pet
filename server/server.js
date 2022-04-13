@@ -7,7 +7,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://the-pets.netlify.app",
+  })
+);
 
 // Set up cookie-session
 const cookieSession = require("cookie-session");
