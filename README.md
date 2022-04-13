@@ -1,39 +1,49 @@
-# Adopt A Pet
+# Battleship
 
-## to-do list
+See the `master` branch's `README.md` for information about this application. This `README.md` (on branch `production`) is the documentation of the deployment (changes that need to be made for deployment to happen).
 
-- deployment
-  - client: vue route mode
-  - server: able to store cookie
+The [server](https://pet--api.herokuapp.com/) is deployed to [Heroku](https://heroku.com/). [Netlify](https://www.netlify.com/) serves the static [client assets](https://the-pets.netlify.app/).
 
-## Credits
+## Table of Content
 
-- [Petfinder API](https://www.petfinder.com/developers/)
+- [Client](#client)
+- [Server](#server)
 
-- [Design](https://www.behance.net/gallery/134895919/Puppos-Dog-Adoption-Matchmaker-Design-Sprint-Case-Study) by [Christy Chan](https://www.behance.net/christykchan) on [behance](behance.net/)
+## Client
 
-- [Favicon](https://www.flaticon.com/premium-icon/paws_4225935) by [Creatype](https://www.flaticon.com/authors/creatype) in [flaticon](https://www.flaticon.com/)
-
-- [Backgrouund image on home page](https://unsplash.com/photos/O_UbPKaz6no) by [Slavy Darozhkin](https://unsplash.com/@hashtaglilac) on [Unsplash](https://unsplash.com)
-
-## Project setup
+1. New file: `public/_redirects`
 
 ```
-npm install
+/api/*  https://pet--api.herokuapp.com/api/:splat 200
+/*  /index.html 200
 ```
 
-### Compiles and hot-reloads for development
+## Server
+
+1. Install cors and add settings to `server/server.js`
 
 ```
-npm run serve
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "https://the-pets.netlify.app",
+  methods: "GET,POST",
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 ```
 
-### Compiles and minifies for production
+2. Includes the version of node in `package.json`:
 
 ```
-npm run build
+"engines": {
+  "node": "12.22.5"
+}
 ```
 
-### Customize configuration
+3. Add a line to `server/lib/db.js`
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+dbParams.ssl = { rejectUnauthorized: false };
+```
