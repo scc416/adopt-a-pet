@@ -38,7 +38,7 @@ export default {
   cursor: pointer;
 }
 
-span.show {
+div span.show {
   background: #ffffff00;
   color: #3aab97;
 }

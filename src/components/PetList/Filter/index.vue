@@ -1,7 +1,7 @@
 <template>
   <div class="filter" v-if="details">
     <div class="filter-option">
-      <Dragbar v-if="location" />
+      <Dragbar v-if="location" @distanceChange="updateDistance" />
       <div>
         <div>
           <label class="typo__label">Name</label>
@@ -67,7 +67,11 @@ import getAnimalTypes from "@/composables/getAnimalTypes";
 import { ref, toRefs } from "@vue/reactivity";
 import useFilter from "@/composables/useFilter";
 import getAnimalBreeds from "@/composables/getAnimalBreeds";
-import { filterOptions, filterOptionsMulti } from "@/constants";
+import {
+  filterOptions,
+  filterOptionsMulti,
+  defaultDistance,
+} from "@/constants";
 import { makeValidOptions } from "@/helpers";
 import Dragbar from "./Dragbar.vue";
 
@@ -80,9 +84,10 @@ export default {
     const details = getAnimalTypes(token, emit);
     const { filter, updateFilter, name } = useFilter();
     const breeds = getAnimalBreeds(token, filter, emit);
-
+    const distance = ref(defaultDistance);
+    const updateDistance = (d) => (distance.value = d);
     const submitFilter = () =>
-      emit("submitFilter", filter, name, null, location, ref(20));
+      emit("submitFilter", filter, name, null, location, distance);
     return {
       submitFilter,
       updateFilter,
@@ -93,6 +98,7 @@ export default {
       name,
       filterOptionsMulti: makeValidOptions(filterOptionsMulti),
       location,
+      updateDistance,
     };
   },
 };
