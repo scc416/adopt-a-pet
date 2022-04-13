@@ -3,14 +3,17 @@
   <div class="header">
     <div class="control-left">
       <Sort v-if="showSort" @submitSort="updatePetList" />
-      <span
-        v-if="showFilter"
-        class="distance"
-        :class="{ show: location }"
-        @click="toggleLocation()"
-      >
-        <DistanceIcon />
-      </span>
+      <div class="distance">
+        <span
+          v-if="showFilter"
+          class="distance"
+          :class="{ show: location }"
+          @click="toggleLocation()"
+        >
+          <DistanceIcon />
+        </span>
+        <SmallSpin v-if="locationLoading" />
+      </div>
     </div>
     <Control
       :showFilter="showFilter"
@@ -59,6 +62,7 @@ import useControl from "@/composables/useControl";
 import Control from "@/components/PetList/Control.vue";
 import Sort from "@/components/PetList/Sort.vue";
 import DistanceIcon from "vue-material-design-icons/CrosshairsGps.vue";
+import SmallSpin from "@/components/PetList/Filter/Spin.vue";
 
 export default {
   emits: ["setError"],
@@ -72,48 +76,37 @@ export default {
     Control,
     Sort,
     DistanceIcon,
+    SmallSpin,
   },
   setup(props, { emit }) {
     const { token } = toRefs(props);
-    const { petList, updatePetList, loading, loadMore, isEndOfPage } =
-      getPetList(token, emit);
+    const petLists = getPetList(token, emit);
     const setError = (e) => emit("setError", e);
     const likedPetList = getLikedPets();
-    const {
-      showFilter,
-      showSort,
-      toggleFilter,
-      toggleSort,
-      toggleLocation,
-      location,
-    } = useControl(emit);
+    const controls = useControl(emit);
     return {
-      petList,
-      updatePetList,
-      loading,
-      loadMore,
-      isEndOfPage,
       setError,
-      showFilter,
-      toggleFilter,
-      showSort,
-      toggleSort,
       likedPetList,
-      toggleLocation,
-      location,
+      ...controls,
+      ...petLists,
     };
   },
 };
 </script>
 
 <style>
-.distance {
+div.distance {
+  display: flex;
+}
+
+span.distance {
   padding: 0.2em;
   border: #3aab97 solid 0.08em;
   color: #fff;
   background: #3aab97;
   padding: 0.25em 0.4em 0.1em;
   border-radius: 0.1em;
+  margin-right: 0.5em;
 }
 
 .distance .material-design-icon {

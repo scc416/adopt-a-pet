@@ -5,6 +5,7 @@ const useControl = (emit) => {
   const showSort = ref(false);
   const location = ref(null);
   let locate = null;
+  const locationLoading = ref(false);
 
   const toggleFilter = () => {
     showFilter.value = !showFilter.value;
@@ -17,14 +18,19 @@ const useControl = (emit) => {
   };
 
   const getLocation = () => {
+    locationLoading.value = true;
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { coords } = position;
         const { latitude, longitude } = coords;
         locate = `${latitude},${longitude}`;
         location.value = locate;
+        locationLoading.value = false;
       },
-      (e) => emit("setError", e.message)
+      (e) => {
+        emit("setError", e.message);
+        locationLoading.value = false;
+      }
     );
   };
 
@@ -42,6 +48,7 @@ const useControl = (emit) => {
     toggleSort,
     toggleLocation,
     location,
+    locationLoading,
   };
 };
 
