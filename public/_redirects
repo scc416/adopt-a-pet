@@ -1,2 +1,2 @@
-/api/*  https://pet--api.herokuapp.com/:splat 200
+/api/*  https://pet--api.herokuapp.com/api/:splat 200
 /*  /index.html 200
