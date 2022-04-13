@@ -268,7 +268,6 @@ export const getQuery = (filter, name, sort, location, distance) => {
     result += `&sort=${actualSort}`;
   }
 
-  console.log(result);
   return result;
 };
 
