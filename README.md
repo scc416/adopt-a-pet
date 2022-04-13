@@ -1,4 +1,4 @@
-# Battleship
+# Adopt a Pet
 
 See the `master` branch's `README.md` for information about this application. This `README.md` (on branch `production`) is the documentation of the deployment (changes that need to be made for deployment to happen).
 
