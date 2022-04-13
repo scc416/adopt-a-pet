@@ -12,11 +12,15 @@ const getPetList = (token, emit) => {
   const filter = ref(null);
   const name = ref("");
   const sort = ref("");
+  const location = ref(null);
+  const distance = ref(100);
 
-  const updatePetList = async (data, text, sorting) => {
+  const updatePetList = async (data, text, sorting, locate, mile) => {
     if (!sorting) {
       filter.value = data;
       name.value = text;
+      location.value = locate;
+      distance.value = mile;
     }
     if (sorting) {
       sort.value = sorting;
@@ -24,7 +28,13 @@ const getPetList = (token, emit) => {
     if (token.value) {
       loading.value = true;
       try {
-        const query = getQuery(filter.value, name.value, sort.value);
+        const query = getQuery(
+          filter.value,
+          name.value,
+          sort.value,
+          location.value,
+          distance.value
+        );
         const url = `https://api.petfinder.com/v2/animals?limit=100${query}`;
         const { data } = await axios({
           url,
@@ -55,7 +65,13 @@ const getPetList = (token, emit) => {
     currentPage++;
     if (currentPage === totalPages) isEndOfPage.value = true;
     try {
-      const query = getQuery(filter.value, name.value, sort.value);
+      const query = getQuery(
+        filter.value,
+        name.value,
+        sort.value,
+        location.value,
+        distance.value
+      );
       const url = `https://api.petfinder.com/v2/animals?limit=100&page=${currentPage}&status=adopted,found${query}`;
       const {
         data: { animals },

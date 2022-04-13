@@ -236,9 +236,12 @@ export const formatQueryValue = ({ name }) => {
   return encodeURIComponent(value);
 };
 
-export const getQuery = (filter, name, sort) => {
-  if (!filter && !name && !sort) return "";
+export const getQuery = (filter, name, sort, location, distance) => {
+  
   let result = "";
+  if (location && location.value) {
+    result += `&location=${location.value}&distance=${distance.value}`;
+  }
 
   if (filter) {
     for (const type in filter.value) {

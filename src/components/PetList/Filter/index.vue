@@ -64,7 +64,7 @@
 <script>
 import Select from "./Select.vue";
 import getAnimalTypes from "@/composables/getAnimalTypes";
-import { toRefs } from "@vue/reactivity";
+import { ref, toRefs } from "@vue/reactivity";
 import useFilter from "@/composables/useFilter";
 import getAnimalBreeds from "@/composables/getAnimalBreeds";
 import { filterOptions, filterOptionsMulti } from "@/constants";
@@ -82,7 +82,7 @@ export default {
     const breeds = getAnimalBreeds(token, filter, emit);
 
     const submitFilter = () =>
-      emit("submitFilter", filter, name, null, location);
+      emit("submitFilter", filter, name, null, location, ref(20));
     return {
       submitFilter,
       updateFilter,
