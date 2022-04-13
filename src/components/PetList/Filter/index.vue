@@ -1,7 +1,7 @@
 <template>
   <div class="filter" v-if="details">
     <div class="filter-option">
-      <Dragbar />
+      <Dragbar v-if="location" />
       <div>
         <div>
           <label class="typo__label">Name</label>
@@ -73,15 +73,16 @@ import Dragbar from "./Dragbar.vue";
 
 export default {
   emits: ["submitFilter", "setError"],
-  props: ["token"],
+  props: ["token", "location"],
   components: { Select, Dragbar },
   setup(props, { emit }) {
-    const { token } = toRefs(props);
+    const { token, location } = toRefs(props);
     const details = getAnimalTypes(token, emit);
     const { filter, updateFilter, name } = useFilter();
     const breeds = getAnimalBreeds(token, filter, emit);
 
-    const submitFilter = () => emit("submitFilter", filter, name);
+    const submitFilter = () =>
+      emit("submitFilter", filter, name, null, location);
     return {
       submitFilter,
       updateFilter,
@@ -91,6 +92,7 @@ export default {
       filterOptions: makeValidOptions(filterOptions),
       name,
       filterOptionsMulti: makeValidOptions(filterOptionsMulti),
+      location,
     };
   },
 };
@@ -124,7 +126,7 @@ export default {
   width: 100%;
 }
 
-.filter > div > div:nth-child(2) {
+.filter > div > div:last-child {
   display: grid;
   grid-row-gap: 0.7em;
   grid-column-gap: 1em;

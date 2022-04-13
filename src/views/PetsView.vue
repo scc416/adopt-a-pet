@@ -3,7 +3,12 @@
   <div class="header">
     <div class="control-left">
       <Sort v-if="showSort" @submitSort="updatePetList" />
-      <span v-if="showFilter" class="distance" :class="{ show: true }">
+      <span
+        v-if="showFilter"
+        class="distance"
+        :class="{ show: location }"
+        @click="toggleLocation()"
+      >
         <DistanceIcon />
       </span>
     </div>
@@ -15,6 +20,7 @@
     />
   </div>
   <Filter
+    :location="location"
     v-if="showFilter"
     :token="token"
     @setError="setError"
@@ -73,7 +79,14 @@ export default {
       getPetList(token, emit);
     const setError = (e) => emit("setError", e);
     const likedPetList = getLikedPets();
-    const { showFilter, showSort, toggleFilter, toggleSort } = useControl();
+    const {
+      showFilter,
+      showSort,
+      toggleFilter,
+      toggleSort,
+      toggleLocation,
+      location,
+    } = useControl(emit);
     return {
       petList,
       updatePetList,
@@ -86,6 +99,8 @@ export default {
       showSort,
       toggleSort,
       likedPetList,
+      toggleLocation,
+      location,
     };
   },
 };

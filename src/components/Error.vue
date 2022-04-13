@@ -18,7 +18,7 @@ export default { props: ["error"], components: { ErrorIcon } };
   right: 1em;
   bottom: 1em;
   padding: 0.3em 0.5em;
-  z-index: 2;
+  z-index: 4;
   border-radius: 0.3em;
   display: flex;
   align-items: center;
