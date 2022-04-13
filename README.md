@@ -2,9 +2,9 @@
 
 ## to-do list
 
-- filter on pet list
-  - location, distance
-- sort pet list
+- deployment
+  - client: vue route mode
+  - server: able to store cookie
 
 ## Credits
 
