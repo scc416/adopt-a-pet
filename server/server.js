@@ -8,7 +8,7 @@ const app = express();
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "https://the-pets.netlify.app/",
+  origin: "https://the-pets.netlify.app",
   methods: "GET,POST",
   allowedHeaders: ["Content-Type", "Authorization"],
 };
