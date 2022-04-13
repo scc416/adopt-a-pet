@@ -8,6 +8,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@vueform/slider": "^2.0.9",
     "axios": "^0.26.1",
     "cookie-session": "^2.0.0",
     "core-js": "^3.8.3",

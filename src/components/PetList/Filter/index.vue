@@ -1,61 +1,63 @@
 <template>
-  <div v-if="details" class="filter">
-    <div>
-      <Dragbar />
+  <div v-if="details">
+    <div><Dragbar /></div>
+    <div class="filter">
       <div>
-        <label class="typo__label">Name</label>
-        <div><input type="text" class="text" v-model="name" /></div>
+        <div>
+          <label class="typo__label">Name</label>
+          <div><input type="text" class="text" v-model="name" /></div>
+        </div>
+        <div>
+          <Select
+            :options="details.type"
+            :title="'Type of pet'"
+            @updateFilter="updateFilter"
+            :keyName="'type'"
+            :multiSelect="false"
+          />
+        </div>
+        <div v-for="(option, i) in filterOptionsMulti" :key="i">
+          <Select
+            :options="option"
+            :title="i"
+            @updateFilter="updateFilter"
+            :keyName="i"
+            :multiSelect="true"
+          />
+        </div>
+        <div v-for="(option, i) in filterOptions" :key="i">
+          <Select
+            :options="option"
+            :title="i"
+            @updateFilter="updateFilter"
+            :keyName="i"
+            :multiSelect="false"
+          />
+        </div>
+        <div
+          v-for="(option, i) in filter.type ? details[filter.type.name] : []"
+          :key="i"
+        >
+          <Select
+            :options="option"
+            :title="i[0].toUpperCase() + i.slice(1)"
+            @updateFilter="updateFilter"
+            :keyName="i"
+            :multiSelect="true"
+          />
+        </div>
+        <div v-if="breeds">
+          <Select
+            :options="breeds"
+            :title="'Breeds'"
+            @updateFilter="updateFilter"
+            :keyName="'breed'"
+            :multiSelect="true"
+          />
+        </div>
       </div>
-      <div>
-        <Select
-          :options="details.type"
-          :title="'Type of pet'"
-          @updateFilter="updateFilter"
-          :keyName="'type'"
-          :multiSelect="false"
-        />
-      </div>
-      <div v-for="(option, i) in filterOptionsMulti" :key="i">
-        <Select
-          :options="option"
-          :title="i"
-          @updateFilter="updateFilter"
-          :keyName="i"
-          :multiSelect="true"
-        />
-      </div>
-      <div v-for="(option, i) in filterOptions" :key="i">
-        <Select
-          :options="option"
-          :title="i"
-          @updateFilter="updateFilter"
-          :keyName="i"
-          :multiSelect="false"
-        />
-      </div>
-      <div
-        v-for="(option, i) in filter.type ? details[filter.type.name] : []"
-        :key="i"
-      >
-        <Select
-          :options="option"
-          :title="i[0].toUpperCase() + i.slice(1)"
-          @updateFilter="updateFilter"
-          :keyName="i"
-          :multiSelect="true"
-        />
-      </div>
-      <div v-if="breeds">
-        <Select
-          :options="breeds"
-          :title="'Breeds'"
-          @updateFilter="updateFilter"
-          :keyName="'breed'"
-          :multiSelect="true"
-        />
-      </div>
+      <button @click="submitFilter()">Filter</button>
     </div>
-    <button @click="submitFilter()">Filter</button>
   </div>
 </template>
 

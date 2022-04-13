@@ -1,8 +1,20 @@
-<template>sidebar</template>
+<template>
+  <Slider v-model="distance" v-bind="{ max: 500, min: 1 }"></Slider>
+</template>
 
 <script>
-export default {};
+import Slider from "@vueform/slider";
+import { ref } from "@vue/reactivity";
+
+export default {
+  components: {
+    Slider,
+  },
+  setup() {
+    const distance = ref(100);
+    return { distance };
+  },
+};
 </script>
 
-<style>
-</style>
+<style src="@vueform/slider/themes/default.css"></style>
