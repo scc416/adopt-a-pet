@@ -1,18 +1,20 @@
 <template>
   <Spin v-if="loading" />
-  <Control
-    :showFilter="showFilter"
-    :showSort="showSort"
-    :toggleFilter="toggleFilter"
-    :toggleSort="toggleSort"
-  />
+  <div class="header">
+    <Sort v-if="showSort" @submitSort="updatePetList" />
+    <Control
+      :showFilter="showFilter"
+      :showSort="showSort"
+      :toggleFilter="toggleFilter"
+      :toggleSort="toggleSort"
+    />
+  </div>
   <Filter
     v-if="showFilter"
     :token="token"
     @setError="setError"
     @submitFilter="updatePetList"
   />
-  <Sort v-if="showSort" @submitSort="updatePetList" />
   <div class="pets-list">
     <PetCard
       v-for="pet in petList"
@@ -83,6 +85,12 @@ export default {
 </script>
 
 <style>
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
 .pets-list {
   display: flex;
   flex-wrap: wrap;

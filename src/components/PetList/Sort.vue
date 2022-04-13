@@ -32,9 +32,9 @@ export default {
 
 <style>
 .button-group {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
-  width: 100%;
   margin-bottom: 0.5em;
 }
 

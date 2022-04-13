@@ -18,9 +18,9 @@ export default {
 <style>
 .control {
   display: flex;
-  width: 100%;
   justify-content: flex-end;
   margin-bottom: 0.4em;
+  flex-grow: 0;
 }
 
 .control span {
