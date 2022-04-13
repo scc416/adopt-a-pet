@@ -18,11 +18,15 @@ import { ref, toRefs, watch } from "vue";
 const sortingData = sortingRecentData.concat(sortingDistanceData);
 
 export default {
-  props: ["location"],
+  props: ["location", "sort"],
   emits: ["submitSort"],
   setup(props, { emit }) {
-    const { location } = toRefs(props);
-    const selected = ref(sortingData[0].value);
+    const { location, sort } = toRefs(props);
+    const selected = ref(
+      location.value || (!location.value && !sort.value.includes("distance"))
+        ? sort.value
+        : sortingRecentData[0].value
+    );
     const submitSort = (sort) => {
       if (selected.value === sort) return;
       selected.value = sort;
@@ -31,8 +35,12 @@ export default {
 
     const sorting = ref(location.value ? sortingData : sortingRecentData);
     watch(location, () => {
-      console.log(location.value);
       sorting.value = location.value ? sortingData : sortingRecentData;
+      selected.value =
+        location.value ||
+        (!location.value && !selected.value.includes("distance"))
+          ? selected.value
+          : sortingRecentData[0].value;
     });
 
     return { submitSort, sorting, selected };

@@ -259,7 +259,14 @@ export const getQuery = (filter, name, sort, location, distance) => {
   }
 
   if (name && name.value) result += `&name=${encodeURIComponent(name.value)}`;
-  if (sort) result += `&sort=${sort}`;
+  if (sort) {
+    const isDistance = sort.includes("distance");
+    const actualSort =
+      (isDistance && location && location.value) || !isDistance
+        ? sort
+        : "recent";
+    result += `&sort=${actualSort}`;
+  }
 
   console.log(result);
   return result;

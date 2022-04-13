@@ -12,7 +12,12 @@
         </span>
         <SmallSpin v-if="locationLoading" />
       </div>
-      <Sort v-if="showSort" @submitSort="updatePetList" :location="location" />
+      <Sort
+        v-if="showSort"
+        @submitSort="updatePetList"
+        :location="location"
+        :sort="sort"
+      />
     </div>
     <Control
       :showFilter="showFilter"

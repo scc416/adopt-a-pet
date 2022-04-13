@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 import { getQuery } from "@/helpers";
+import { sortingRecentData } from "@/constants";
 
 const getPetList = (token, emit) => {
   const petList = ref([]);
@@ -11,7 +12,7 @@ const getPetList = (token, emit) => {
   const isEndOfPage = ref(false);
   const filter = ref(null);
   const name = ref("");
-  const sort = ref("");
+  const sort = ref(sortingRecentData[0].value);
   const location = ref(null);
   const distance = ref(100);
 
@@ -110,7 +111,7 @@ const getPetList = (token, emit) => {
 
   updatePetList();
 
-  return { petList, updatePetList, loading, loadMore, isEndOfPage };
+  return { petList, updatePetList, loading, loadMore, isEndOfPage, sort };
 };
 
 export default getPetList;
