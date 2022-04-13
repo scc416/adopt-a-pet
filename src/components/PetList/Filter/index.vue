@@ -1,7 +1,7 @@
 <template>
   <div class="filter" v-if="details">
     <div class="filter-option">
-      <div><Dragbar /></div>
+      <Dragbar />
       <div>
         <div>
           <label class="typo__label">Name</label>
@@ -97,6 +97,10 @@ export default {
 </script>
 
 <style>
+.drag-bar > *:nth-child(2) {
+  margin: 1em 0;
+}
+
 .filter input.text {
   color: #39495c;
   width: 100%;
@@ -120,7 +124,7 @@ export default {
   width: 100%;
 }
 
-.filter > div > div {
+.filter > div > div:nth-child(2) {
   display: grid;
   grid-row-gap: 0.7em;
   grid-column-gap: 1em;

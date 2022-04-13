@@ -1,5 +1,8 @@
 <template>
-  <Slider v-model="distance" v-bind="{ max: 500, min: 1 }"></Slider>
+  <div class="drag-bar">
+    <label class="typo__label">Distance</label>
+    <Slider v-model="distance" v-bind="{ max: 500, min: 1 }"></Slider>
+  </div>
 </template>
 
 <script>
@@ -17,4 +20,5 @@ export default {
 };
 </script>
 
-<style src="@vueform/slider/themes/default.css"></style>
+<style src="@vueform/slider/themes/default.css">
+</style>
