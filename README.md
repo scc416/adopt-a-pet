@@ -18,6 +18,55 @@ https://the-pets.netlify.app/
 
 ## Final Product
 
+### Landing Page
+
+![Landing Page](./docs/landing-page.png)
+
+User can:
+
+- View all pets by clicking `Start Looking` / `View all pets` in the nav bar
+- View liked pets by click the heart button at the top right corner
+
+### `View All Pets` Page
+
+![All Pets](./docs/all-init.png)
+
+User can:
+
+- Click on any pet cards to view the details of the pet (opens in a new window).
+
+- Like/unlike any pets by clicking the heart icon on the top right corner of the pet cards. The color of the heart icon indicates if the user has liked the pet.
+
+- Show/hide filter and sorting by clicking the buttons at the top right corner. Only one (of sorting, filter) is shown at a time.
+
+- Enable/disable location by clicking the gps icon at the top left corner. The filter/sort with distance function only works when the location is enabled.
+
+![All Pets - Filter with location](./docs/all-filter-location.png)
+
+Filters with enabled location: user can filter with distance from current location
+
+![All Pets - Filter](./docs/all-filter.png)
+
+Filters with disabled location
+
+![All Pets - Sort with Location](./docs/all-sort-location.png)
+
+Sorting with enabled location: user can sort result with distance from current location
+
+![All Pets - Sort](./docs/all-sort.png)
+
+Sorting with disabled location
+
+### Pet Details Page
+
+![Pet Details](./docs/details-1.png)
+![Pet Details](./docs/details-2.png)
+![Pet Details](./docs/details-3.png)
+
+### Liked Pet Page
+
+![Liked pets](./docs/liked.png)
+
 ## Dependencies
 
 ### Frontend
@@ -57,6 +106,6 @@ https://the-pets.netlify.app/
 
 - [Design](https://www.behance.net/gallery/134895919/Puppos-Dog-Adoption-Matchmaker-Design-Sprint-Case-Study) by [Christy Chan](https://www.behance.net/christykchan) on [behance](behance.net/)
 
-- [Favicon](https://www.flaticon.com/premium-icon/paws_4225935) by [Creatype](https://www.flaticon.com/authors/creatype) in [flaticon](https://www.flaticon.com/)
+- [Favicon](https://www.flaticon.com/premium-icon/paws_4225935) by [Creatype](https://www.flaticon.com/authors/creatype) on [flaticon](https://www.flaticon.com/)
 
-- [Backgrouund image on home page](https://unsplash.com/photos/O_UbPKaz6no) by [Slavy Darozhkin](https://unsplash.com/@hashtaglilac) on [Unsplash](https://unsplash.com)
+- [Background image on home page](https://unsplash.com/photos/O_UbPKaz6no) by [Slavy Darozhkin](https://unsplash.com/@hashtaglilac) on [Unsplash](https://unsplash.com)
