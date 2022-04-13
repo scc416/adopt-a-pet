@@ -8,7 +8,6 @@ const getPetDetailsWithIds = (ids, token, emit) => {
   const addPetDetails = async (id) => {
     const url = `https://api.petfinder.com/v2/animals/${id}`;
     if (token.value) {
-      console.log("GETTING INFO");
       try {
         const {
           data: { animal },
