@@ -22,7 +22,7 @@ export default {
     const submitSort = (sort) => {
       if (selected.value === sort) return;
       selected.value = sort;
-      emit("submitSort", null, null, sort);
+      emit("submitSort", sort);
     };
 
     return { submitSort, sortingData, selected };
