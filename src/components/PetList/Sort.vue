@@ -4,6 +4,7 @@
       v-for="(data, i) in sortingData"
       :key="i"
       @click="submitSort(data.value)"
+      :class="{ selected: selected === data.value }"
     >
       {{ data.name }}
     </button>
@@ -12,12 +13,19 @@
 
 <script>
 import { sortingData } from "@/constants";
+import { ref } from "vue";
 
 export default {
   emits: ["submitSort"],
   setup(props, { emit }) {
-    const submitSort = (sort) => emit("submitSort", null, null, sort);
-    return { submitSort, sortingData };
+    const selected = ref(sortingData[0].value);
+    const submitSort = (sort) => {
+      if (selected.value === sort) return;
+      selected.value = sort;
+      emit("submitSort", null, null, sort);
+    };
+
+    return { submitSort, sortingData, selected };
   },
 };
 </script>
@@ -43,6 +51,11 @@ export default {
   background: #3aab97;
   color: #fff;
   cursor: pointer;
+}
+
+.selected {
+  background: #3aab97;
+  color: #fff;
 }
 
 .button-group > *:first-child {
