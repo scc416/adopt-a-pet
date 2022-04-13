@@ -11,7 +11,7 @@ const useError = () => {
   };
 
   watch(error, () => {
-    console.log(error.value);
+    console.log("ERROR", error.value);
     if (error.value) {
       errors.push(error.value);
       setTimeout(removeError, 5000);

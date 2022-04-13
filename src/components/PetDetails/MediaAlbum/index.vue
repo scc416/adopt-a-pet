@@ -31,7 +31,6 @@ export default {
     const { updateMedia, mediaNum } = useMediaAlbum();
     const newVideo = getVideoURL(videos);
     const photoNum = photos.value.length;
-    console.log(videos)
     return { photos, updateMedia, photoNum, videos: newVideo, mediaNum };
   },
 };

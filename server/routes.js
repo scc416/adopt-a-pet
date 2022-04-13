@@ -23,7 +23,6 @@ module.exports = (db) => {
     const { petId } = req.params;
     try {
       const likes = await getLike(visitor_id, petId);
-      console.log(likes);
       res.json(likes);
     } catch (err) {
       console.log(err.message);

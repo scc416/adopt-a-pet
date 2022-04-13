@@ -138,7 +138,6 @@ export const getFormattedInfo = (details) => {
     type,
     organizationId: organization_id,
   };
-  console.log(formattedInfo);
   return formattedInfo;
 };
 
@@ -239,7 +238,6 @@ export const formatQueryValue = ({ name }) => {
 
 export const getQuery = (filter, name, sort) => {
   if (!filter && !name && !sort) return "";
-  console.log("HELLO");
   let result = "";
 
   if (filter) {
