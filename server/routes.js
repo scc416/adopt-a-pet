@@ -19,7 +19,8 @@ module.exports = (db) => {
 
   router.get("/likes/:petId", async (req, res) => {
     const { visitor_id } = req.session;
-    if (!visitor_id) return res.json({});
+    console.log(visitor_id);
+    if (!visitor_id) return res.json([]);
     const { petId } = req.params;
     try {
       const likes = await getLike(visitor_id, petId);

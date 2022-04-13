@@ -3,11 +3,12 @@ import { ref, watch } from "vue";
 
 const getPetDetailsWithIds = (ids, token, emit) => {
   const details = ref([]);
-  const loading = ref(true);
+  const loading = ref(false);
 
   const addPetDetails = async (id) => {
     const url = `https://api.petfinder.com/v2/animals/${id}`;
     if (token.value) {
+      console.log("GETTING INFO");
       try {
         const {
           data: { animal },
@@ -21,7 +22,8 @@ const getPetDetailsWithIds = (ids, token, emit) => {
         details.value.push(animal);
         loading.value = false;
       } catch (e) {
-        setError(e.message);
+        emit("setError", e.message);
+        loading.value = false;
       }
     }
   };
@@ -30,7 +32,10 @@ const getPetDetailsWithIds = (ids, token, emit) => {
 
   updateDetails();
 
-  watch([token, ids], updateDetails);
+  watch([token, ids], () => {
+    updateDetails();
+    if (ids.length) loading.value = true;
+  });
 
   return { details, loading };
 };
