@@ -63,9 +63,25 @@ Sorting with disabled location
 ![Pet Details](./docs/details-2.png)
 ![Pet Details](./docs/details-3.png)
 
+User can:
+
+- View all the media on the left
+
+- View details on the right, including a link to the pet profile on [Petfinder](https://www.petfinder.com/)
+
+- Like/unlike the pet by clicking the heart icon on the top right corner of the pet cards. The color of the heart icon indicates if the user has liked the pet.
+
 ### Liked Pet Page
 
 ![Liked pets](./docs/liked.png)
+
+User can:
+
+- View all the pets that the users has liked. Status of the pet is shown on the card if the pet is no longer adopable.
+
+- Click on any pet cards to view the details of the pet (opens in a new window).
+
+- Like/unlike any pets by clicking the heart icon on the top right corner of the pet cards. The color of the heart icon indicates if the user has liked the pet.
 
 ## Dependencies
 
