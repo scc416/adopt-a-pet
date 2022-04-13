@@ -82,7 +82,7 @@ export default {
     const { token } = toRefs(props);
     const petLists = getPetList(token, emit);
     const setError = (e) => emit("setError", e);
-    const likedPetList = getLikedPets();
+    const likedPetList = getLikedPets(emit);
     const controls = useControl(emit);
     return {
       setError,

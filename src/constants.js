@@ -44,3 +44,6 @@ export const sortingData = [
   { name: "Recent (Ascending)", value: "recent" },
   { name: "Recent (Descending)", value: "-recent" },
 ];
+
+export const dragBarSettings = { max: 500, min: 1 };
+export const defaultDistance = 100;
