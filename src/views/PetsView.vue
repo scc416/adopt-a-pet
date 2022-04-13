@@ -2,10 +2,8 @@
   <Spin v-if="loading" />
   <div class="header">
     <div class="control-left">
-      <Sort v-if="showSort" @submitSort="updatePetList" :location="location" />
       <div class="distance">
         <span
-          v-if="showFilter"
           class="distance"
           :class="{ show: location }"
           @click="toggleLocation()"
@@ -14,6 +12,7 @@
         </span>
         <SmallSpin v-if="locationLoading" />
       </div>
+      <Sort v-if="showSort" @submitSort="updatePetList" :location="location" />
     </div>
     <Control
       :showFilter="showFilter"
@@ -97,6 +96,7 @@ export default {
 <style>
 div.distance {
   display: flex;
+  min-width: 5em;
 }
 
 span.distance {
@@ -122,7 +122,6 @@ span.distance {
 .control-left {
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
   margin-bottom: 0.5em;
   align-items: flex-start;
 }

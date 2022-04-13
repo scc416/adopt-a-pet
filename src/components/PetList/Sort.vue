@@ -42,7 +42,9 @@ export default {
 
 <style>
 .button-group {
-  align-self: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .button-group > * {
