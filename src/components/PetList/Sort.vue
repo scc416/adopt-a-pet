@@ -32,10 +32,7 @@ export default {
 
 <style>
 .button-group {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.5em;
+  align-self: center;
 }
 
 .button-group > * {

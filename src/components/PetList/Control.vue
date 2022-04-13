@@ -1,9 +1,15 @@
 <template>
   <div class="control">
-    <span @click="toggleFilter()" :class="{ show: showFilter }"
+    <span
+      class="control-button"
+      @click="toggleFilter()"
+      :class="{ show: showFilter }"
       >{{ showFilter ? "Hide" : "Show" }} Filter</span
     >
-    <span @click="toggleSort()" :class="{ show: showSort }"
+    <span
+      class="control-button"
+      @click="toggleSort()"
+      :class="{ show: showSort }"
       >{{ showSort ? "Hide" : "Show" }} Sorting</span
     >
   </div>
@@ -23,25 +29,22 @@ export default {
   flex-grow: 0;
 }
 
-.control span {
+span.control-button {
   margin-left: 1em;
   padding: 0.5em 0.8em;
   border-radius: 0.2em;
   font-weight: 700;
   font-size: 0.8em;
   border: #3aab97 solid 0.1em;
-}
-
-.control span:hover {
-  cursor: pointer;
-}
-
-.control span {
   color: #fff;
   background: #3aab97;
 }
 
-.control span.show {
+span.control-button:hover {
+  cursor: pointer;
+}
+
+span.control-button.show {
   background: #ffffff00;
   color: #3aab97;
 }

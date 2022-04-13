@@ -1,7 +1,10 @@
 <template>
   <Spin v-if="loading" />
   <div class="header">
-    <Sort v-if="showSort" @submitSort="updatePetList" />
+    <div class="control-left">
+      <Sort v-if="showSort" @submitSort="updatePetList" />
+      <span v-if="showFilter" class="control-button">Add Distance</span>
+    </div>
     <Control
       :showFilter="showFilter"
       :showSort="showSort"
@@ -85,6 +88,14 @@ export default {
 </script>
 
 <style>
+.control-left {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+  align-items: flex-start;
+}
+
 .header {
   display: flex;
   align-items: flex-start;
