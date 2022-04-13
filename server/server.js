@@ -5,6 +5,9 @@ require("dotenv").config({ path: ".env.local" });
 const PORT = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
+const cors = require("cors");
+
+app.use(cors());
 
 // Set up cookie-session
 const cookieSession = require("cookie-session");
