@@ -3,7 +3,9 @@
   <div class="header">
     <div class="control-left">
       <Sort v-if="showSort" @submitSort="updatePetList" />
-      <span v-if="showFilter" class="control-button">Add Distance</span>
+      <span v-if="showFilter" class="distance" :class="{ show: true }">
+        <DistanceIcon />
+      </span>
     </div>
     <Control
       :showFilter="showFilter"
@@ -50,6 +52,7 @@ import getLikedPets from "@/composables/getLikedPets";
 import useControl from "@/composables/useControl";
 import Control from "@/components/PetList/Control.vue";
 import Sort from "@/components/PetList/Sort.vue";
+import DistanceIcon from "vue-material-design-icons/CrosshairsGps.vue";
 
 export default {
   emits: ["setError"],
@@ -62,6 +65,7 @@ export default {
     Filter,
     Control,
     Sort,
+    DistanceIcon,
   },
   setup(props, { emit }) {
     const { token } = toRefs(props);
@@ -88,6 +92,25 @@ export default {
 </script>
 
 <style>
+.distance {
+  padding: 0.2em;
+  border: #3aab97 solid 0.08em;
+  color: #fff;
+  background: #3aab97;
+  padding: 0.25em 0.4em 0.1em;
+  border-radius: 0.1em;
+}
+
+.distance .material-design-icon {
+  height: 0.9em;
+  width: 0.9em;
+}
+
+.distance .material-design-icon > .material-design-icon__svg {
+  height: 0.9em;
+  width: 0.9em;
+}
+
 .control-left {
   flex-grow: 1;
   display: flex;

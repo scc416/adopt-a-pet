@@ -72,7 +72,7 @@ import { makeValidOptions } from "@/helpers";
 import Dragbar from "./Dragbar.vue";
 
 export default {
-  emit: ["submitFilter", "setError"],
+  emits: ["submitFilter", "setError"],
   props: ["token"],
   components: { Select, Dragbar },
   setup(props, { emit }) {
