@@ -1,7 +1,7 @@
 <template>
-  <div v-if="details">
-    <div><Dragbar /></div>
-    <div class="filter">
+  <div class="filter" v-if="details">
+    <div class="filter-option">
+      <div><Dragbar /></div>
       <div>
         <div>
           <label class="typo__label">Name</label>
@@ -56,8 +56,8 @@
           />
         </div>
       </div>
-      <button @click="submitFilter()">Filter</button>
     </div>
+    <button @click="submitFilter()">Filter</button>
   </div>
 </template>
 
@@ -115,15 +115,19 @@ export default {
   margin-bottom: 1em;
 }
 
-.filter > div {
+.filter-option {
+  flex-grow: 1;
   width: 100%;
+}
+
+.filter > div > div {
   display: grid;
   grid-row-gap: 0.7em;
   grid-column-gap: 1em;
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.filter > button {
+.filter button {
   margin-left: 1em;
   width: auto;
   background: #3aab97;
