@@ -6,10 +6,6 @@ const PORT = process.env.PORT || 3000;
 const express = require("express");
 const app = express();
 
-//SocketIo config
-const { createServer } = require("http");
-const httpServer = createServer(app);
-
 // Set up cookie-session
 const cookieSession = require("cookie-session");
 app.use(cookieSession({ secret: process.env.SECRET }));
@@ -31,6 +27,6 @@ app.use("/public", express.static(__dirname + "/public"));
 const routes = require("./routes");
 app.use("/api", routes(db));
 
-httpServer.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
