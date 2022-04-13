@@ -1,6 +1,7 @@
 <template>
   <div v-if="details" class="filter">
     <div>
+      <Dragbar />
       <div>
         <label class="typo__label">Name</label>
         <div><input type="text" class="text" v-model="name" /></div>
@@ -66,11 +67,12 @@ import useFilter from "@/composables/useFilter";
 import getAnimalBreeds from "@/composables/getAnimalBreeds";
 import { filterOptions, filterOptionsMulti } from "@/constants";
 import { makeValidOptions } from "@/helpers";
+import Dragbar from "./Dragbar.vue";
 
 export default {
   emit: ["submitFilter", "setError"],
   props: ["token"],
-  components: { Select },
+  components: { Select, Dragbar },
   setup(props, { emit }) {
     const { token } = toRefs(props);
     const details = getAnimalTypes(token, emit);
