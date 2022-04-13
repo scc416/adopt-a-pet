@@ -1,6 +1,6 @@
 <template>
   <div class="drag-bar">
-    <label class="typo__label">Distance</label>
+    <label class="typo__label">Distance (miles)</label>
     <Slider v-model="distance" v-bind="dragBarSettings"></Slider>
   </div>
 </template>
