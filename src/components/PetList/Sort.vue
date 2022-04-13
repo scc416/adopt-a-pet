@@ -1,7 +1,7 @@
 <template>
   <div class="button-group">
     <button
-      v-for="(data, i) in sortingData"
+      v-for="(data, i) in sorting"
       :key="i"
       @click="submitSort(data.value)"
       :class="{ selected: selected === data.value }"
@@ -12,20 +12,30 @@
 </template>
 
 <script>
-import { sortingData } from "@/constants";
-import { ref } from "vue";
+import { sortingRecentData, sortingDistanceData } from "@/constants";
+import { ref, toRefs, watch } from "vue";
+
+const sortingData = sortingRecentData.concat(sortingDistanceData);
 
 export default {
+  props: ["location"],
   emits: ["submitSort"],
   setup(props, { emit }) {
+    const { location } = toRefs(props);
     const selected = ref(sortingData[0].value);
     const submitSort = (sort) => {
       if (selected.value === sort) return;
       selected.value = sort;
-      emit("submitSort", sort);
+      emit("submitSort", sort, location);
     };
 
-    return { submitSort, sortingData, selected };
+    const sorting = ref(location.value ? sortingData : sortingRecentData);
+    watch(location, () => {
+      console.log(location.value);
+      sorting.value = location.value ? sortingData : sortingRecentData;
+    });
+
+    return { submitSort, sorting, selected };
   },
 };
 </script>

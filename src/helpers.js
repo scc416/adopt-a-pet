@@ -237,10 +237,10 @@ export const formatQueryValue = ({ name }) => {
 };
 
 export const getQuery = (filter, name, sort, location, distance) => {
-  
   let result = "";
   if (location && location.value) {
-    result += `&location=${location.value}&distance=${distance.value}`;
+    result += `&location=${location.value}`;
+    if (distance && distance.value) result += `&distance=${distance.value}`;
   }
 
   if (filter) {

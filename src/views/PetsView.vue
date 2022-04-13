@@ -2,7 +2,7 @@
   <Spin v-if="loading" />
   <div class="header">
     <div class="control-left">
-      <Sort v-if="showSort" @submitSort="updatePetList" />
+      <Sort v-if="showSort" @submitSort="updatePetList" :location="location" />
       <div class="distance">
         <span
           v-if="showFilter"

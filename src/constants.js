@@ -40,9 +40,13 @@ export const filterOptionsMulti = {
   Size: ["Small", "Medium", "Large", "Extra Large"],
 };
 
-export const sortingData = [
+export const sortingRecentData = [
   { name: "Recent (Ascending)", value: "recent" },
   { name: "Recent (Descending)", value: "-recent" },
+];
+export const sortingDistanceData = [
+  { name: "Distance (Ascending)", value: "distance" },
+  { name: "Distance (Descending)", value: "-distance" },
 ];
 
 export const dragBarSettings = { max: 500, min: 1 };

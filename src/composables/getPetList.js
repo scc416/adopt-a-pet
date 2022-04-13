@@ -15,11 +15,11 @@ const getPetList = (token, emit) => {
   const location = ref(null);
   const distance = ref(100);
 
-  const updatePetList = async (sorting, data, text, locate, mile) => {
+  const updatePetList = async (sorting, locate, data, text, mile) => {
+    location.value = locate;
     if (!sorting) {
       filter.value = data;
       name.value = text;
-      location.value = locate;
       distance.value = mile;
     }
     if (sorting) {

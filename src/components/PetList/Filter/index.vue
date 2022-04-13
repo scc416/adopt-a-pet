@@ -87,7 +87,7 @@ export default {
     const distance = ref(defaultDistance);
     const updateDistance = (d) => (distance.value = d);
     const submitFilter = () =>
-      emit("submitFilter", null, filter, name, location, distance);
+      emit("submitFilter", null, location, filter, name, distance);
     return {
       submitFilter,
       updateFilter,

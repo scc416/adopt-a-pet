@@ -35,7 +35,6 @@ const useControl = (emit) => {
   };
 
   const toggleLocation = () => {
-    console.log(location.value);
     if (location.value) return (location.value = null);
     if (!location.value && !locate) return getLocation();
     location.value = locate;
