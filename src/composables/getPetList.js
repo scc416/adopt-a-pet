@@ -15,7 +15,7 @@ const getPetList = (token, emit) => {
   const location = ref(null);
   const distance = ref(100);
 
-  const updatePetList = async (data, text, sorting, locate, mile) => {
+  const updatePetList = async (sorting, data, text, locate, mile) => {
     if (!sorting) {
       filter.value = data;
       name.value = text;
