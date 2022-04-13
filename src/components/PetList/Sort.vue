@@ -1,16 +1,23 @@
 <template>
   <div class="button-group">
-    <button @click="submitSort('recent')">Recent (Ascending)</button>
-    <button @click="submitSort('-recent')">Recent (Descending)</button>
+    <button
+      v-for="(data, i) in sortingData"
+      :key="i"
+      @click="submitSort(data.value)"
+    >
+      {{ data.name }}
+    </button>
   </div>
 </template>
 
 <script>
+import { sortingData } from "@/constants";
+
 export default {
   emits: ["submitSort"],
   setup(props, { emit }) {
     const submitSort = (sort) => emit("submitSort", null, null, sort);
-    return { submitSort };
+    return { submitSort, sortingData };
   },
 };
 </script>

@@ -39,3 +39,8 @@ export const filterOptionsMulti = {
   Age: ["Baby", "Young", "Adult", "Senior"],
   Size: ["Small", "Medium", "Large", "Extra Large"],
 };
+
+export const sortingData = [
+  { name: "Recent (Ascending)", value: "recent" },
+  { name: "Recent (Descending)", value: "-recent" },
+];
