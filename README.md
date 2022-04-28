@@ -16,6 +16,8 @@ The server is deployed to [Heroku](https://heroku.com/). [Netlify](https://www.n
 
 https://the-pets.netlify.app/
 
+It might take some time to load up the server.
+
 ## Final Product
 
 ### Landing Page
