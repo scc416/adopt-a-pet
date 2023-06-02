@@ -9,12 +9,6 @@ A [Vue.js](https://vuejs.org/) app for pet adoption, with pet data fetched from 
 - [Getting Started](#getting-started)
 - [Credits](#credits)
 
-## Live Demo
-
-The server is deployed to [Heroku](https://heroku.com/). [Netlify](https://www.netlify.com/) serves the static client assets:
-
-https://the-pets.netlify.app/
-
 It might take some time to load up the server.
 
 ## Final Product
